@@ -27,7 +27,11 @@ sub MAIN(Str $folder) {
   # Sort module compile timings descending and print them out
   my @keys = %timings.keys;
   my @sorted-modules = @keys.sort( { %timings{$^a} <=> %timings{$^b} } ).reverse;
+  my $total = 0;
   for @sorted-modules -> $module {
-    printf("%-$($max_col_width)s => %.2f\n", $module, %timings{$module});
+    my $time-diff = %timings{$module};
+    printf("%-$($max_col_width)s => %.2f\n", $module, $time-diff);
+    $total += $time-diff;
   }
+  printf("Total time is %.2f seconds\n", $total);
 }
