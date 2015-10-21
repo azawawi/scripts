@@ -6,7 +6,7 @@ use File::Find;
 sub MAIN(Str $folder) {
   # Find modules in current folder
   say "Finding modules in in $folder";
-  my $modules = find(dir => $folder, name => / '.pm6' $ /);
+  my $modules = find(dir => $folder, name => / ('.pm6'|'pm') $ /);
 
   die "No modules found in current folder" if @$modules.elems == 0;
 
@@ -16,7 +16,7 @@ sub MAIN(Str $folder) {
   my $max_col_width = 0;
   for @$modules -> $module {
     $max_col_width = $module.chars if $max_col_width < $module.chars;
-    my $cmd = "perl6 -Ilib -c $module";
+    my $cmd = "perl6 -I$folder/lib -c $module";
     my $t0 = now;
     my $o = qqx/$cmd/;
     my $diff = now - $t0;
@@ -28,6 +28,6 @@ sub MAIN(Str $folder) {
   my @keys = %timings.keys;
   my @sorted-modules = @keys.sort( { %timings{$^a} <=> %timings{$^b} } ).reverse;
   for @sorted-modules -> $module {
-    printf("%-$($max_col_width)s => %s\n", $module, %timings{$module});
+    printf("%-$($max_col_width)s => %.2f\n", $module, %timings{$module});
   }
 }
