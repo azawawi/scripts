@@ -124,7 +124,7 @@ sub read-local-file-header(Str $file-name, Int $offset, Int $output-file-compres
   my Buf $local_file_header = $fh.read(30);
   my ($signature, $version, $general-purpose-bit-flag, $compression-method, 
       $last-modified-time, $last-modified-date, $crc32, $compressed-size, 
-      $uncompressed-size, $file-name-length, $extra-file-name-length) =
+      $uncompressed-size, $file-name-length, $extra-field-length) =
     $local_file_header.unpack("L S S S S S L L L S S");
 
   printf(
@@ -138,14 +138,14 @@ sub read-local-file-header(Str $file-name, Int $offset, Int $output-file-compres
   say "compressed size        = " ~ $compressed-size; 
   say "uncompressed size      = " ~ $uncompressed-size;
   say "file name length       = " ~ $file-name-length;
-  say "extra file name length = " ~ $extra-file-name-length;
+  say "extra field length     = " ~ $extra-field-length;
 
   my Buf $file-name-buf = $fh.read($file-name-length);
 
   my $output-file-name = $file-name-buf.unpack("A*");
   say $output-file-name;
 
-  $fh.seek($extra-file-name-length, 1);
+  $fh.seek($extra-field-length, 1);
 
   #my Buf $file-data-descriptor = $fh.read(12);
 
