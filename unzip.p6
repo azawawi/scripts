@@ -4,13 +4,78 @@ use v6;
 
 # From https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
 
-my $eocd-index = find-eocd-offset;
-say "Found EOCD at $eocd-index";
+my $file-name = "webdriver.xpi";
+my $eocd-index = find-eocd-offset($file-name);
+die "Cannot find EOCD header" if $eocd-index == -1;
+say "eocd-index is " ~ $eocd-index;
 
+my ($cd-index, $number-records) = find-cd-offset($file-name, $eocd-index);
+say "cd-index is " ~ $cd-index;
+
+read-cd-headers($file-name, $cd-index, $number-records);
+
+exit;
+
+sub read-cd-headers(Str $file-name, Int $offset, Int $number-records) {
+  my $fh = $file-name.IO.open(:bin);
+
+  $fh.seek($offset, 0);
+
+  for 1..$number-records -> $i {
+    my Buf $buffer = $fh.read(46);
+    my ($signature, $version-made-by, $version-needed, $flag, $compression-method,
+      $last-modified-time, $last-modified-date, $crc32, $compressed-size,
+      $uncompressed-size, $file-name-length, $extra-file-name-length,
+      $file-comment-length, $disk-number, $file-attributes, $extra-file-attributes,
+      $local-file-header-offset) = $buffer.unpack("L S S S S S S L L L S S S S S L L");
+      
+    my $file-name-buf = $fh.read($file-name-length);
+    
+    say "extra-file-name-length = $extra-file-name-length";
+    say "file-comment-length = $file-comment-length";
+    $fh.seek($extra-file-name-length + $file-comment-length, 1);
+
+    printf("signature = %08x\n", $signature);
+    say "filename is " ~ $file-name-buf.unpack("A*");
+    say "compression-method is " ~ $compression-method;
+    say "---";
+  }
+
+
+  LEAVE {
+    $fh.close if $fh.defined;
+  }
+}
+
+sub find-cd-offset(Str $file-name, Int $eocd-offset) {
+    my $fh = $file-name.IO.open(:bin);
+
+    $fh.seek(-$eocd-offset, 2);
+
+    my Buf $eocd-buf = $fh.read(22); 
+    my ($signature, $number-disk, $disk-central-directory-on-disk, $number-central-directory-records-on-disk,
+    $total-number-central-directory-records, $central-directory-size, $offset-central-directory, $comment-length) =
+      $eocd-buf.unpack("L S S S S L L S");
+      
+    say $eocd-buf.unpack("L S S S S L L S").perl;
+      
+    printf("signature = %08x\n", $signature);
+    say "size   = " ~ $central-directory-size;
+    printf("offset = %08x\n", $offset-central-directory);
+    say "number-central-directory-records-on-disk = $number-central-directory-records-on-disk";
+    say "Comment length = " ~ $comment-length;
+    say $disk-central-directory-on-disk;
+    
+    LEAVE {
+      $fh.close if $fh.defined;
+    }
+    
+    return ($offset-central-directory, $number-central-directory-records-on-disk);
+}
 
 # Find EOCD (end of central directory record)
-sub find-eocd-offset {
-  my $fh = "webdriver.xpi".IO.open(:bin);
+sub find-eocd-offset(Str $file-name) {
+  my $fh = $file-name.IO.open(:bin);
 
   # Find file size
   $fh.seek(0, 2);
@@ -23,21 +88,20 @@ sub find-eocd-offset {
     
     my $bytes = $fh.read(4);
     
-    # Find EOCD hexidecimal signature 06 05 4b 50
+    # Find EOCD hexidecimal signature 50 4b 05 06
     if $bytes[0] == 0x50 && $bytes[1] == 0x4b && $bytes[2] == 0x05 && $bytes[3] == 0x06 {
       return $i;
     }
   }
   
 LEAVE {
-  say "Closing";
   $fh.close if $fh.defined;
 }
   
   return -1;
 }
 
-exit;
+
 
 my $fh = "webdriver.xpi".IO.open(:bin);
 
