@@ -2,6 +2,8 @@
 
 use v6;
 
+use Compress::Zlib;
+
 # From https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
 
 my $file-name = "webdriver.xpi";
@@ -12,7 +14,11 @@ say "eocd-index is " ~ $eocd-index;
 my ($cd-index, $number-records) = find-cd-offset($file-name, $eocd-index);
 say "cd-index is " ~ $cd-index;
 
-read-cd-headers($file-name, $cd-index, $number-records);
+my @cd-headers = read-cd-headers($file-name, $cd-index, $number-records);
+
+#say @cd-headers.perl;
+read-local-file-header($file-name, @cd-headers[0]<local-file-header-offset>, 
+  @cd-headers[0]<compressed-size>);
 
 exit;
 
@@ -21,6 +27,7 @@ sub read-cd-headers(Str $file-name, Int $offset, Int $number-records) {
 
   $fh.seek($offset, 0);
 
+  my @cd-headers;
   for 1..$number-records -> $i {
     my Buf $buffer = $fh.read(46);
     my ($signature, $version-made-by, $version-needed, $flag, $compression-method,
@@ -38,9 +45,17 @@ sub read-cd-headers(Str $file-name, Int $offset, Int $number-records) {
     printf("signature = %08x\n", $signature);
     say "filename is " ~ $file-name-buf.unpack("A*");
     say "compression-method is " ~ $compression-method;
+    say "compressed-size is " ~ $compressed-size;
     say "---";
+
+    @cd-headers.push( {
+      file-name                => $file-name-buf.unpack("A*"),
+      local-file-header-offset => $local-file-header-offset,
+      compressed-size          => $compressed-size,
+    });
   }
 
+  return @cd-headers;
 
   LEAVE {
     $fh.close if $fh.defined;
@@ -101,44 +116,57 @@ LEAVE {
   return -1;
 }
 
-=begin stash
+sub read-local-file-header(Str $file-name, Int $offset, Int $output-file-compressed-size) {
+  my $fh = $file-name.IO.open(:bin);
 
-my $fh = "webdriver.xpi".IO.open(:bin);
+  $fh.seek($offset, 0);
 
-my Buf $local_file_header = $fh.read(30);
-my ($signature, $version, $general-purpose-bit-flag, $compression-method, 
-    $last-modified-time, $last-modified-date, $crc32, $compressed-size, 
-    $uncompressed-size, $file-name-length, $extra-file-name-length) =
-  $local_file_header.unpack("L S S S S S L L L S S");
+  my Buf $local_file_header = $fh.read(30);
+  my ($signature, $version, $general-purpose-bit-flag, $compression-method, 
+      $last-modified-time, $last-modified-date, $crc32, $compressed-size, 
+      $uncompressed-size, $file-name-length, $extra-file-name-length) =
+    $local_file_header.unpack("L S S S S S L L L S S");
 
-printf(
-    "signature              = %08x\n", $signature);
-say "version                = " ~ $version;
-say "flag                   = " ~ $general-purpose-bit-flag;
-say "method                 = " ~ $compression-method;
-say "last-modified-time     = " ~ $last-modified-time;
-say "last-modified-date     = " ~ $last-modified-date;
-say "crc 32                 = " ~ $crc32;
-say "compressed size        = " ~ $compressed-size; 
-say "uncompressed size      = " ~ $uncompressed-size;
-say "file name length       = " ~ $file-name-length;
-say "extra file name length = " ~ $extra-file-name-length;
+  printf(
+      "signature              = %08x\n", $signature);
+  say "version                = " ~ $version;
+  say "flag                   = " ~ $general-purpose-bit-flag;
+  say "method                 = " ~ $compression-method;
+  say "last-modified-time     = " ~ $last-modified-time;
+  say "last-modified-date     = " ~ $last-modified-date;
+  say "crc 32                 = " ~ $crc32;
+  say "compressed size        = " ~ $compressed-size; 
+  say "uncompressed size      = " ~ $uncompressed-size;
+  say "file name length       = " ~ $file-name-length;
+  say "extra file name length = " ~ $extra-file-name-length;
 
-my Buf $file-name-buf = $fh.read($file-name-length);
+  my Buf $file-name-buf = $fh.read($file-name-length);
 
-say $file-name-buf.unpack("A*");
+  my $output-file-name = $file-name-buf.unpack("A*");
+  say $output-file-name;
 
-my Buf $idk = $fh.read($extra-file-name-length);
-#say $idk.unpack("A*");
+  $fh.seek($extra-file-name-length, 1);
 
-my Buf $file-data-descriptor = $fh.read(12);
+  #my Buf $file-data-descriptor = $fh.read(12);
 
-my ($file-data-crc32, $file-compressed-size, $file-uncompressed-size) =
-  $file-data-descriptor.unpack("L L L");
+  #my ($file-data-crc32, $file-compressed-size, $file-uncompressed-size) =
+  #  $file-data-descriptor.unpack("L L L");
+    
+  #printf(
+  #     "file crc32            = %08x\n", $file-data-crc32);
+  #say "file compressed size   = " ~ $file-compressed-size;
+  #say "file uncompressed size = " ~ $file-uncompressed-size;
   
-printf(
-     "file crc32            = %08x\n", $file-data-crc32);
-say "file compressed size   = " ~ $file-compressed-size;
-say "file uncompressed size = " ~ $file-uncompressed-size;
+  
+  my $compressed = $fh.read($output-file-compressed-size);
+  "output.txt".IO.spurt($compressed, :bin);
+  my $original = uncompress($compressed);
+  
+  $output-file-name.IO.spurt($original, :bin);
+  #say $compressed-size;
 
-=end stash
+  LEAVE {
+    $fh.close if $fh.defined;
+  }
+}
+
