@@ -101,7 +101,7 @@ LEAVE {
   return -1;
 }
 
-
+=begin stash
 
 my $fh = "webdriver.xpi".IO.open(:bin);
 
@@ -140,3 +140,5 @@ printf(
      "file crc32            = %08x\n", $file-data-crc32);
 say "file compressed size   = " ~ $file-compressed-size;
 say "file uncompressed size = " ~ $file-uncompressed-size;
+
+=end stash
