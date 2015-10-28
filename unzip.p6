@@ -7,6 +7,7 @@ use Compress::Zlib;
 # From https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
 
 my $file-name = "webdriver.xpi";
+#my $file-name = "test.zip";
 my $eocd-index = find-eocd-offset($file-name);
 die "Cannot find EOCD header" if $eocd-index == -1;
 say "eocd-index is " ~ $eocd-index;
@@ -19,6 +20,8 @@ my @cd-headers = read-cd-headers($file-name, $cd-index, $number-records);
 #say @cd-headers.perl;
 read-local-file-header($file-name, @cd-headers[0]<local-file-header-offset>, 
   @cd-headers[0]<compressed-size>);
+  
+#say "next offset must be at " ~ @cd-headers[1]<local-file-header-offset>;
 
 exit;
 
@@ -119,6 +122,7 @@ LEAVE {
 sub read-local-file-header(Str $file-name, Int $offset, Int $output-file-compressed-size) {
   my $fh = $file-name.IO.open(:bin);
 
+say "seeking to offset #$offset";
   $fh.seek($offset, 0);
 
   my Buf $local_file_header = $fh.read(30);
@@ -147,24 +151,42 @@ sub read-local-file-header(Str $file-name, Int $offset, Int $output-file-compres
 
   $fh.seek($extra-field-length, 1);
 
-  #my Buf $file-data-descriptor = $fh.read(12);
+  if $compression-method == 0x0 {
+    # Not compressed
+    my $original = $fh.read($output-file-compressed-size);
+    "output.bin".IO.spurt($original, :bin);
+  } elsif $compression-method == 0x08 {
+    # Deflate using Zlib
+    my $compressed = $fh.read($output-file-compressed-size);
+    my $decompressor = Compress::Zlib::Stream.new(:deflate);
+    my $original = $decompressor.inflate($compressed);
+    "output".IO.mkdir;
+    "output/$output-file-name".IO.spurt($original, :bin);
 
-  #my ($file-data-crc32, $file-compressed-size, $file-uncompressed-size) =
-  #  $file-data-descriptor.unpack("L L L");
-    
+    CATCH {
+      default {
+        say $_;
+      }
+    }
+  } else {
+    die "Cannot handle compression method '$compression-method'";
+  }
+  
+  say "offset is now at #" ~ $fh.tell;
+
+
+  #my Buf $file-data-descriptor = $fh.read(16);
+  #my ($file-data-descriptor-signature, $file-data-crc32, $file-compressed-size, $file-uncompressed-size) =
+  #$file-data-descriptor.unpack("L L L L");
+  #printf(
+  #    "signature              = %08x\n", $file-data-descriptor-signature);
   #printf(
   #     "file crc32            = %08x\n", $file-data-crc32);
   #say "file compressed size   = " ~ $file-compressed-size;
   #say "file uncompressed size = " ~ $file-uncompressed-size;
   
+  #say "offset is now at #" ~ $fh.tell;
   
-  my $compressed = $fh.read($output-file-compressed-size);
-  "output.txt".IO.spurt($compressed, :bin);
-  my $original = uncompress($compressed);
-  
-  $output-file-name.IO.spurt($original, :bin);
-  #say $compressed-size;
-
   LEAVE {
     $fh.close if $fh.defined;
   }
