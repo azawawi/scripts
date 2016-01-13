@@ -11,7 +11,7 @@ $ ./a.out
 int main() {
   std::cout << "Hello world\n";
   
-  cv::Mat img = cv::imread("messi5.jpg", CV_LOAD_IMAGE_UNCHANGED);
+  cv::Mat img = cv::imread("camelia-logo.png", CV_LOAD_IMAGE_UNCHANGED);
   imshow("Foo", img);
   cv::waitKey(0);
 }

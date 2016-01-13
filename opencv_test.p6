@@ -57,7 +57,7 @@ sub cv_imread(Str $filename, uint32 $flags)
   { * }
 
 #say "messi5.jpg".IO;
-my $img = cvLoadImage("messi5.jpg", 1);
+my $img = cvLoadImage("camelia-logo.png", 1);
 #my $img = cv_imread("messi51.jpg", 1);
 say $img;
 
