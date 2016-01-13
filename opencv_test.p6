@@ -2,17 +2,6 @@
 
 use NativeCall;
 
-class cvMat is repr('CStruct') {
-#  int $type;
-#  int $step;
-#  Pointer $refcount;
-  
-#  class MyUnion is repr('CUnion') {
-#    has int32 $.flags32;
-#    has int64 $.flags64;
-#  }
-}
-
 # C: CvMat* cvLoadImageM(const char* filename, int iscolor=CV_LOAD_IMAGE_COLOR )
 sub cvLoadImage(Str $filename, uint32 $flags)
   returns Pointer
@@ -51,20 +40,22 @@ sub cvMoveWindow(Str $name, int $x, int $y)
   { * }
   
 #C++: Mat imread(const string& filename, int flags=1 )¶
-sub cv_imread(Str $filename, uint32 $flags)
+sub imread(Str $filename, uint32 $flags)
   returns Pointer
   is native('opencv_highgui', v2.4)
   { * }
 
 my $img = cvLoadImage("camelia-logo.png", 1);
-#my $img = cv_imread("camelia-logo.png", 1);
-say $img;
+#my $img = imread("camelia-logo.png", 1);
+#say $img;
 
 say cvSaveImage("output.png", $img, 0);
-cvNamedWindow("Foo", 1);
-cvShowImage("Foo", $img);
-cvShowImage("Foo 2", $img);
-cvMoveWindow("Foo", 0, 0);
+cvNamedWindow("Foo1", 1);
+cvNamedWindow("Foo2", 1);
+cvMoveWindow("Foo1", 0, 0);
+cvMoveWindow("Foo2", 200, 200);
+cvShowImage("Foo1", $img);
+cvShowImage("Foo2", $img);
 cvWaitKey(0);
 #sleep 5;
 #sleep 1;
