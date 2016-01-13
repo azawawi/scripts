@@ -56,9 +56,8 @@ sub cv_imread(Str $filename, uint32 $flags)
   is native('opencv_highgui', v2.4)
   { * }
 
-#say "messi5.jpg".IO;
 my $img = cvLoadImage("camelia-logo.png", 1);
-#my $img = cv_imread("messi51.jpg", 1);
+#my $img = cv_imread("camelia-logo.png", 1);
 say $img;
 
 say cvSaveImage("output.png", $img, 0);
