@@ -50,9 +50,15 @@ sub cvMoveWindow(Str $name, int $x, int $y)
   is native('opencv_highgui', v2.4)
   { * }
   
+#C++: Mat imread(const string& filename, int flags=1 )¶
+sub cv_imread(Str $filename, uint32 $flags)
+  returns Pointer
+  is native('opencv_highgui', v2.4)
+  { * }
 
 #say "messi5.jpg".IO;
 my $img = cvLoadImage("messi5.jpg", 1);
+#my $img = cv_imread("messi51.jpg", 1);
 say $img;
 
 say cvSaveImage("output.png", $img, 0);
