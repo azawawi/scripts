@@ -75,7 +75,6 @@ die "Could not read $filename" unless $data;
 say "Matrix cols = " ~ mat_cols($img);
 say "Matrix rows = " ~ mat_rows($img);
 my $denoised_img = mat_clone($img);
-#fastNlMeansDenoisingColored($img, $img, 3.0, 3.0, 7, 21);
 fastNlMeansDenoisingColored($img, $denoised_img, 10, 10, 7, 21);
 namedWindow("Original", 1);
 imshow("Original", $img);
