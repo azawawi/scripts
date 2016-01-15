@@ -9,6 +9,16 @@ sub imread(Str $filename, int32 $flags)
   is native(LIB, v1)
   { * }
 
+sub mat_rows(Pointer $img)
+  returns uint32
+  is native(LIB, v1)
+  { * }
+
+sub mat_cols(Pointer $img)
+  returns uint32
+  is native(LIB, v1)
+  { * }
+
 sub imwrite(Str $filename, Pointer $img)
   returns uint32 
   is native(LIB, v1)
@@ -30,22 +40,10 @@ sub waitKey(uint32 $delay)
   is native(LIB, v1)
   { * }
 
-my $img = imread("camelia-logo.png1", 1);
+my $img = imread("camelia-logo.png", 1);
 say $img;
-
-namedWindow("Foo1", 1);
-
-imshow("Foo1", $img);
-
+say "Matrix cols = " ~ mat_cols($img);
+say "Matrix rows = " ~ mat_rows($img);
+namedWindow("win1", 1);
+imshow("win1", $img);
 waitKey(0);
-
-#say cvSaveImage("output.png", $img, 0);
-
-#cvNamedWindow("Foo2", 1);
-#cvMoveWindow("Foo1", 0, 0);
-#cvMoveWindow("Foo2", 200, 200);
-#cvShowImage("Foo1", $img);
-#cvShowImage("Foo2", $img);
-
-#cvDestroyAllWindows();
-
