@@ -29,6 +29,11 @@ sub mat_data(Pointer $img)
   is native(LIB, v1)
   { * }
 
+sub mat_clone(Pointer $img)
+  returns Pointer
+  is native(LIB, v1)
+  { * }
+
 sub imwrite(Str $filename, Pointer $img)
   returns uint32 
   is native(LIB, v1)
@@ -50,12 +55,30 @@ sub waitKey(uint32 $delay)
   is native(LIB, v1)
   { * }
 
-my $filename = "camelia-logo.png";
+sub fastNlMeansDenoisingColored(
+    Pointer $src,
+    Pointer $dst,
+    uint32 $h,
+    uint32 $hColor,
+    uint32 $templateWindowSize,
+    uint32 $searchWindowSize
+  )
+  returns int32
+  is native(LIB, v1)
+  { * }
+
+#my $filename = "camelia-logo.png";
+my $filename = "aero1.jpg";
 my $img = imread($filename, 1);
 my $data = mat_data($img);
 die "Could not read $filename" unless $data;
 say "Matrix cols = " ~ mat_cols($img);
 say "Matrix rows = " ~ mat_rows($img);
-namedWindow("win1", 1);
-imshow("win1", $img);
+my $denoised_img = mat_clone($img);
+#fastNlMeansDenoisingColored($img, $img, 3.0, 3.0, 7, 21);
+fastNlMeansDenoisingColored($img, $denoised_img, 10, 10, 7, 21);
+namedWindow("Original", 1);
+imshow("Original", $img);
+namedWindow("Denoised", 1);
+imshow("Denoised", $denoised_img);
 waitKey(0);
