@@ -22,6 +22,11 @@ extern "C" {
     return t->cols;
   }
 
+  uchar* mat_data(char *mat) {
+    cv::Mat *t = (cv::Mat *)mat;
+    return t->data;
+  }
+
   void imshow(char *winname, ulong mat) {
     cv::Mat& matz   = *((cv::Mat*)mat);
     cv::imshow(winname, matz);

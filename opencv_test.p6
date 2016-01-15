@@ -19,6 +19,11 @@ sub mat_cols(Pointer $img)
   is native(LIB, v1)
   { * }
 
+sub mat_data(Pointer $img)
+  returns Pointer
+  is native(LIB, v1)
+  { * }
+
 sub imwrite(Str $filename, Pointer $img)
   returns uint32 
   is native(LIB, v1)
@@ -40,8 +45,10 @@ sub waitKey(uint32 $delay)
   is native(LIB, v1)
   { * }
 
-my $img = imread("camelia-logo.png", 1);
-say $img;
+my $filename = "camelia-logo.png";
+my $img = imread($filename, 1);
+my $data = mat_data($img);
+die "Could not read $filename" unless $data;
 say "Matrix cols = " ~ mat_cols($img);
 say "Matrix rows = " ~ mat_rows($img);
 namedWindow("win1", 1);
