@@ -1,5 +1,10 @@
 #!/usr/bin/env perl6
 
+#
+# How to run it:
+# $ make && LD_LIBRARY_PATH=. ./opencv_test.p6
+#
+
 use NativeCall;
 
 constant LIB = "opencv_perl6";
