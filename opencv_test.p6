@@ -6,30 +6,38 @@ constant LIB = "opencv_perl6";
 
 sub imread(Str $filename, int32 $flags)
   returns Pointer
-  is native(LIB)
+  is native(LIB, v1)
+  { * }
+
+sub imwrite(Str $filename, Pointer $img)
+  returns uint32 
+  is native(LIB, v1)
   { * }
 
 # void imshow(const string& winname, InputArray mat)
 sub imshow(Str $filename, Pointer $mat)
-  is native(LIB)
+  is native(LIB, v1)
   { * }
 
 # void namedWindow(const string& winname, int flags=WINDOW_AUTOSIZE )
 sub namedWindow(Str $winname, uint32 $flags)
-  is native(LIB)
+  is native(LIB, v1)
   { * }
 
-# C: int cvWaitKey(int delay=0 )
-sub cvWaitKey(uint32 $delay)
+# int waitKey(int delay=0)¶
+sub waitKey(uint32 $delay)
   returns int32
-  is native("")
+  is native(LIB, v1)
   { * }
 
-my $img = imread("camelia-logo.png", 1);
+my $img = imread("camelia-logo.png1", 1);
 say $img;
 
-#namedWindow("Foo1", 1);
-#imshow("Foo1", $img);
+namedWindow("Foo1", 1);
+
+imshow("Foo1", $img);
+
+waitKey(0);
 
 #say cvSaveImage("output.png", $img, 0);
 
@@ -38,6 +46,6 @@ say $img;
 #cvMoveWindow("Foo2", 200, 200);
 #cvShowImage("Foo1", $img);
 #cvShowImage("Foo2", $img);
-#cvWaitKey(0);
+
 #cvDestroyAllWindows();
 
