@@ -39,6 +39,7 @@ sub generate-doc($file-name) {
 
     # Write POD to file
     $pod-fh.say( sprintf("### %s\n- C:\n\n  `%s`\n- Perl 6:\n\n  `%s`\n%s\n", $id, $proto, $proto, $doc) );
+    say $id;
   }
 
   $pod-fh.close;
