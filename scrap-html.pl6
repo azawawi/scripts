@@ -32,6 +32,9 @@ sub generate-doc($file-name) {
     $doc   ~~ s:g| '<dd>' \s* '</dd>' ||;
     $doc   ~~ s:g| 'A description of each parameter follows:' ||;
     $doc   ~~ s:g| 'The format of the ' (.+?) ' method is:' ||;
+    $doc   ~~ s:g| '<dl class="dl-horizontal">' ||;
+    $doc   ~~ s:g| \n ||;
+    $doc   ~~ s:g| '</dl>' ||;
     $proto ~~ s:g| \n ||;
 
     # Write POD to file
