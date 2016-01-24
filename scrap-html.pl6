@@ -2,7 +2,8 @@
 
 use v6;
 
-my $html = "wand.html".IO.slurp;
+my Str $html          = "wand.html".IO.slurp;
+my IO::Handle $pod-fh = "wand.md".IO.open(:w);
 
 # Find all API documentation
 my @matches = $html.comb(
@@ -17,10 +18,14 @@ for @matches -> $match {
 
   # Remove unneeded markup
   $doc ~~ s:g| '<p>' (.+?) '</p>' |$0|;
-  $doc ~~ s:g| '<dt>' (.+?) '</dt>' \s* '<dd>' (.+?) '</dd>' |- $0    $1|;
-  $proto ~~ s:g| \n | |;
+  $doc ~~ s:g| '<dt>' (.+?) '</dt>' \s* '<dd>' (.+?) '</dd>' |- $0: $1|;
+  $doc ~~ s:g| '<dd>' \s* '</dd>' ||;
+  $doc ~~ s:g| 'A description of each parameter follows:' ||;
+  $doc ~~ s:g| 'The format of the ' (.+?) ' method is:' ||;
+  $proto ~~ s:g| \n ||;
 
-  # Print out results
-  say "-" x 80;
-  say sprintf("%s => %s\n%s", $id, $proto, $doc);
+  # Write POD to file
+  $pod-fh.say( sprintf("### %s\n`%s`\n%s\n", $id, $proto, $doc) );
 }
+
+$pod-fh.close;
