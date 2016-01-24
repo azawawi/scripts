@@ -23,7 +23,7 @@ sub generate-doc($file-name) {
 
   for @matches -> $match {
     my $id    = ~$match[0][0];
-    my $doc = $match[1] ~ $match[3];
+    my $doc   = $match[1] ~ $match[3];
     my $proto = $match[2];
 
     # Remove unneeded markup
