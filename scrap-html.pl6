@@ -27,15 +27,15 @@ sub generate-doc($file-name) {
     my $proto = $match[2];
 
     # Remove unneeded markup
-    $doc   ~~ s:g| '<p>' (.+?) '</p>' |$0|;
+    $doc   ~~ s:g| '<p>' (.+?) '</p>'                            |$0|;
     $doc   ~~ s:g| '<dt>' (.+?) '</dt>' \s* '<dd>' (.+?) '</dd>' |- $0: $1|;
-    $doc   ~~ s:g| '<dd>' \s* '</dd>' ||;
-    $doc   ~~ s:g| 'A description of each parameter follows:' ||;
-    $doc   ~~ s:g| 'The format of the ' (.+?) ' method is:' ||;
-    $doc   ~~ s:g| '<dl class="dl-horizontal">' ||;
-    $doc   ~~ s:g| \n ||;
-    $doc   ~~ s:g| '</dl>' ||;
-    $proto ~~ s:g| \n ||;
+    $doc   ~~ s:g| '<dd>' \s* '</dd>'                            ||;
+    $doc   ~~ s:g| 'A description of each parameter follows:'    ||;
+    $doc   ~~ s:g| 'The format of the ' (.+?) ' method is:'      ||;
+    $doc   ~~ s:g| '<dl class="dl-horizontal">'                  ||;
+    $doc   ~~ s:g| \n                                            ||;
+    $doc   ~~ s:g| '</dl>'                                       ||;
+    $proto ~~ s:g| \n                                            ||;
 
     # Write POD to file
     $pod-fh.say( sprintf("### %s\n- C:\n\n  `%s`\n- Perl 6:\n\n  `%s`\n%s\n", $id, $proto, $proto, $doc) );
