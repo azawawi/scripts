@@ -52,6 +52,7 @@ sub generate-doc($file-name) {
             my Str $type = ~$0;
             my Str $name = ~$1;
 
+            warn "Failed at converting '$type'" if $type eq convert-c-to-perl6-type($type);
             $type = convert-c-to-perl6-type($type);
 
             $p = sprintf(q{%s $%s}, $type, $name);
@@ -80,10 +81,20 @@ sub generate-doc($file-name) {
 }
 
 sub convert-c-to-perl6-type(Str $type is copy) {
-  $type    ~~ s| 'DrawingWand *' |DrawingWandPointer|;
-  $type    ~~ s| 'MagickWand *'  |MagicWandPointer|;
-  $type    ~~ s| 'PixelWand *'   |PixelWandPointer|;
-  $type    ~~ s| 'void '         ||;
-  $type    ~~ s| 'const '         ||;
+  $type    ~~ s| 'MagickWand *'            |MagickWandPointer|;
+  $type    ~~ s| 'DrawWand *'              |DrawWandPointer|;
+  $type    ~~ s| 'DrawingWand *'           |DrawingWandPointer|;
+  $type    ~~ s| 'MagickBooleanType'       |uint32|;
+  $type    ~~ s| 'const double '           |num64|;
+  $type    ~~ s| 'double '                 |num64|;
+  $type    ~~ s| 'const MagickBooleanType' |uint32|;
+  $type    ~~ s| 'PixelWand *'             |PixelWandPointer|;
+  $type    ~~ s| 'const DrawWand *'        |DrawWandPointer|;
+  $type    ~~ s| 'const DrawingWand *'     |DrawingWandPointer|;
+  $type    ~~ s| 'const MagickWand *'      |MagickWandPointer|;
+  $type    ~~ s| 'const PixelWand *'       |PixelWandPointer|;
+  $type    ~~ s| 'const char *'            |Str|;
+  $type    ~~ s| 'const size_t'            |uint32|;
+  $type    ~~ s| 'void '                   ||;
   return $type;
 }
