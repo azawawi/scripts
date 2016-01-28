@@ -37,10 +37,53 @@ sub generate-doc($file-name) {
     $doc   ~~ s:g| '</dl>'                                       ||;
     $proto ~~ s:g| \n                                            ||;
 
+    my $p6-proto = $proto;
+    if $p6-proto ~~ /^(.+?)(\w+)\((.*?)\)$/ {
+      my Str $return-type = ~$0;
+      my Str $sub-name    = ~$1;
+      my Str $params      = ~$2;
+
+      $return-type    = convert-c-to-perl6-type($return-type);
+
+      my @p;
+      for $params.split(',') -> $param {
+          my Str $p = $param;
+          if $p ~~ /^(.+?)(\w+)$/ {
+            my Str $type = ~$0;
+            my Str $name = ~$1;
+
+            $type = convert-c-to-perl6-type($type);
+
+            $p = sprintf(q{%s $%s}, $type, $name);
+          } else {
+            die sprintf("No match for %s", $p);
+          }
+          @p.push($p);
+      }
+
+      #die if $sub-name eq 'DestroyDrawingWand';
+
+      my $suffix = 'is native(&library) is export { * };';
+      if $return-type eq '' {
+        $p6-proto = sprintf(q{sub %s(%s) %s} , $sub-name, $params, $suffix);
+      } else {
+        $p6-proto = sprintf(q{sub %s(%s) returns %s %s}, $sub-name, $params, $return-type, $suffix);
+      }
+    }
+
     # Write POD to file
-    $pod-fh.say( sprintf("### %s\n- C:\n\n  `%s`\n- Perl 6:\n\n  `%s`\n%s\n", $id, $proto, $proto, $doc) );
+    $pod-fh.say( sprintf("### %s\n- C:\n\n  `%s`\n- Perl 6:\n\n  `%s`\n%s\n", $id, $proto, $p6-proto, $doc) );
     say $id;
   }
 
   $pod-fh.close;
+}
+
+sub convert-c-to-perl6-type(Str $type is copy) {
+  $type    ~~ s| 'DrawingWand *' |DrawingWandPointer|;
+  $type    ~~ s| 'MagickWand *'  |MagicWandPointer|;
+  $type    ~~ s| 'PixelWand *'   |PixelWandPointer|;
+  $type    ~~ s| 'void '         ||;
+  $type    ~~ s| 'const '         ||;
+  return $type;
 }
