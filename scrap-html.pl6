@@ -35,10 +35,11 @@ sub generate-doc($file-name) {
     $doc   ~~ s:g| '<dl class="dl-horizontal">'                  ||;
     $doc   ~~ s:g| \n                                            ||;
     $doc   ~~ s:g| '</dl>'                                       ||;
-    $proto ~~ s:g| \n                                            ||;
 
-    my $p6-proto = $proto;
-    if $p6-proto ~~ /^(.+?)(\w+)\((.*?)\)$/ {
+    $proto = $proto.trim;
+
+    my $p6-proto;
+    if $proto ~~ /^(.+?)(\w+)\((.*?)\)$/ {
       my Str $return-type = ~$0;
       my Str $sub-name    = ~$1;
       my Str $params      = ~$2;
@@ -57,29 +58,31 @@ sub generate-doc($file-name) {
 
             $p = sprintf(q{%s $%s}, $type, $name);
           } else {
-            die sprintf("No match for %s", $p);
+            die sprintf("No match for %s at %s", $p, $id);
           }
           @p.push($p);
       }
-      $params = @p.join(",\n");
+      $params = @p.map( { "   " ~ $_ } ).join(",\n");
 
-      my $suffix = 'is native(&library) is export { * };';
+      my $suffix = "is native(&library)\nis export \{ * \};";
       if $return-type eq '' {
-        $p6-proto = sprintf(q{sub %s(%s) %s} , $sub-name, $params, $suffix);
+        $p6-proto = sprintf("sub %s\(\n%s\n)\n%s" , $sub-name, $params, $suffix);
       } else {
-        $p6-proto = sprintf(q{sub %s(%s) returns %s %s}, $sub-name, $params, $return-type, $suffix);
+        $p6-proto = sprintf("sub %s\(\n%s\n)\nreturns %s\n%s", $sub-name, $params, $return-type, $suffix);
       }
+    } else {
+      warn "Failed at converting '$id', prototype: '$proto'";
     }
 
     # Write POD to file
-    $pod-fh.say( sprintf("### %s\n- C:\n\n  ```C\n%s\n```\n- Perl 6:\n\n  ```Perl6\n%s\n```\n\n%s\n", $id, $proto, $p6-proto, $doc) );
+    $pod-fh.say( sprintf("### %s\n- C:\n\n```\n%s\n```\n- Perl 6:\n\n```\n%s\n```\n\n%s\n", $id, $proto, $p6-proto, $doc) );
   }
 
   $pod-fh.close;
 }
 
 sub convert-c-to-perl6-type(Str $type is copy) {
-  $type    ~~ s| 'const'             |DrawingWandPointer|;
+  $type    ~~ s| 'const '            ||;
   $type    ~~ s| 'MagickWand *'      |MagickWandPointer|;
   $type    ~~ s| 'DrawWand *'        |DrawWandPointer|;
   $type    ~~ s| 'DrawingWand *'     |DrawingWandPointer|;
