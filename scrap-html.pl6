@@ -4,7 +4,7 @@ use v6;
 
 "output".IO.mkdir;
 
-for ".".IO.dir -> $file-name {
+for "doc".IO.dir -> $file-name {
   next unless $file-name ~~ / '.html' $ /;
   say "Generating documentation for: " ~ $file-name;
   generate-doc($file-name);
@@ -12,7 +12,7 @@ for ".".IO.dir -> $file-name {
 
 sub generate-doc($file-name) {
   my Str $html          = $file-name.IO.slurp;
-  my $out-file-name     = $file-name.subst( / '.html' $/, '');
+  my $out-file-name     = $file-name.IO.basename.subst( / '.html' $/, '');
   my IO::Handle $pod-fh = "output/$out-file-name.md".IO.open(:w);
 
   # Find all API documentation
