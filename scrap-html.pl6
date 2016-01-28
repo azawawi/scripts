@@ -61,8 +61,7 @@ sub generate-doc($file-name) {
           }
           @p.push($p);
       }
-
-      #die if $sub-name eq 'DestroyDrawingWand';
+      $params = @p.join(",\n");
 
       my $suffix = 'is native(&library) is export { * };';
       if $return-type eq '' {
