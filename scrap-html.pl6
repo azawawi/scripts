@@ -73,7 +73,7 @@ sub generate-doc($file-name) {
     }
 
     # Write POD to file
-    $pod-fh.say( sprintf("### %s\n- C:\n\n  `%s`\n- Perl 6:\n\n  `%s`\n%s\n", $id, $proto, $p6-proto, $doc) );
+    $pod-fh.say( sprintf("### %s\n- C:\n\n  ```C\n%s\n```\n- Perl 6:\n\n  ```Perl6\n%s\n```\n\n%s\n", $id, $proto, $p6-proto, $doc) );
   }
 
   $pod-fh.close;
@@ -84,10 +84,9 @@ sub convert-c-to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'MagickWand *'      |MagickWandPointer|;
   $type    ~~ s| 'DrawWand *'        |DrawWandPointer|;
   $type    ~~ s| 'DrawingWand *'     |DrawingWandPointer|;
+  $type    ~~ s| 'PixelWand *'       |PixelWandPointer|;
   $type    ~~ s| 'MagickBooleanType' |uint32|;
   $type    ~~ s| 'double '           |num64|;
-  $type    ~~ s| 'PixelWand *'       |PixelWandPointer|;
-  $type    ~~ s| 'PixelWand *'       |PixelWandPointer|;
   $type    ~~ s| 'char *'            |Str|;
   $type    ~~ s| 'size_t'            |int32|;
   $type    ~~ s| 'ssize_t'           |uint32|;
