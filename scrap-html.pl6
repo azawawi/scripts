@@ -19,6 +19,7 @@ sub generate-doc($file-name) {
   my @matches = $html.comb(
     / ( '<h2><a href="' .+? '" id="' (.+?) '">' .+? '</a></h2>')
       (.+?)
+      '<p>The format of the' \s+ \w+ \s+ [ 'method' | 'function' ] \s+ 'is:</p>' \s+
       '<pre class="text">' (.+?) '</pre>' (.+? '</dl>')/, :match );
 
   for @matches -> $match {
@@ -31,10 +32,10 @@ sub generate-doc($file-name) {
     $doc   ~~ s:g| '<dt>' (.+?) '</dt>' \s* '<dd>' (.+?) '</dd>' |- $0: $1|;
     $doc   ~~ s:g| '<dd>' \s* '</dd>'                            ||;
     $doc   ~~ s:g| 'A description of each parameter follows:'    ||;
-    $doc   ~~ s:g| 'The format of the ' (.+?) ' method is:'      ||;
     $doc   ~~ s:g| '<dl class="dl-horizontal">'                  ||;
     $doc   ~~ s:g| \n                                            ||;
     $doc   ~~ s:g| '</dl>'                                       ||;
+    $doc   ~~ s:g| '*'                                           |\\*|;
 
     $proto = $proto.trim;
 
