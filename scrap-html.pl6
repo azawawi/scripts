@@ -14,6 +14,8 @@ my %urls = (
   'pixel-iterator'  => 'http://www.imagemagick.org/api/pixel-iterator.php',
   'pixel-wand'      => 'http://www.imagemagick.org/api/pixel-wand.php',
   'drawing-wand'    => 'http://www.imagemagick.org/api/drawing-wand.php',
+  'mogrify'         => 'http://www.imagemagick.org/api/mogrify.php',
+  'wand-view'       => 'http://www.imagemagick.org/api/wand-view.php',
 );
 
 for %urls.kv -> $doc-name, $url {
