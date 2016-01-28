@@ -69,7 +69,7 @@ sub generate-doc(Str $html, Str $doc-name) {
 
             $p = sprintf(q{%s $%s}, $type, $name);
           } else {
-            die sprintf("No match for %s at %s", $p, $id);
+            warn sprintf("No match for %s at %s", $p, $id);
           }
           @p.push($p);
       }
