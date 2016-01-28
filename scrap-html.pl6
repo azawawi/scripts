@@ -1,19 +1,29 @@
 #!/usr/bin/env perl6
 
 use v6;
+use LWP::Simple;
 
 "output".IO.mkdir;
 
-for "doc".IO.dir -> $file-name {
-  next unless $file-name ~~ / '.html' $ /;
-  say "Generating documentation for: " ~ $file-name;
-  generate-doc($file-name);
+use HTTP::UserAgent;
+
+my %urls = (
+  'magick-wand'     => 'http://www.imagemagick.org/api/magick-wand.php',
+  'magick-property' => 'http://www.imagemagick.org/api/magick-property.php',
+  'magick-image'    => 'http://www.imagemagick.org/api/magick-image.php',
+  'pixel-iterator'  => 'http://www.imagemagick.org/api/pixel-iterator.php',
+  'pixel-wand'      => 'http://www.imagemagick.org/api/pixel-wand.php',
+  'drawing-wand'    => 'http://www.imagemagick.org/api/drawing-wand.php',
+);
+
+for %urls.kv -> $doc-name, $url {
+  my $html = get-html($url);
+  say "Generating documentation for: " ~ $doc-name;
+  generate-doc($html, $doc-name);
 }
 
-sub generate-doc($file-name) {
-  my Str $html          = $file-name.IO.slurp;
-  my $out-file-name     = $file-name.IO.basename.subst( / '.html' $/, '');
-  my IO::Handle $pod-fh = "output/$out-file-name.md".IO.open(:w);
+sub generate-doc(Str $html, Str $doc-name) {
+  my IO::Handle $pod-fh = "output/$doc-name.md".IO.open(:w);
 
   # Find all API documentation
   my @matches = $html.comb(
@@ -95,4 +105,14 @@ sub convert-c-to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'ssize_t'           |uint32|;
   $type    ~~ s| 'void '             ||;
   return $type;
+}
+
+sub get-html(Str $url) {
+  my $ua = HTTP::UserAgent.new;
+  $ua.timeout = 5;
+
+  my $response = $ua.get($url);
+  die $response.status-line unless $response.is-success;
+
+  return $response.content;
 }
