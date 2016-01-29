@@ -1,11 +1,9 @@
 #!/usr/bin/env perl6
 
 use v6;
-use LWP::Simple;
+use HTTP::UserAgent;
 
 "output".IO.mkdir;
-
-use HTTP::UserAgent;
 
 my %urls = (
   'magick-wand'     => 'http://www.imagemagick.org/api/magick-wand.php',
