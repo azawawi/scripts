@@ -97,7 +97,7 @@ sub generate-doc(Str $html, Str $doc-name) {
     );
     $pod-fh.say(
       sprintf(
-        "=begin pod\n=head1 %s\n=head2 C\n\n%s\n\n%s\n=end pod\n%s\n\n",
+        "=begin pod\n=head1 %s\n\n%s\n\n%s\n=end pod\n%s\n\n",
         $id, to-pod-codeblock($proto), $doc, $p6-proto
       )
     );
