@@ -1,9 +1,9 @@
 ### ClearDrawingWand
 - C:
 
-```
+```C
 void ClearDrawingWand(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -19,9 +19,9 @@ ClearDrawingWand() clears resources associated with the drawing wand.- wand: the
 ### CloneDrawingWand
 - C:
 
-```
+```C
 DrawingWand *CloneDrawingWand(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -38,9 +38,9 @@ CloneDrawingWand() makes an exact copy of the specified wand.- wand: the magick 
 ### DestroyDrawingWand
 - C:
 
-```
+```C
 DrawingWand *DestroyDrawingWand(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -57,9 +57,9 @@ DestroyDrawingWand() frees all resources associated with the drawing wand. Once 
 ### DrawAffine
 - C:
 
-```
+```C
 void DrawAffine(DrawingWand *wand,const AffineMatrix *affine)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -76,10 +76,10 @@ DrawAffine() adjusts the current affine transformation matrix with the specified
 ### DrawAnnotation
 - C:
 
-```
+```C
 void DrawAnnotation(DrawingWand *wand,const double x,
   const double y,const unsigned char *text)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -98,10 +98,10 @@ DrawAnnotation() draws text on the image.- wand: the drawing wand. - x: x ordina
 ### DrawArc
 - C:
 
-```
+```C
 void DrawArc(DrawingWand *wand,const double sx,const double sy,
   const double ex,const double ey,const double sd,const double ed)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -123,10 +123,10 @@ DrawArc() draws an arc falling within a specified bounding rectangle on the imag
 ### DrawBezier
 - C:
 
-```
+```C
 void DrawBezier(DrawingWand *wand,
   const size_t number_coordinates,const PointInfo *coordinates)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -144,10 +144,10 @@ DrawBezier() draws a bezier curve through a set of points on the image.- wand: t
 ### DrawCircle
 - C:
 
-```
+```C
 void DrawCircle(DrawingWand *wand,const double ox,
   const double oy,const double px, const double py)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -167,9 +167,9 @@ DrawCircle() draws a circle on the image.- wand: the drawing wand. - ox: origin 
 ### DrawClearException
 - C:
 
-```
+```C
 MagickBooleanType DrawClearException(DrawWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -186,12 +186,12 @@ DrawClearException() clear any exceptions associated with the wand.- wand: the d
 ### DrawComposite
 - C:
 
-```
+```C
 MagickBooleanType DrawComposite(DrawingWand *wand,
   const CompositeOperator compose,const double x,
   const double y,const double width,const double height,
   MagickWand *magick_wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -214,10 +214,10 @@ DrawComposite() composites an image onto the current image, using the specified 
 ### DrawColor
 - C:
 
-```
+```C
 void DrawColor(DrawingWand *wand,const double x,const double y,
   const PaintMethod paint_method)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -236,9 +236,9 @@ DrawColor() draws color on image using the current fill color, starting at speci
 ### DrawComment
 - C:
 
-```
+```C
 void DrawComment(DrawingWand *wand,const char *comment)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -255,10 +255,10 @@ DrawComment() adds a comment to a vector output stream.- wand: the drawing wand.
 ### DrawEllipse
 - C:
 
-```
+```C
 void DrawEllipse(DrawingWand *wand,const double ox,const double oy,
    const double rx,const double ry,const double start,const double end)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -280,10 +280,10 @@ DrawEllipse() draws an ellipse on the image.- wand: the drawing wand. - ox: orig
 ### DrawGetBorderColor
 - C:
 
-```
+```C
 void DrawGetBorderColor(const DrawingWand *wand,
   PixelWand *border_color)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -300,9 +300,9 @@ DrawGetBorderColor() returns the border color used for drawing bordered objects.
 ### DrawGetClipPath
 - C:
 
-```
+```C
 char *DrawGetClipPath(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -319,9 +319,9 @@ DrawGetClipPath() obtains the current clipping path ID. The value returned must 
 ### DrawGetClipRule
 - C:
 
-```
+```C
 FillRule DrawGetClipRule(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -338,9 +338,9 @@ DrawGetClipRule() returns the current polygon fill rule to be used by the clippi
 ### DrawGetClipUnits
 - C:
 
-```
+```C
 ClipPathUnits DrawGetClipUnits(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -357,9 +357,9 @@ DrawGetClipUnits() returns the interpretation of clip path units.- wand: the dra
 ### DrawGetDensity
 - C:
 
-```
+```C
 char *DrawGetDensity(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -376,10 +376,10 @@ DrawGetDensity() obtains the vertical and horizontal resolution. The value retur
 ### DrawGetException
 - C:
 
-```
+```C
 char *DrawGetException(const DrawWand *wand,
   ExceptionType *severity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -397,9 +397,9 @@ DrawGetException() returns the severity, reason, and description of any error th
 ### DrawGetExceptionType
 - C:
 
-```
+```C
 ExceptionType DrawGetExceptionType(const DrawWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -416,10 +416,10 @@ DrawGetExceptionType() the exception type associated with the wand.  If no excep
 ### DrawGetFillColor
 - C:
 
-```
+```C
 void DrawGetFillColor(const DrawingWand *wand,
   PixelWand *fill_color)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -436,9 +436,9 @@ DrawGetFillColor() returns the fill color used for drawing filled objects.- wand
 ### DrawGetFillOpacity
 - C:
 
-```
+```C
 double DrawGetFillOpacity(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -455,9 +455,9 @@ DrawGetFillOpacity() returns the opacity used when drawing using the fill color 
 ### DrawGetFillRule
 - C:
 
-```
+```C
 FillRule DrawGetFillRule(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -474,9 +474,9 @@ DrawGetFillRule() returns the fill rule used while drawing polygons.- wand: the 
 ### DrawGetFont
 - C:
 
-```
+```C
 char *DrawGetFont(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -493,9 +493,9 @@ DrawGetFont() returns a null-terminaged string specifying the font used when ann
 ### DrawGetFontFamily
 - C:
 
-```
+```C
 char *DrawGetFontFamily(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -512,10 +512,10 @@ DrawGetFontFamily() returns the font family to use when annotating with text. Th
 ### DrawGetFontResolution
 - C:
 
-```
+```C
 DrawBooleanType DrawGetFontResolution(const DrawingWand *wand,
   double *x,double *y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -534,9 +534,9 @@ DrawGetFontResolution() gets the image X and Y resolution.- wand: the magick wan
 ### DrawGetFontSize
 - C:
 
-```
+```C
 double DrawGetFontSize(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -553,9 +553,9 @@ DrawGetFontSize() returns the font pointsize used when annotating with text.- wa
 ### DrawGetFontStretch
 - C:
 
-```
+```C
 StretchType DrawGetFontStretch(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -572,9 +572,9 @@ DrawGetFontStretch() returns the font stretch used when annotating with text.- w
 ### DrawGetFontStyle
 - C:
 
-```
+```C
 StyleType DrawGetFontStyle(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -591,9 +591,9 @@ DrawGetFontStyle() returns the font style used when annotating with text.- wand:
 ### DrawGetFontWeight
 - C:
 
-```
+```C
 size_t DrawGetFontWeight(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -610,9 +610,9 @@ DrawGetFontWeight() returns the font weight used when annotating with text.- wan
 ### DrawGetGravity
 - C:
 
-```
+```C
 GravityType DrawGetGravity(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -629,9 +629,9 @@ DrawGetGravity() returns the text placement gravity used when annotating with te
 ### DrawGetOpacity
 - C:
 
-```
+```C
 double DrawGetOpacity(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -648,9 +648,9 @@ DrawGetOpacity() returns the opacity used when drawing with the fill or stroke c
 ### DrawGetStrokeAntialias
 - C:
 
-```
+```C
 MagickBooleanType DrawGetStrokeAntialias(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -667,10 +667,10 @@ DrawGetStrokeAntialias() returns the current stroke antialias setting. Stroked o
 ### DrawGetStrokeColor
 - C:
 
-```
+```C
 void DrawGetStrokeColor(const DrawingWand *wand,
   PixelWand *stroke_color)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -687,10 +687,10 @@ DrawGetStrokeColor() returns the color used for stroking object outlines.- wand:
 ### DrawGetStrokeDashArray
 - C:
 
-```
+```C
 double *DrawGetStrokeDashArray(const DrawingWand *wand,
   size_t *number_elements)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -708,9 +708,9 @@ DrawGetStrokeDashArray() returns an array representing the pattern of dashes and
 ### DrawGetStrokeDashOffset
 - C:
 
-```
+```C
 double DrawGetStrokeDashOffset(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -727,9 +727,9 @@ DrawGetStrokeDashOffset() returns the offset into the dash pattern to start the 
 ### DrawGetStrokeLineCap
 - C:
 
-```
+```C
 LineCap DrawGetStrokeLineCap(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -746,9 +746,9 @@ DrawGetStrokeLineCap() returns the shape to be used at the end of open subpaths 
 ### DrawGetStrokeLineJoin
 - C:
 
-```
+```C
 LineJoin DrawGetStrokeLineJoin(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -765,9 +765,9 @@ DrawGetStrokeLineJoin() returns the shape to be used at the corners of paths (or
 ### DrawGetStrokeMiterLimit
 - C:
 
-```
+```C
 size_t DrawGetStrokeMiterLimit(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -784,9 +784,9 @@ DrawGetStrokeMiterLimit() returns the miter limit. When two line segments meet a
 ### DrawGetStrokeOpacity
 - C:
 
-```
+```C
 double DrawGetStrokeOpacity(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -803,9 +803,9 @@ DrawGetStrokeOpacity() returns the opacity of stroked object outlines.- wand: th
 ### DrawGetStrokeWidth
 - C:
 
-```
+```C
 double DrawGetStrokeWidth(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -822,9 +822,9 @@ DrawGetStrokeWidth() returns the width of the stroke used to draw object outline
 ### DrawGetTextAlignment
 - C:
 
-```
+```C
 AlignType DrawGetTextAlignment(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -841,9 +841,9 @@ DrawGetTextAlignment() returns the alignment applied when annotating with text.-
 ### DrawGetTextAntialias
 - C:
 
-```
+```C
 MagickBooleanType DrawGetTextAntialias(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -860,9 +860,9 @@ DrawGetTextAntialias() returns the current text antialias setting, which determi
 ### DrawGetTextDecoration
 - C:
 
-```
+```C
 DecorationType DrawGetTextDecoration(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -879,9 +879,9 @@ DrawGetTextDecoration() returns the decoration applied when annotating with text
 ### DrawGetTextDirection
 - C:
 
-```
+```C
 DirectionType DrawGetTextDirection(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -898,9 +898,9 @@ DrawGetTextDirection() returns the direction that will be used when annotating w
 ### DrawGetTextEncoding
 - C:
 
-```
+```C
 char *DrawGetTextEncoding(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -917,9 +917,9 @@ DrawGetTextEncoding() returns a null-terminated string which specifies the code 
 ### DrawGetTextKerning
 - C:
 
-```
+```C
 double DrawGetTextKerning(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -936,9 +936,9 @@ DrawGetTextKerning() gets the spacing between characters in text.- wand: the dra
 ### DrawGetTextInterlineSpacing
 - C:
 
-```
+```C
 double DrawGetTextInterwordSpacing(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -955,9 +955,9 @@ DrawGetTextInterlineSpacing() gets the spacing between lines in text.- wand: the
 ### DrawGetTextInterwordSpacing
 - C:
 
-```
+```C
 double DrawGetTextInterwordSpacing(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -974,9 +974,9 @@ DrawGetTextInterwordSpacing() gets the spacing between words in text.- wand: the
 ### DrawGetVectorGraphics
 - C:
 
-```
+```C
 char *DrawGetVectorGraphics(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -993,10 +993,10 @@ DrawGetVectorGraphics() returns a null-terminated string which specifies the vec
 ### DrawGetTextUnderColor
 - C:
 
-```
+```C
 void DrawGetTextUnderColor(const DrawingWand *wand,
   PixelWand *under_color)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1013,10 +1013,10 @@ DrawGetTextUnderColor() returns the color of a background rectangle to place und
 ### DrawLine
 - C:
 
-```
+```C
 void DrawLine(DrawingWand *wand,const double sx,const double sy,
   const double ex,const double ey)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1036,10 +1036,10 @@ DrawLine() draws a line on the image using the current stroke color, stroke opac
 ### DrawMatte
 - C:
 
-```
+```C
 void DrawMatte(DrawingWand *wand,const double x,const double y,
   const PaintMethod paint_method)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1058,9 +1058,9 @@ DrawMatte() paints on the image's opacity channel in order to set effected pixel
 ### DrawPathClose
 - C:
 
-```
+```C
 void DrawPathClose(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1076,11 +1076,11 @@ DrawPathClose() adds a path element to the current path which closes the current
 ### DrawPathCurveToAbsolute
 - C:
 
-```
+```C
 void DrawPathCurveToAbsolute(DrawingWand *wand,const double x1,
   const double y1,const double x2,const double y2,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1102,11 +1102,11 @@ DrawPathCurveToAbsolute() draws a cubic Bezier curve from the current point to (
 ### DrawPathCurveToRelative
 - C:
 
-```
+```C
 void DrawPathCurveToRelative(DrawingWand *wand,const double x1,
   const double y1,const double x2,const double y2,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1128,10 +1128,10 @@ DrawPathCurveToRelative() draws a cubic Bezier curve from the current point to (
 ### DrawPathCurveToQuadraticBezierAbsolute
 - C:
 
-```
+```C
 void DrawPathCurveToQuadraticBezierAbsolute(DrawingWand *wand,
   const double x1,const double y1,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1151,10 +1151,10 @@ DrawPathCurveToQuadraticBezierAbsolute() draws a quadratic Bezier curve from the
 ### DrawPathCurveToQuadraticBezierRelative
 - C:
 
-```
+```C
 void DrawPathCurveToQuadraticBezierRelative(DrawingWand *wand,
   const double x1,const double y1,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1174,10 +1174,10 @@ DrawPathCurveToQuadraticBezierRelative() draws a quadratic Bezier curve from the
 ### DrawPathCurveToQuadraticBezierSmoothAbsolute
 - C:
 
-```
+```C
 void DrawPathCurveToQuadraticBezierSmoothAbsolute(
   DrawingWand *wand,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1195,10 +1195,10 @@ DrawPathCurveToQuadraticBezierSmoothAbsolute() draws a quadratic Bezier curve (u
 ### DrawPathCurveToQuadraticBezierSmoothRelative
 - C:
 
-```
+```C
 void DrawPathCurveToQuadraticBezierSmoothRelative(DrawingWand *wand,
   const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1216,10 +1216,10 @@ DrawPathCurveToQuadraticBezierSmoothRelative() draws a quadratic Bezier curve (u
 ### DrawPathCurveToSmoothAbsolute
 - C:
 
-```
+```C
 void DrawPathCurveToSmoothAbsolute(DrawingWand *wand,
   const double x2,const double y2,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1239,10 +1239,10 @@ DrawPathCurveToSmoothAbsolute() draws a cubic Bezier curve from the current poin
 ### DrawPathCurveToSmoothRelative
 - C:
 
-```
+```C
 void DrawPathCurveToSmoothRelative(DrawingWand *wand,
   const double x2,const double y2,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1262,12 +1262,12 @@ DrawPathCurveToSmoothRelative() draws a cubic Bezier curve from the current poin
 ### DrawPathEllipticArcAbsolute
 - C:
 
-```
+```C
 void DrawPathEllipticArcAbsolute(DrawingWand *wand,
   const double rx,const double ry,const double x_axis_rotation,
   const MagickBooleanType large_arc_flag,
   const MagickBooleanType sweep_flag,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1290,12 +1290,12 @@ DrawPathEllipticArcAbsolute() draws an elliptical arc from the current point to 
 ### DrawPathEllipticArcRelative
 - C:
 
-```
+```C
 void DrawPathEllipticArcRelative(DrawingWand *wand,
   const double rx,const double ry,const double x_axis_rotation,
   const MagickBooleanType large_arc_flag,
   const MagickBooleanType sweep_flag,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1318,9 +1318,9 @@ DrawPathEllipticArcRelative() draws an elliptical arc from the current point to 
 ### DrawPathFinish
 - C:
 
-```
+```C
 void DrawPathFinish(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1336,10 +1336,10 @@ DrawPathFinish() terminates the current path.- wand: the drawing wand.
 ### DrawPathLineToAbsolute
 - C:
 
-```
+```C
 void DrawPathLineToAbsolute(DrawingWand *wand,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1357,10 +1357,10 @@ DrawPathLineToAbsolute() draws a line path from the current point to the given c
 ### DrawPathLineToRelative
 - C:
 
-```
+```C
 void DrawPathLineToRelative(DrawingWand *wand,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1378,10 +1378,10 @@ DrawPathLineToRelative() draws a line path from the current point to the given c
 ### DrawPathLineToHorizontalAbsolute
 - C:
 
-```
+```C
 void DrawPathLineToHorizontalAbsolute(DrawingWand *wand,
   const double x)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1398,10 +1398,10 @@ DrawPathLineToHorizontalAbsolute() draws a horizontal line path from the current
 ### DrawPathLineToHorizontalRelative
 - C:
 
-```
+```C
 void DrawPathLineToHorizontalRelative(DrawingWand *wand,
   const double x)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1418,10 +1418,10 @@ DrawPathLineToHorizontalRelative() draws a horizontal line path from the current
 ### DrawPathLineToVerticalAbsolute
 - C:
 
-```
+```C
 void DrawPathLineToVerticalAbsolute(DrawingWand *wand,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1438,10 +1438,10 @@ DrawPathLineToVerticalAbsolute() draws a vertical line path from the current poi
 ### DrawPathLineToVerticalRelative
 - C:
 
-```
+```C
 void DrawPathLineToVerticalRelative(DrawingWand *wand,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1458,10 +1458,10 @@ DrawPathLineToVerticalRelative() draws a vertical line path from the current poi
 ### DrawPathMoveToAbsolute
 - C:
 
-```
+```C
 void DrawPathMoveToAbsolute(DrawingWand *wand,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1479,10 +1479,10 @@ DrawPathMoveToAbsolute() starts a new sub-path at the given coordinate using abs
 ### DrawPathMoveToRelative
 - C:
 
-```
+```C
 void DrawPathMoveToRelative(DrawingWand *wand,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1500,9 +1500,9 @@ DrawPathMoveToRelative() starts a new sub-path at the given coordinate using rel
 ### DrawPathStart
 - C:
 
-```
+```C
 void DrawPathStart(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1518,9 +1518,9 @@ DrawPathStart() declares the start of a path drawing list which is terminated by
 ### DrawPoint
 - C:
 
-```
+```C
 void DrawPoint(DrawingWand *wand,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1538,10 +1538,10 @@ DrawPoint() draws a point using the current fill color.- wand: the drawing wand.
 ### DrawPolygon
 - C:
 
-```
+```C
 void DrawPolygon(DrawingWand *wand,
   const size_t number_coordinates,const PointInfo *coordinates)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1559,10 +1559,10 @@ DrawPolygon() draws a polygon using the current stroke, stroke width, and fill c
 ### DrawPolyline
 - C:
 
-```
+```C
 void DrawPolyline(DrawingWand *wand,
   const size_t number_coordinates,const PointInfo *coordinates)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1580,9 +1580,9 @@ DrawPolyline() draws a polyline using the current stroke, stroke width, and fill
 ### DrawPopClipPath
 - C:
 
-```
+```C
 void DrawPopClipPath(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1598,9 +1598,9 @@ DrawPopClipPath() terminates a clip path definition.- wand: the drawing wand.
 ### DrawPopDefs
 - C:
 
-```
+```C
 void DrawPopDefs(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1616,9 +1616,9 @@ DrawPopDefs() terminates a definition list.- wand: the drawing wand.
 ### DrawPopPattern
 - C:
 
-```
+```C
 MagickBooleanType DrawPopPattern(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1635,9 +1635,9 @@ DrawPopPattern() terminates a pattern definition.- wand: the drawing wand.
 ### DrawPushClipPath
 - C:
 
-```
+```C
 void DrawPushClipPath(DrawingWand *wand,const char *clip_mask_id)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1654,9 +1654,9 @@ DrawPushClipPath() starts a clip path definition which is comprized of any numbe
 ### DrawPushDefs
 - C:
 
-```
+```C
 void DrawPushDefs(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1672,11 +1672,11 @@ DrawPushDefs() indicates that commands up to a terminating DrawPopDefs() command
 ### DrawPushPattern
 - C:
 
-```
+```C
 MagickBooleanType DrawPushPattern(DrawingWand *wand,
   const char *pattern_id,const double x,const double y,
   const double width,const double height)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1698,10 +1698,10 @@ DrawPushPattern() indicates that subsequent commands up to a DrawPopPattern() co
 ### DrawRectangle
 - C:
 
-```
+```C
 void DrawRectangle(DrawingWand *wand,const double x1,
   const double y1,const double x2,const double y2)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1721,9 +1721,9 @@ DrawRectangle() draws a rectangle given two coordinates and using the current st
 ### DrawResetVectorGraphics
 - C:
 
-```
+```C
 void DrawResetVectorGraphics(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1739,9 +1739,9 @@ DrawResetVectorGraphics() resets the vector graphics associated with the specifi
 ### DrawRotate
 - C:
 
-```
+```C
 void DrawRotate(DrawingWand *wand,const double degrees)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1758,10 +1758,10 @@ DrawRotate() applies the specified rotation to the current coordinate space.- wa
 ### DrawRoundRectangle
 - C:
 
-```
+```C
 void DrawRoundRectangle(DrawingWand *wand,double x1,double y1,
   double x2,double y2,double rx,double ry)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1783,9 +1783,9 @@ DrawRoundRectangle() draws a rounted rectangle given two coordinates, x &amp; y 
 ### DrawScale
 - C:
 
-```
+```C
 void DrawScale(DrawingWand *wand,const double x,const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1803,9 +1803,9 @@ DrawScale() adjusts the scaling factor to apply in the horizontal and vertical d
 ### DrawSetBorderColor
 - C:
 
-```
+```C
 void DrawSetBorderColor(DrawingWand *wand,const PixelWand *border_wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1822,10 +1822,10 @@ DrawSetBorderColor() sets the border color to be used for drawing bordered objec
 ### DrawSetClipPath
 - C:
 
-```
+```C
 MagickBooleanType DrawSetClipPath(DrawingWand *wand,
   const char *clip_mask)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1843,9 +1843,9 @@ DrawSetClipPath() associates a named clipping path with the image.  Only the are
 ### DrawSetClipRule
 - C:
 
-```
+```C
 void DrawSetClipRule(DrawingWand *wand,const FillRule fill_rule)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1862,10 +1862,10 @@ DrawSetClipRule() set the polygon fill rule to be used by the clipping path.- wa
 ### DrawSetClipUnits
 - C:
 
-```
+```C
 void DrawSetClipUnits(DrawingWand *wand,
   const ClipPathUnits clip_units)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1882,10 +1882,10 @@ DrawSetClipUnits() sets the interpretation of clip path units.- wand: the drawin
 ### DrawSetDensity
 - C:
 
-```
+```C
 MagickBooleanType DrawSetDensity(DrawingWand *wand,
   const char *density)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1903,9 +1903,9 @@ DrawSetDensity() sets the vertical and horizontal resolution.- wand: the drawing
 ### DrawSetFillColor
 - C:
 
-```
+```C
 void DrawSetFillColor(DrawingWand *wand,const PixelWand *fill_wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1922,9 +1922,9 @@ DrawSetFillColor() sets the fill color to be used for drawing filled objects.- w
 ### DrawSetFillOpacity
 - C:
 
-```
+```C
 void DrawSetFillOpacity(DrawingWand *wand,const double fill_opacity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1941,10 +1941,10 @@ DrawSetFillOpacity() sets the opacity to use when drawing using the fill color o
 ### DrawSetFontResolution
 - C:
 
-```
+```C
 MagickBooleanType DrawSetFontResolution(DrawingWand *wand,
   const double x_resolution,const double y_resolution)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1963,9 +1963,9 @@ DrawSetFontResolution() sets the image resolution.- wand: the magick wand. - x_r
 ### DrawSetOpacity
 - C:
 
-```
+```C
 void DrawSetOpacity(DrawingWand *wand,const double opacity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -1982,10 +1982,10 @@ DrawSetOpacity() sets the opacity to use when drawing using the fill or stroke c
 ### DrawSetFillPatternURL
 - C:
 
-```
+```C
 MagickBooleanType DrawSetFillPatternURL(DrawingWand *wand,
   const char *fill_url)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2003,9 +2003,9 @@ DrawSetFillPatternURL() sets the URL to use as a fill pattern for filling object
 ### DrawSetFillRule
 - C:
 
-```
+```C
 void DrawSetFillRule(DrawingWand *wand,const FillRule fill_rule)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2022,9 +2022,9 @@ DrawSetFillRule() sets the fill rule to use while drawing polygons.- wand: the d
 ### DrawSetFont
 - C:
 
-```
+```C
 MagickBooleanType DrawSetFont(DrawingWand *wand,const char *font_name)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2042,10 +2042,10 @@ DrawSetFont() sets the fully-sepecified font to use when annotating with text.- 
 ### DrawSetFontFamily
 - C:
 
-```
+```C
 MagickBooleanType DrawSetFontFamily(DrawingWand *wand,
   const char *font_family)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2063,9 +2063,9 @@ DrawSetFontFamily() sets the font family to use when annotating with text.- wand
 ### DrawSetFontSize
 - C:
 
-```
+```C
 void DrawSetFontSize(DrawingWand *wand,const double pointsize)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2082,10 +2082,10 @@ DrawSetFontSize() sets the font pointsize to use when annotating with text.- wan
 ### DrawSetFontStretch
 - C:
 
-```
+```C
 void DrawSetFontStretch(DrawingWand *wand,
   const StretchType font_stretch)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2102,9 +2102,9 @@ DrawSetFontStretch() sets the font stretch to use when annotating with text. The
 ### DrawSetFontStyle
 - C:
 
-```
+```C
 void DrawSetFontStyle(DrawingWand *wand,const StyleType style)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2121,10 +2121,10 @@ DrawSetFontStyle() sets the font style to use when annotating with text. The Any
 ### DrawSetFontWeight
 - C:
 
-```
+```C
 void DrawSetFontWeight(DrawingWand *wand,
   const size_t font_weight)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2141,9 +2141,9 @@ DrawSetFontWeight() sets the font weight to use when annotating with text.- wand
 ### DrawSetGravity
 - C:
 
-```
+```C
 void DrawSetGravity(DrawingWand *wand,const GravityType gravity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2160,10 +2160,10 @@ DrawSetGravity() sets the text placement gravity to use when annotating with tex
 ### DrawSetStrokeColor
 - C:
 
-```
+```C
 void DrawSetStrokeColor(DrawingWand *wand,
   const PixelWand *stroke_wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2180,10 +2180,10 @@ DrawSetStrokeColor() sets the color used for stroking object outlines.- wand: th
 ### DrawSetStrokePatternURL
 - C:
 
-```
+```C
 MagickBooleanType DrawSetStrokePatternURL(DrawingWand *wand,
   const char *stroke_url)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2201,10 +2201,10 @@ DrawSetStrokePatternURL() sets the pattern used for stroking object outlines.- w
 ### DrawSetStrokeAntialias
 - C:
 
-```
+```C
 void DrawSetStrokeAntialias(DrawingWand *wand,
   const MagickBooleanType stroke_antialias)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2221,10 +2221,10 @@ DrawSetStrokeAntialias() controls whether stroked outlines are antialiased. Stro
 ### DrawSetStrokeDashArray
 - C:
 
-```
+```C
 MagickBooleanType DrawSetStrokeDashArray(DrawingWand *wand,
   const size_t number_elements,const double *dasharray)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2243,10 +2243,10 @@ DrawSetStrokeDashArray() specifies the pattern of dashes and gaps used to stroke
 ### DrawSetStrokeDashOffset
 - C:
 
-```
+```C
 void DrawSetStrokeDashOffset(DrawingWand *wand,
   const double dash_offset)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2263,10 +2263,10 @@ DrawSetStrokeDashOffset() specifies the offset into the dash pattern to start th
 ### DrawSetStrokeLineCap
 - C:
 
-```
+```C
 void DrawSetStrokeLineCap(DrawingWand *wand,
   const LineCap linecap)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2283,10 +2283,10 @@ DrawSetStrokeLineCap() specifies the shape to be used at the end of open subpath
 ### DrawSetStrokeLineJoin
 - C:
 
-```
+```C
 void DrawSetStrokeLineJoin(DrawingWand *wand,
   const LineJoin linejoin)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2303,10 +2303,10 @@ DrawSetStrokeLineJoin() specifies the shape to be used at the corners of paths (
 ### DrawSetStrokeMiterLimit
 - C:
 
-```
+```C
 void DrawSetStrokeMiterLimit(DrawingWand *wand,
   const size_t miterlimit)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2323,10 +2323,10 @@ DrawSetStrokeMiterLimit() specifies the miter limit. When two line segments meet
 ### DrawSetStrokeOpacity
 - C:
 
-```
+```C
 void DrawSetStrokeOpacity(DrawingWand *wand,
   const double stroke_opacity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2343,10 +2343,10 @@ DrawSetStrokeOpacity() specifies the opacity of stroked object outlines.- wand: 
 ### DrawSetStrokeWidth
 - C:
 
-```
+```C
 void DrawSetStrokeWidth(DrawingWand *wand,
   const double stroke_width)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2363,9 +2363,9 @@ DrawSetStrokeWidth() sets the width of the stroke used to draw object outlines.-
 ### DrawSetTextAlignment
 - C:
 
-```
+```C
 void DrawSetTextAlignment(DrawingWand *wand,const AlignType alignment)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2382,10 +2382,10 @@ DrawSetTextAlignment() specifies a text alignment to be applied when annotating 
 ### DrawSetTextAntialias
 - C:
 
-```
+```C
 void DrawSetTextAntialias(DrawingWand *wand,
   const MagickBooleanType text_antialias)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2402,10 +2402,10 @@ DrawSetTextAntialias() controls whether text is antialiased.  Text is antialiase
 ### DrawSetTextDecoration
 - C:
 
-```
+```C
 void DrawSetTextDecoration(DrawingWand *wand,
   const DecorationType decoration)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2422,10 +2422,10 @@ DrawSetTextDecoration() specifies a decoration to be applied when annotating wit
 ### DrawSetTextDirection
 - C:
 
-```
+```C
 void DrawSetTextDirection(DrawingWand *wand,
   const DirectionType direction)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2442,9 +2442,9 @@ DrawSetTextDirection() specifies the direction to be used when annotating with t
 ### DrawSetTextEncoding
 - C:
 
-```
+```C
 void DrawSetTextEncoding(DrawingWand *wand,const char *encoding)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2461,9 +2461,9 @@ DrawSetTextEncoding() specifies the code set to use for text annotations. The on
 ### DrawSetTextKerning
 - C:
 
-```
+```C
 void DrawSetTextKerning(DrawingWand *wand,const double kerning)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2480,10 +2480,10 @@ DrawSetTextKerning() sets the spacing between characters in text.- wand: the dra
 ### DrawSetTextInterlineSpacing
 - C:
 
-```
+```C
 void DrawSetTextInterlineSpacing(DrawingWand *wand,
   const double interline_spacing)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2500,10 +2500,10 @@ DrawSetTextInterlineSpacing() sets the spacing between line in text.- wand: the 
 ### DrawSetTextInterwordSpacing
 - C:
 
-```
+```C
 void DrawSetTextInterwordSpacing(DrawingWand *wand,
   const double interword_spacing)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2520,10 +2520,10 @@ DrawSetTextInterwordSpacing() sets the spacing between words in text.- wand: the
 ### DrawSetTextUnderColor
 - C:
 
-```
+```C
 void DrawSetTextUnderColor(DrawingWand *wand,
   const PixelWand *under_wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2540,10 +2540,10 @@ DrawSetTextUnderColor() specifies the color of a background rectangle to place u
 ### DrawSetVectorGraphics
 - C:
 
-```
+```C
 MagickBooleanType DrawSetVectorGraphics(DrawingWand *wand,
   const char *xml)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2561,9 +2561,9 @@ DrawSetVectorGraphics() sets the vector graphics associated with the specified w
 ### DrawSkewX
 - C:
 
-```
+```C
 void DrawSkewX(DrawingWand *wand,const double degrees)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2580,9 +2580,9 @@ DrawSkewX() skews the current coordinate system in the horizontal direction.- wa
 ### DrawSkewY
 - C:
 
-```
+```C
 void DrawSkewY(DrawingWand *wand,const double degrees)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2599,10 +2599,10 @@ DrawSkewY() skews the current coordinate system in the vertical direction.- wand
 ### DrawTranslate
 - C:
 
-```
+```C
 void DrawTranslate(DrawingWand *wand,const double x,
   const double y)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2620,10 +2620,10 @@ DrawTranslate() applies a translation to the current coordinate system which mov
 ### DrawSetViewbox
 - C:
 
-```
+```C
 void DrawSetViewbox(DrawingWand *wand,ssize_t x1,
   ssize_t y1,ssize_t x2,ssize_t y2)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2643,9 +2643,9 @@ DrawSetViewbox() sets the overall canvas size to be recorded with the drawing ve
 ### IsDrawingWand
 - C:
 
-```
+```C
 MagickBooleanType IsDrawingWand(const DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2662,9 +2662,9 @@ IsDrawingWand() returns MagickTrue if the wand is verified as a drawing wand.- w
 ### NewDrawingWand
 - C:
 
-```
+```C
 DrawingWand *NewDrawingWand(void)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2681,9 +2681,9 @@ NewDrawingWand() returns a drawing wand required for all other methods in the AP
 ### PopDrawingWand
 - C:
 
-```
+```C
 MagickBooleanType PopDrawingWand(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -2700,9 +2700,9 @@ PopDrawingWand() destroys the current drawing wand and returns to the previously
 ### PushDrawingWand
 - C:
 
-```
+```C
 MagickBooleanType PushDrawingWand(DrawingWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```

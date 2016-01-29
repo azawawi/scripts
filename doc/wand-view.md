@@ -1,9 +1,9 @@
 ### CloneWandView
 - C:
 
-```
+```C
 WandView *CloneWandView(const WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -20,9 +20,9 @@ CloneWandView() makes a copy of the specified wand view.- wand_view: the wand vi
 ### DestroyWandView
 - C:
 
-```
+```C
 WandView *DestroyWandView(WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -39,11 +39,11 @@ DestroyWandView() deallocates memory associated with a wand view.- wand_view: th
 ### DuplexTransferWandViewIterator
 - C:
 
-```
+```C
 MagickBooleanType DuplexTransferWandViewIterator(WandView *source,
   WandView *duplex,WandView *destination,
   DuplexTransferWandViewMethod transfer,void *context)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -64,10 +64,10 @@ DuplexTransferWandViewIterator() iterates over three wand views in parallel and 
 ### GetWandViewException
 - C:
 
-```
+```C
 char *GetWandViewException(const WandView *wand_view,
   ExceptionType *severity)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -85,9 +85,9 @@ GetWandViewException() returns the severity, reason, and description of any erro
 ### GetWandViewExtent
 - C:
 
-```
+```C
 RectangleInfo GetWandViewExtent(const WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -104,10 +104,10 @@ GetWandViewExtent() returns the wand view extent.- wand_view: the wand view.
 ### GetWandViewIterator
 - C:
 
-```
+```C
 MagickBooleanType GetWandViewIterator(WandView *source,
   GetWandViewMethod get,void *context)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -126,9 +126,9 @@ GetWandViewIterator() iterates over the wand view in parallel and calls your get
 ### GetWandViewPixels
 - C:
 
-```
+```C
 PixelWand *GetWandViewPixels(const WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -145,9 +145,9 @@ GetWandViewPixels() returns the wand view pixel_wands.- wand_view: the wand view
 ### GetWandViewWand
 - C:
 
-```
+```C
 MagickWand *GetWandViewWand(const WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -164,9 +164,9 @@ GetWandViewWand() returns the magick wand associated with the wand view.- wand_v
 ### IsWandView
 - C:
 
-```
+```C
 MagickBooleanType IsWandView(const WandView *wand_view)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -183,9 +183,9 @@ IsWandView() returns MagickTrue if the the parameter is verified as a wand view 
 ### NewWandView
 - C:
 
-```
+```C
 WandView *NewWandView(MagickWand *wand)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -202,10 +202,10 @@ NewWandView() returns a wand view required for all other methods in the Wand Vie
 ### NewWandViewExtent
 - C:
 
-```
+```C
 WandView *NewWandViewExtent(MagickWand *wand,const ssize_t x,
   const ssize_t y,const size_t width,const size_t height)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -226,9 +226,9 @@ NewWandViewExtent() returns a wand view required for all other methods in the Wa
 ### SetWandViewDescription
 - C:
 
-```
+```C
 void SetWandViewDescription(WandView *image_view,const char *description)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -245,10 +245,10 @@ SetWandViewDescription() associates a description with an image view.- wand_view
 ### SetWandViewIterator
 - C:
 
-```
+```C
 MagickBooleanType SetWandViewIterator(WandView *destination,
   SetWandViewMethod set,void *context)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -267,10 +267,10 @@ SetWandViewIterator() iterates over the wand view in parallel and calls your set
 ### SetWandViewThreads
 - C:
 
-```
+```C
 void SetWandViewThreads(WandView *image_view,
   const size_t number_threads)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -287,10 +287,10 @@ SetWandViewThreads() sets the number of threads in a thread team.- image_view: t
 ### TransferWandViewIterator
 - C:
 
-```
+```C
 MagickBooleanType TransferWandViewIterator(WandView *source,
   WandView *destination,TransferWandViewMethod transfer,void *context)
-```
+```Perl6
 - Perl 6:
 
 ```
@@ -310,10 +310,10 @@ TransferWandViewIterator() iterates over two wand views in parallel and calls yo
 ### UpdateWandViewIterator
 - C:
 
-```
+```C
 MagickBooleanType UpdateWandViewIterator(WandView *source,
   UpdateWandViewMethod update,void *context)
-```
+```Perl6
 - Perl 6:
 
 ```

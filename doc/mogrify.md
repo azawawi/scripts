@@ -1,11 +1,11 @@
 ### MagickCommandGenesis
 - C:
 
-```
+```C
 MagickBooleanType MagickCommandGenesis(ImageInfo *image_info,
   MagickCommand command,int argc,char **argv,char **metadata,
   ExceptionInfo *exception)
-```
+```Perl6
 - Perl 6:
 
 ```

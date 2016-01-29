@@ -86,7 +86,7 @@ sub generate-doc(Str $html, Str $doc-name) {
     my $p6-proto = @p6-protos.join("\n\n");
     $markdown-fh.say(
       sprintf(
-        "### %s\n- C:\n\n```\n%s\n```\n- Perl 6:\n\n```\n%s\n```\n\n%s\n",
+        "### %s\n- C:\n\n```C\n%s\n```Perl6\n- Perl 6:\n\n```\n%s\n```\n\n%s\n",
         $id, $proto, $p6-proto, $doc
       )
     );
