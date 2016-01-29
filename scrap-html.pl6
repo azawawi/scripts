@@ -31,7 +31,7 @@ sub generate-doc(Str $html, Str $doc-name) {
     / ( '<h2><a href="' .+? '" id="' (.+?) '">' .+? '</a></h2>')
       (.+?)
       '<p>The format of the' \s+ \w+ \s+ [ 'method' | 'function' ] \s+ 'is:</p>' \s+
-      '<pre class="text">' (.+?) '</pre>' (.+? '</dl>')/, :match );
+      '<pre class="text">' (.+?) '</pre>' (.+?)/, :match );
 
   for @matches -> $match {
     my $id    = ~$match[0][0];
@@ -57,28 +57,33 @@ sub generate-doc(Str $html, Str $doc-name) {
       my Str $params      = ~$proto-match[2];
 
       my @p;
-      for $params.split(',') -> $param {
-          my Str $p = $param.chomp;
-          if $p ~~ /^(.+?)(\w+)$/ {
-            my Str $type = ~$0.trim;
-            my Str $name = ~$1.trim;
+      if $params eq 'void' {
+        $params = '';
+      } else {
+        for $params.split(',') -> $param {
+            my Str $p = $param.chomp;
+            if $p ~~ /^(.+?)(\w+)$/ {
+              my Str $type = ~$0.trim;
+              my Str $name = ~$1.trim;
 
-            warn "Failed at converting '$type' at '$id'" if $type eq to-perl6-type($type);
-            $type = to-perl6-type($type);
+              warn "Failed at converting '$type' at '$id'" if $type eq to-perl6-type($type);
+              $type = to-perl6-type($type);
 
-            $p = sprintf(q{%s $%s}, $type, $name);
-          } else {
-            warn sprintf("No match for %s at %s", $p, $id);
-          }
-          @p.push($p);
+              $p = sprintf(q{%s $%s}, $type, $name);
+            } else {
+              warn sprintf("No match for %s at %s", $p, $id);
+            }
+            @p.push($p);
+        }
+        $params = @p.map( { "   " ~ $_ } ).join(",\n");
       }
-      $params = @p.map( { "   " ~ $_ } ).join(",\n");
 
       my $suffix = "is native(&library)\nis export \{ * \};";
+      $params = sprintf("\n%s\n", $params) if $params ne '';
       if $return-type eq '' {
-        @p6-protos.push( sprintf("sub %s\(\n%s\n)\n%s" , $sub-name, $params, $suffix) );
+        @p6-protos.push( sprintf("sub %s\(%s)\n%s" , $sub-name, $params, $suffix) );
       } else {
-        @p6-protos.push( sprintf("sub %s\(\n%s\n)\nreturns %s\n%s", $sub-name, $params, $return-type, $suffix) );
+        @p6-protos.push( sprintf("sub %s\(%s)\nreturns %s\n%s", $sub-name, $params, $return-type, $suffix) );
       }
     }
 
@@ -109,16 +114,19 @@ sub to-pod-codeblock(Str $code) {
 sub to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'const '            ||;
   $type    ~~ s| 'void *'            |Pointer[void]|;
-  $type    ~~ s| 'MagickWand *'      |MagickWandPointer|;
-  $type    ~~ s| 'DrawWand *'        |DrawWandPointer|;
-  $type    ~~ s| 'DrawingWand *'     |DrawingWandPointer|;
-  $type    ~~ s| 'PixelWand *'       |PixelWandPointer|;
+  $type    ~~ s| 'MagickWand *'      |Pointer|;
+  $type    ~~ s| 'DrawWand *'        |Pointer|;
+  $type    ~~ s| 'DrawingWand *'     |Pointer|;
+  $type    ~~ s| 'PixelWand *'       |Pointer|;
+  $type    ~~ s| 'Image *'           |Pointer|;
+  $type    ~~ s| 'ExceptionType *'   |Pointer|;
   $type    ~~ s| 'MagickBooleanType' |uint32|;
-  $type    ~~ s| 'double '           |num64|;
+  $type    ~~ s| 'double *'          |CArray[num64]|;
+  $type    ~~ s| 'double'            |num64|;
   $type    ~~ s| 'char *'            |Str|;
+  $type    ~~ s| 'ssize_t'           |uint32|;
   $type    ~~ s| 'size_t *'          |Pointer[size_t]|;
   $type    ~~ s| 'size_t'            |int32|;
-  $type    ~~ s| 'ssize_t'           |uint32|;
   $type    ~~ s| 'void '             ||;
   return $type;
 }
