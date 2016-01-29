@@ -120,7 +120,11 @@ sub to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'PixelWand *'       |Pointer|;
   $type    ~~ s| 'Image *'           |Pointer|;
   $type    ~~ s| 'ExceptionType *'   |Pointer|;
+  $type    ~~ s| 'InterpolateMethodPixel' |uint32|;
+  $type    ~~ s| 'InterlaceType'     |uint32|;
   $type    ~~ s| 'MagickBooleanType' |uint32|;
+  $type    ~~ s| 'CompressionType'   |uint32|;
+  $type    ~~ s| 'ColorspaceType'    |uint32|;
   $type    ~~ s| 'double *'          |CArray[num64]|;
   $type    ~~ s| 'double'            |num64|;
   $type    ~~ s| 'char *'            |Str|;
