@@ -49,20 +49,18 @@ sub generate-doc(Str $html, Str $doc-name) {
 
     $proto = $proto.trim;
 
-    my $p6-proto;
-    if $proto ~~ /^(.+?)(\w+)\((.*?)\)$/ {
-      my Str $return-type = ~$0;
-      my Str $sub-name    = ~$1;
-      my Str $params      = ~$2;
-
-      $return-type    = convert-c-to-perl6-type($return-type);
+    my Str @p6-protos;
+    for $proto.comb( / (.+?) (\w+) \( (.*?) \) /, :match ) -> $proto-match {
+      my Str $return-type = convert-c-to-perl6-type(~$proto-match[0]);
+      my Str $sub-name    = ~$proto-match[1];
+      my Str $params      = ~$proto-match[2];
 
       my @p;
       for $params.split(',') -> $param {
-          my Str $p = $param;
+          my Str $p = $param.chomp;
           if $p ~~ /^(.+?)(\w+)$/ {
-            my Str $type = ~$0;
-            my Str $name = ~$1;
+            my Str $type = ~$0.trim;
+            my Str $name = ~$1.trim;
 
             warn "Failed at converting '$type' at '$id'" if $type eq convert-c-to-perl6-type($type);
             $type = convert-c-to-perl6-type($type);
@@ -77,15 +75,14 @@ sub generate-doc(Str $html, Str $doc-name) {
 
       my $suffix = "is native(&library)\nis export \{ * \};";
       if $return-type eq '' {
-        $p6-proto = sprintf("sub %s\(\n%s\n)\n%s" , $sub-name, $params, $suffix);
+        @p6-protos.push( sprintf("sub %s\(\n%s\n)\n%s" , $sub-name, $params, $suffix) );
       } else {
-        $p6-proto = sprintf("sub %s\(\n%s\n)\nreturns %s\n%s", $sub-name, $params, $return-type, $suffix);
+        @p6-protos.push( sprintf("sub %s\(\n%s\n)\nreturns %s\n%s", $sub-name, $params, $return-type, $suffix) );
       }
-    } else {
-      warn "Failed at converting '$id', prototype: '$proto'";
     }
 
     # Write POD to file
+    my $p6-proto = @p6-protos.join("\n\n");
     $pod-fh.say( sprintf("### %s\n- C:\n\n```\n%s\n```\n- Perl 6:\n\n```\n%s\n```\n\n%s\n", $id, $proto, $p6-proto, $doc) );
   }
 
@@ -94,6 +91,7 @@ sub generate-doc(Str $html, Str $doc-name) {
 
 sub convert-c-to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'const '            ||;
+  $type    ~~ s| 'void *'            |Pointer[void]|;
   $type    ~~ s| 'MagickWand *'      |MagickWandPointer|;
   $type    ~~ s| 'DrawWand *'        |DrawWandPointer|;
   $type    ~~ s| 'DrawingWand *'     |DrawingWandPointer|;
@@ -101,6 +99,7 @@ sub convert-c-to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'MagickBooleanType' |uint32|;
   $type    ~~ s| 'double '           |num64|;
   $type    ~~ s| 'char *'            |Str|;
+  $type    ~~ s| 'size_t *'          |Pointer[size_t]|;
   $type    ~~ s| 'size_t'            |int32|;
   $type    ~~ s| 'ssize_t'           |uint32|;
   $type    ~~ s| 'void '             ||;
