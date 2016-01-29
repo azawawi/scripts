@@ -1,12 +1,12 @@
 ### ClearMagickWand
 - C:
 
-```
+```C
 void ClearMagickWand(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub ClearMagickWand(
    MagickWandPointer $wand
 )
@@ -19,12 +19,12 @@ ClearMagickWand() clears resources associated with the wand, leaving the wand bl
 ### CloneMagickWand
 - C:
 
-```
+```C
 MagickWand *CloneMagickWand(const MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub CloneMagickWand(
    MagickWandPointer $wand
 )
@@ -38,12 +38,12 @@ CloneMagickWand() makes an exact copy of the specified wand.- wand: the magick w
 ### DestroyMagickWand
 - C:
 
-```
+```C
 MagickWand *DestroyMagickWand(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub DestroyMagickWand(
    MagickWandPointer $wand
 )
@@ -57,12 +57,12 @@ DestroyMagickWand() deallocates memory associated with an MagickWand.- wand: the
 ### IsMagickWand
 - C:
 
-```
+```C
 MagickBooleanType IsMagickWand(const MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub IsMagickWand(
    MagickWandPointer $wand
 )
@@ -76,12 +76,12 @@ IsMagickWand() returns MagickTrue if the wand is verified as a magick wand.- wan
 ### MagickClearException
 - C:
 
-```
+```C
 MagickBooleanType MagickClearException(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickClearException(
    MagickWandPointer $wand
 )
@@ -95,12 +95,12 @@ MagickClearException() clears any exceptions associated with the wand.- wand: th
 ### MagickGetException
 - C:
 
-```
+```C
 char *MagickGetException(const MagickWand *wand,ExceptionType *severity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetException(
    MagickWandPointer $wand,
    ExceptionType * $severity
@@ -115,12 +115,12 @@ MagickGetException() returns the severity, reason, and description of any error 
 ### MagickGetExceptionType
 - C:
 
-```
+```C
 ExceptionType MagickGetExceptionType(const MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetExceptionType(
    MagickWandPointer $wand
 )
@@ -134,12 +134,12 @@ MagickGetExceptionType() returns the exception type associated with the wand.  I
 ### MagickGetIteratorIndex
 - C:
 
-```
+```C
 ssize_t MagickGetIteratorIndex(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetIteratorIndex(
    MagickWandPointer $wand
 )
@@ -153,12 +153,12 @@ MagickGetIteratorIndex() returns the position of the iterator in the image list.
 ### MagickQueryConfigureOption
 - C:
 
-```
+```C
 char *MagickQueryConfigureOption(const char *option)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryConfigureOption(
    Str $option
 )
@@ -172,13 +172,13 @@ MagickQueryConfigureOption() returns the value associated with the specified con
 ### MagickQueryConfigureOptions
 - C:
 
-```
+```C
 char **MagickQueryConfigureOptions(const char *pattern,
   size_t *number_options)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryConfigureOptions(
    Str $pattern,
    Pointer[int32] $number_options
@@ -193,13 +193,13 @@ MagickQueryConfigureOptions() returns any configure options that match the speci
 ### MagickQueryFontMetrics
 - C:
 
-```
+```C
 double *MagickQueryFontMetrics(MagickWand *wand,
   const DrawingWand *drawing_wand,const char *text)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryFontMetrics(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand,
@@ -215,13 +215,13 @@ MagickQueryFontMetrics() returns a 13 element array representing the following f
 ### MagickQueryMultilineFontMetrics
 - C:
 
-```
+```C
 double *MagickQueryMultilineFontMetrics(MagickWand *wand,
   const DrawingWand *drawing_wand,const char *text)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryMultilineFontMetrics(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand,
@@ -237,12 +237,12 @@ MagickQueryMultilineFontMetrics() returns a 13 element array representing the fo
 ### MagickQueryFonts
 - C:
 
-```
+```C
 char **MagickQueryFonts(const char *pattern,size_t *number_fonts)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryFonts(
    Str $pattern,
    Pointer[int32] $number_fonts
@@ -257,12 +257,12 @@ MagickQueryFonts() returns any font that match the specified pattern (e.g. "\*" 
 ### MagickQueryFormats
 - C:
 
-```
+```C
 char **MagickQueryFormats(const char *pattern,size_t *number_formats)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQueryFormats(
    Str $pattern,
    Pointer[int32] $number_formats
@@ -277,12 +277,12 @@ MagickQueryFormats() returns any image formats that match the specified pattern 
 ### MagickRelinquishMemory
 - C:
 
-```
+```C
 void *MagickRelinquishMemory(void *resource)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRelinquishMemory(
    Pointer[void] $resource
 )
@@ -296,12 +296,12 @@ MagickRelinquishMemory() relinquishes memory resources returned by such methods 
 ### MagickResetIterator
 - C:
 
-```
+```C
 void MagickResetIterator(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickResetIterator(
    MagickWandPointer $wand
 )
@@ -314,12 +314,12 @@ MagickResetIterator() resets the wand iterator.It is typically used either befor
 ### MagickSetFirstIterator
 - C:
 
-```
+```C
 void MagickSetFirstIterator(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetFirstIterator(
    MagickWandPointer $wand
 )
@@ -332,13 +332,13 @@ MagickSetFirstIterator() sets the wand iterator to the first image.After using a
 ### MagickSetIteratorIndex
 - C:
 
-```
+```C
 MagickBooleanType MagickSetIteratorIndex(MagickWand *wand,
   const ssize_t index)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetIteratorIndex(
    MagickWandPointer $wand,
    sint32 $index
@@ -353,12 +353,12 @@ MagickSetIteratorIndex() set the iterator to the given position in the image lis
 ### MagickSetLastIterator
 - C:
 
-```
+```C
 void MagickSetLastIterator(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetLastIterator(
    MagickWandPointer $wand
 )
@@ -371,12 +371,12 @@ MagickSetLastIterator() sets the wand iterator to the last image.The last image 
 ### MagickWandGenesis
 - C:
 
-```
+```C
 void MagickWandGenesis(void)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWandGenesis(
    v $oid
 )

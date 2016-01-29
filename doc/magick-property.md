@@ -1,13 +1,13 @@
 ### MagickDeleteImageArtifact
 - C:
 
-```
+```C
 MagickBooleanType MagickDeleteImageArtifact(MagickWand *wand,
   const char *artifact)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDeleteImageArtifact(
    MagickWandPointer $wand,
    Str $artifact
@@ -22,13 +22,13 @@ MagickDeleteImageArtifact() deletes a wand artifact.- image: the image. - artifa
 ### MagickDeleteImageProperty
 - C:
 
-```
+```C
 MagickBooleanType MagickDeleteImageProperty(MagickWand *wand,
   const char *property)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDeleteImageProperty(
    MagickWandPointer $wand,
    Str $property
@@ -43,13 +43,13 @@ MagickDeleteImageProperty() deletes a wand property.- image: the image. - proper
 ### MagickDeleteOption
 - C:
 
-```
+```C
 MagickBooleanType MagickDeleteOption(MagickWand *wand,
   const char *option)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDeleteOption(
    MagickWandPointer $wand,
    Str $option
@@ -64,12 +64,12 @@ MagickDeleteOption() deletes a wand option.- image: the image. - option: the ima
 ### MagickGetAntialias
 - C:
 
-```
+```C
 MagickBooleanType MagickGetAntialias(const MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetAntialias(
    MagickWandPointer $wand
 )
@@ -83,12 +83,12 @@ MagickGetAntialias() returns the antialias property associated with the wand.- w
 ### MagickGetBackgroundColor
 - C:
 
-```
+```C
 PixelWand *MagickGetBackgroundColor(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetBackgroundColor(
    MagickWandPointer $wand
 )
@@ -102,12 +102,12 @@ MagickGetBackgroundColor() returns the wand background color.- wand: the magick 
 ### MagickGetColorspace
 - C:
 
-```
+```C
 ColorspaceType MagickGetColorspace(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetColorspace(
    MagickWandPointer $wand
 )
@@ -121,12 +121,12 @@ MagickGetColorspace() gets the wand colorspace type.- wand: the magick wand.
 ### MagickGetCompression
 - C:
 
-```
+```C
 CompressionType MagickGetCompression(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetCompression(
    MagickWandPointer $wand
 )
@@ -140,12 +140,12 @@ MagickGetCompression() gets the wand compression type.- wand: the magick wand.
 ### MagickGetCompressionQuality
 - C:
 
-```
+```C
 size_t MagickGetCompressionQuality(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetCompressionQuality(
    MagickWandPointer $wand
 )
@@ -159,12 +159,12 @@ MagickGetCompressionQuality() gets the wand compression quality.- wand: the magi
 ### MagickGetCopyright
 - C:
 
-```
+```C
 const char *MagickGetCopyright(void)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetCopyright(
    v $oid
 )
@@ -178,12 +178,12 @@ MagickGetCopyright() returns the ImageMagick API copyright as a string constant.
 ### MagickGetFont
 - C:
 
-```
+```C
 char *MagickGetFont(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetFont(
    MagickWandPointer $wand
 )
@@ -197,12 +197,12 @@ MagickGetFont() returns the font associated with the MagickWand.- wand: the magi
 ### MagickGetFormat
 - C:
 
-```
+```C
 const char MagickGetFormat(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetFormat(
    MagickWandPointer $wand
 )
@@ -216,12 +216,12 @@ MagickGetFormat() returns the format of the magick wand.- wand: the magick wand.
 ### MagickGetGravity
 - C:
 
-```
+```C
 GravityType MagickGetGravity(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetGravity(
    MagickWandPointer $wand
 )
@@ -235,12 +235,12 @@ MagickGetGravity() gets the wand gravity.- wand: the magick wand.
 ### MagickGetHomeURL
 - C:
 
-```
+```C
 char *MagickGetHomeURL(void)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetHomeURL(
    v $oid
 )
@@ -254,13 +254,13 @@ MagickGetHomeURL() returns the ImageMagick home URL.<h2><a href="http://www.imag
 ### MagickGetImageArtifacts
 - C:
 
-```
+```C
 char *MagickGetImageArtifacts(MagickWand *wand,
   const char *pattern,size_t *number_artifacts)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageArtifacts(
    MagickWandPointer $wand,
    Str $pattern,
@@ -276,13 +276,13 @@ MagickGetImageArtifacts() returns all the artifact names that match the specifie
 ### MagickGetImageProfile
 - C:
 
-```
+```C
 unsigned char *MagickGetImageProfile(MagickWand *wand,const char *name,
   size_t *length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageProfile(
    MagickWandPointer $wand,
    Str $name,
@@ -298,13 +298,13 @@ MagickGetImageProfile() returns the named image profile.- wand: the magick wand.
 ### MagickGetImageProfiles
 - C:
 
-```
+```C
 char *MagickGetImageProfiles(MagickWand *wand,const char *pattern,
   size_t *number_profiles)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageProfiles(
    MagickWandPointer $wand,
    Str $pattern,
@@ -320,12 +320,12 @@ MagickGetImageProfiles() returns all the profile names that match the specified 
 ### MagickGetImageProperty
 - C:
 
-```
+```C
 char *MagickGetImageProperty(MagickWand *wand,const char *property)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageProperty(
    MagickWandPointer $wand,
    Str $property
@@ -340,13 +340,13 @@ MagickGetImageProperty() returns a value associated with the specified property.
 ### MagickGetImageProperties
 - C:
 
-```
+```C
 char *MagickGetImageProperties(MagickWand *wand,
   const char *pattern,size_t *number_properties)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageProperties(
    MagickWandPointer $wand,
    Str $pattern,
@@ -362,12 +362,12 @@ MagickGetImageProperties() returns all the property names that match the specifi
 ### MagickGetInterlaceScheme
 - C:
 
-```
+```C
 InterlaceType MagickGetInterlaceScheme(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetInterlaceScheme(
    MagickWandPointer $wand
 )
@@ -381,12 +381,12 @@ MagickGetInterlaceScheme() gets the wand interlace scheme.- wand: the magick wan
 ### MagickGetInterpolateMethod
 - C:
 
-```
+```C
 InterpolatePixelMethod MagickGetInterpolateMethod(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetInterpolateMethod(
    MagickWandPointer $wand
 )
@@ -400,12 +400,12 @@ MagickGetInterpolateMethod() gets the wand compression.- wand: the magick wand.
 ### MagickGetOption
 - C:
 
-```
+```C
 char *MagickGetOption(MagickWand *wand,const char *key)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetOption(
    MagickWandPointer $wand,
    Str $key
@@ -420,13 +420,13 @@ MagickGetOption() returns a value associated with a wand and the specified key. 
 ### MagickGetOptions
 - C:
 
-```
+```C
 char *MagickGetOptions(MagickWand *wand,const char *pattern,,
   size_t *number_options)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetOptions(
    MagickWandPointer $wand,
    Str $pattern,
@@ -443,12 +443,12 @@ MagickGetOptions() returns all the option names that match the specified pattern
 ### MagickGetOrientation
 - C:
 
-```
+```C
 OrientationType MagickGetOrientation(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetOrientation(
    MagickWandPointer $wand
 )
@@ -462,12 +462,12 @@ MagickGetOrientation() gets the wand orientation type.- wand: the magick wand.
 ### MagickGetPackageName
 - C:
 
-```
+```C
 const char *MagickGetPackageName(void)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetPackageName(
    v $oid
 )
@@ -481,12 +481,12 @@ MagickGetPackageName() returns the ImageMagick package name as a string constant
 ### MagickGetPointsize
 - C:
 
-```
+```C
 double MagickGetPointsize(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetPointsize(
    MagickWandPointer $wand
 )
@@ -500,12 +500,12 @@ MagickGetPointsize() returns the font pointsize associated with the MagickWand.-
 ### MagickGetQuantumDepth
 - C:
 
-```
+```C
 const char *MagickGetQuantumDepth(size_t *depth)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetQuantumDepth(
    Pointer[int32] $depth
 )
@@ -519,12 +519,12 @@ MagickGetQuantumDepth() returns the ImageMagick quantum depth as a string consta
 ### MagickGetQuantumRange
 - C:
 
-```
+```C
 const char *MagickGetQuantumRange(size_t *range)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetQuantumRange(
    Pointer[int32] $range
 )
@@ -538,12 +538,12 @@ MagickGetQuantumRange() returns the ImageMagick quantum range as a string consta
 ### MagickGetReleaseDate
 - C:
 
-```
+```C
 const char *MagickGetReleaseDate(void)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetReleaseDate(
    v $oid
 )
@@ -557,12 +557,12 @@ MagickGetReleaseDate() returns the ImageMagick release date as a string constant
 ### MagickGetResource
 - C:
 
-```
+```C
 MagickSizeType MagickGetResource(const ResourceType type)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetResource(
    ResourceType $type
 )
@@ -576,12 +576,12 @@ MagickGetResource() returns the specified resource in megabytes.- wand: the magi
 ### MagickGetResourceLimit
 - C:
 
-```
+```C
 MagickSizeType MagickGetResourceLimit(const ResourceType type)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetResourceLimit(
    ResourceType $type
 )
@@ -595,13 +595,13 @@ MagickGetResourceLimit() returns the specified resource limit in megabytes.- wan
 ### MagickGetSamplingFactors
 - C:
 
-```
+```C
 double *MagickGetSamplingFactor(MagickWand *wand,
   size_t *number_factors)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetSamplingFactor(
    MagickWandPointer $wand,
    Pointer[int32] $number_factors
@@ -616,13 +616,13 @@ MagickGetSamplingFactors() gets the horizontal and vertical sampling factor.- wa
 ### MagickGetSize
 - C:
 
-```
+```C
 MagickBooleanType MagickGetSize(const MagickWand *wand,
   size_t *columns,size_t *rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetSize(
    MagickWandPointer $wand,
    Pointer[int32] $columns,
@@ -638,13 +638,13 @@ MagickGetSize() returns the size associated with the magick wand.- wand: the mag
 ### MagickGetSizeOffset
 - C:
 
-```
+```C
 MagickBooleanType MagickGetSizeOffset(const MagickWand *wand,
   ssize_t *offset)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetSizeOffset(
    MagickWandPointer $wand,
    sPointer[int32] $offset
@@ -659,12 +659,12 @@ MagickGetSizeOffset() returns the size offset associated with the magick wand.- 
 ### MagickGetType
 - C:
 
-```
+```C
 ImageType MagickGetType(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetType(
    MagickWandPointer $wand
 )
@@ -678,12 +678,12 @@ MagickGetType() returns the wand type.- wand: the magick wand.
 ### MagickGetVersion
 - C:
 
-```
+```C
 const char *MagickGetVersion(size_t *version)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetVersion(
    Pointer[int32] $version
 )
@@ -697,13 +697,13 @@ MagickGetVersion() returns the ImageMagick API version as a string constant and 
 ### MagickProfileImage
 - C:
 
-```
+```C
 MagickBooleanType MagickProfileImage(MagickWand *wand,const char *name,
   const void *profile,const size_t length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickProfileImage(
    MagickWandPointer $wand,
    Str $name,
@@ -720,13 +720,13 @@ MagickProfileImage() adds or removes a ICC, IPTC, or generic profile from an ima
 ### MagickRemoveImageProfile
 - C:
 
-```
+```C
 unsigned char *MagickRemoveImageProfile(MagickWand *wand,
   const char *name,size_t *length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRemoveImageProfile(
    MagickWandPointer $wand,
    Str $name,
@@ -742,13 +742,13 @@ MagickRemoveImageProfile() removes the named image profile and returns it.- wand
 ### MagickSetAntialias
 - C:
 
-```
+```C
 MagickBooleanType MagickSetAntialias(MagickWand *wand,
   const MagickBooleanType antialias)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetAntialias(
    MagickWandPointer $wand,
    uint32 $antialias
@@ -763,13 +763,13 @@ MagickSetAntialias() sets the antialias propery of the wand.- wand: the magick w
 ### MagickSetBackgroundColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetBackgroundColor(MagickWand *wand,
   const PixelWand *background)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetBackgroundColor(
    MagickWandPointer $wand,
    PixelWandPointer $background
@@ -784,13 +784,13 @@ MagickSetBackgroundColor() sets the wand background color.- wand: the magick wan
 ### MagickSetColorspace
 - C:
 
-```
+```C
 MagickBooleanType MagickSetColorspace(MagickWand *wand,
   const ColorspaceType colorspace)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetColorspace(
    MagickWandPointer $wand,
    ColorspaceType $colorspace
@@ -805,13 +805,13 @@ MagickSetColorspace() sets the wand colorspace type.- wand: the magick wand. - c
 ### MagickSetCompression
 - C:
 
-```
+```C
 MagickBooleanType MagickSetCompression(MagickWand *wand,
   const CompressionType compression)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetCompression(
    MagickWandPointer $wand,
    CompressionType $compression
@@ -826,13 +826,13 @@ MagickSetCompression() sets the wand compression type.- wand: the magick wand. -
 ### MagickSetCompressionQuality
 - C:
 
-```
+```C
 MagickBooleanType MagickSetCompressionQuality(MagickWand *wand,
   const size_t quality)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetCompressionQuality(
    MagickWandPointer $wand,
    int32 $quality
@@ -847,13 +847,13 @@ MagickSetCompressionQuality() sets the wand compression quality.- wand: the magi
 ### MagickSetDepth
 - C:
 
-```
+```C
 MagickBooleanType MagickSetDepth(MagickWand *wand,
   const size_t depth)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetDepth(
    MagickWandPointer $wand,
    int32 $depth
@@ -868,13 +868,13 @@ MagickSetDepth() sets the wand pixel depth.- wand: the magick wand. - depth: the
 ### MagickSetExtract
 - C:
 
-```
+```C
 MagickBooleanType MagickSetExtract(MagickWand *wand,
   const char *geometry)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetExtract(
    MagickWandPointer $wand,
    Str $geometry
@@ -889,13 +889,13 @@ MagickSetExtract() sets the extract geometry before you read or write an image f
 ### MagickSetFilename
 - C:
 
-```
+```C
 MagickBooleanType MagickSetFilename(MagickWand *wand,
   const char *filename)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetFilename(
    MagickWandPointer $wand,
    Str $filename
@@ -910,12 +910,12 @@ MagickSetFilename() sets the filename before you read or write an image file.- w
 ### MagickSetFont
 - C:
 
-```
+```C
 MagickBooleanType MagickSetFont(MagickWand *wand, const char *font)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetFont(
    MagickWandPointer $wand,
    Str $font
@@ -930,12 +930,12 @@ MagickSetFont() sets the font associated with the MagickWand.- wand: the magick 
 ### MagickSetFormat
 - C:
 
-```
+```C
 MagickBooleanType MagickSetFormat(MagickWand *wand,const char *format)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetFormat(
    MagickWandPointer $wand,
    Str $format
@@ -950,13 +950,13 @@ MagickSetFormat() sets the format of the magick wand.- wand: the magick wand. - 
 ### MagickSetGravity
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageArtifact(MagickWand *wand,
   const char *artifact,const char *value)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageArtifact(
    MagickWandPointer $wand,
    Str $artifact,
@@ -972,13 +972,13 @@ MagickSetGravity() sets the gravity type.The format of the MagickSetGravity type
 ### MagickSetImageProfile
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageProfile(MagickWand *wand,
   const char *name,const void *profile,const size_t length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageProfile(
    MagickWandPointer $wand,
    Str $name,
@@ -995,13 +995,13 @@ MagickSetImageProfile() adds a named profile to the magick wand.  If a profile w
 ### MagickSetImageProperty
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageProperty(MagickWand *wand,
   const char *property,const char *value)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageProperty(
    MagickWandPointer $wand,
    Str $property,
@@ -1017,13 +1017,13 @@ MagickSetImageProperty() associates a property with an image.- wand: the magick 
 ### MagickSetInterlaceScheme
 - C:
 
-```
+```C
 MagickBooleanType MagickSetInterlaceScheme(MagickWand *wand,
   const InterlaceType interlace_scheme)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetInterlaceScheme(
    MagickWandPointer $wand,
    InterlaceType $interlace_scheme
@@ -1038,13 +1038,13 @@ MagickSetInterlaceScheme() sets the image compression.- wand: the magick wand. -
 ### MagickSetInterpolateMethod
 - C:
 
-```
+```C
 MagickBooleanType MagickSetInterpolateMethod(MagickWand *wand,
   const InterpolateMethodPixel method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetInterpolateMethod(
    MagickWandPointer $wand,
    InterpolateMethodPixel $method
@@ -1059,13 +1059,13 @@ MagickSetInterpolateMethod() sets the interpolate pixel method.- wand: the magic
 ### MagickSetOption
 - C:
 
-```
+```C
 MagickBooleanType MagickSetOption(MagickWand *wand,const char *key,
   const char *value)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetOption(
    MagickWandPointer $wand,
    Str $key,
@@ -1081,13 +1081,13 @@ MagickSetOption() associates one or options with the wand (.e.g MagickSetOption(
 ### MagickSetOrientation
 - C:
 
-```
+```C
 MagickBooleanType MagickSetOrientation(MagickWand *wand,
   const OrientationType orientation)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetOrientation(
    MagickWandPointer $wand,
    OrientationType $orientation
@@ -1102,14 +1102,14 @@ MagickSetOrientation() sets the wand orientation type.- wand: the magick wand. -
 ### MagickSetPage
 - C:
 
-```
+```C
 MagickBooleanType MagickSetPage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,
   const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetPage(
    MagickWandPointer $wand,
    int32 $width,
@@ -1127,13 +1127,13 @@ MagickSetPage() sets the page geometry of the magick wand.- wand: the magick wan
 ### MagickSetPassphrase
 - C:
 
-```
+```C
 MagickBooleanType MagickSetPassphrase(MagickWand *wand,
   const char *passphrase)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetPassphrase(
    MagickWandPointer $wand,
    Str $passphrase
@@ -1148,13 +1148,13 @@ MagickSetPassphrase() sets the passphrase.- wand: the magick wand. - passphrase:
 ### MagickSetPointsize
 - C:
 
-```
+```C
 MagickBooleanType MagickSetPointsize(MagickWand *wand,
   const double pointsize)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetPointsize(
    MagickWandPointer $wand,
    double $pointsize
@@ -1169,13 +1169,13 @@ MagickSetPointsize() sets the font pointsize associated with the MagickWand.- wa
 ### MagickSetProgressMonitor
 - C:
 
-```
+```C
 MagickProgressMonitor MagickSetProgressMonitor(MagickWand *wand
   const MagickProgressMonitor progress_monitor,void *client_data)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetProgressMonitor(
    MagickWandPointerwand
   MagickProgressMonitor $progress_monitor,
@@ -1191,13 +1191,13 @@ MagickSetProgressMonitor() sets the wand progress monitor to the specified metho
 ### MagickSetResourceLimit
 - C:
 
-```
+```C
 MagickBooleanType MagickSetResourceLimit(const ResourceType type,
   const MagickSizeType limit)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetResourceLimit(
    ResourceType $type,
    MagickSizeType $limit
@@ -1212,13 +1212,13 @@ MagickSetResourceLimit() sets the limit for a particular resource in megabytes.-
 ### MagickSetResolution
 - C:
 
-```
+```C
 MagickBooleanType MagickSetResolution(MagickWand *wand,
   const double x_resolution,const double y_resolution)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetResolution(
    MagickWandPointer $wand,
    double $x_resolution,
@@ -1234,13 +1234,13 @@ MagickSetResolution() sets the image resolution.- wand: the magick wand. - x_res
 ### MagickSetSamplingFactors
 - C:
 
-```
+```C
 MagickBooleanType MagickSetSamplingFactors(MagickWand *wand,
   const size_t number_factors,const double *sampling_factors)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetSamplingFactors(
    MagickWandPointer $wand,
    int32 $number_factors,
@@ -1256,13 +1256,13 @@ MagickSetSamplingFactors() sets the image sampling factors.- wand: the magick wa
 ### MagickSetSize
 - C:
 
-```
+```C
 MagickBooleanType MagickSetSize(MagickWand *wand,
   const size_t columns,const size_t rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetSize(
    MagickWandPointer $wand,
    int32 $columns,
@@ -1278,14 +1278,14 @@ MagickSetSize() sets the size of the magick wand.  Set it before you read a raw 
 ### MagickSetSizeOffset
 - C:
 
-```
+```C
 MagickBooleanType MagickSetSizeOffset(MagickWand *wand,
   const size_t columns,const size_t rows,
   const ssize_t offset)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetSizeOffset(
    MagickWandPointer $wand,
    int32 $columns,
@@ -1302,13 +1302,13 @@ MagickSetSizeOffset() sets the size and offset of the magick wand.  Set it befor
 ### MagickSetType
 - C:
 
-```
+```C
 MagickBooleanType MagickSetType(MagickWand *wand,
   const ImageType image_type)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetType(
    MagickWandPointer $wand,
    ImageType $image_type

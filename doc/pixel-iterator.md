@@ -3,10 +3,10 @@
 
 ```C
 void ClearPixelIterator(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub ClearPixelIterator(
    PixelIterator * $iterator
 )
@@ -21,10 +21,10 @@ ClearPixelIterator() clear resources associated with a PixelIterator.- iterator:
 
 ```C
 PixelIterator *ClonePixelIterator(const PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub ClonePixelIterator(
    PixelIterator * $iterator
 )
@@ -40,10 +40,10 @@ ClonePixelIterator() makes an exact copy of the specified iterator.- iterator: t
 
 ```C
 PixelIterator *DestroyPixelIterator(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub DestroyPixelIterator(
    PixelIterator * $iterator
 )
@@ -59,10 +59,10 @@ DestroyPixelIterator() deallocates resources associated with a PixelIterator.- i
 
 ```C
 MagickBooleanType IsPixelIterator(const PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub IsPixelIterator(
    PixelIterator * $iterator
 )
@@ -78,10 +78,10 @@ IsPixelIterator() returns MagickTrue if the iterator is verified as a pixel iter
 
 ```C
 PixelIterator *NewPixelIterator(MagickWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub NewPixelIterator(
    MagickWandPointer $wand
 )
@@ -97,10 +97,10 @@ NewPixelIterator() returns a new pixel iterator.- wand: the magick wand.
 
 ```C
 MagickBooleanType PixelClearIteratorException(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelClearIteratorException(
    PixelIterator * $iterator
 )
@@ -117,10 +117,10 @@ PixelClearIteratorException() clear any exceptions associated with the iterator.
 ```C
 PixelIterator *NewPixelRegionIterator(MagickWand *wand,const ssize_t x,
   const ssize_t y,const size_t width,const size_t height)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub NewPixelRegionIterator(
    MagickWandPointer $wand,
    sint32 $x,
@@ -141,10 +141,10 @@ NewPixelRegionIterator() returns a new pixel iterator.- wand: the magick wand. -
 ```C
 PixelWand **PixelGetCurrentIteratorRow(PixelIterator *iterator,
   size_t *number_wands)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetCurrentIteratorRow(
    PixelIterator * $iterator,
    Pointer[int32] $number_wands
@@ -162,10 +162,10 @@ PixelGetCurrentIteratorRow() returns the current row as an array of pixel wands 
 ```C
 char *PixelGetIteratorException(const PixelIterator *iterator,
   ExceptionType *severity)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetIteratorException(
    PixelIterator * $iterator,
    ExceptionType * $severity
@@ -183,10 +183,10 @@ PixelGetIteratorException() returns the severity, reason, and description of any
 ```C
 ExceptionType PixelGetIteratorExceptionType(
   const PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetIteratorExceptionType(
    PixelIterator * $iterator
 )
@@ -202,10 +202,10 @@ PixelGetIteratorExceptionType() the exception type associated with the iterator.
 
 ```C
 MagickBooleanType PixelGetIteratorRow(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetIteratorRow(
    PixelIterator * $iterator
 )
@@ -222,10 +222,10 @@ PixelGetIteratorRow() returns the current pixel iterator row.- iterator: the pix
 ```C
 PixelWand **PixelGetNextIteratorRow(PixelIterator *iterator,
   size_t *number_wands)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetNextIteratorRow(
    PixelIterator * $iterator,
    Pointer[int32] $number_wands
@@ -243,10 +243,10 @@ PixelGetNextIteratorRow() returns the next row as an array of pixel wands from t
 ```C
 PixelWand **PixelGetPreviousIteratorRow(PixelIterator *iterator,
   size_t *number_wands)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetPreviousIteratorRow(
    PixelIterator * $iterator,
    Pointer[int32] $number_wands
@@ -263,10 +263,10 @@ PixelGetPreviousIteratorRow() returns the previous row as an array of pixel wand
 
 ```C
 void PixelResetIterator(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelResetIterator(
    PixelIterator * $iterator
 )
@@ -281,10 +281,10 @@ PixelResetIterator() resets the pixel iterator.  Use it in conjunction with Pixe
 
 ```C
 void PixelSetFirstIteratorRow(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetFirstIteratorRow(
    PixelIterator * $iterator
 )
@@ -300,10 +300,10 @@ PixelSetFirstIteratorRow() sets the pixel iterator to the first pixel row.- iter
 ```C
 MagickBooleanType PixelSetIteratorRow(PixelIterator *iterator,
   const ssize_t row)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetIteratorRow(
    PixelIterator * $iterator,
    sint32 $row
@@ -320,10 +320,10 @@ PixelSetIteratorRow() set the pixel iterator row.- iterator: the pixel iterator.
 
 ```C
 void PixelSetLastIteratorRow(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetLastIteratorRow(
    PixelIterator * $iterator
 )
@@ -338,10 +338,10 @@ PixelSetLastIteratorRow() sets the pixel iterator to the last pixel row.- iterat
 
 ```C
 MagickBooleanType PixelSyncIterator(PixelIterator *iterator)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSyncIterator(
    PixelIterator * $iterator
 )

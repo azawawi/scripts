@@ -3,10 +3,10 @@
 
 ```C
 void ClearPixelWand(PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub ClearPixelWand(
    PixelWandPointer $wand
 )
@@ -21,10 +21,10 @@ ClearPixelWand() clears resources associated with the wand.- wand: the pixel wan
 
 ```C
 PixelWand *ClonePixelWand(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub ClonePixelWand(
    PixelWandPointer $wand
 )
@@ -41,10 +41,10 @@ ClonePixelWand() makes an exact copy of the specified wand.- wand: the magick wa
 ```C
 PixelWand **ClonePixelWands(const PixelWand **wands,
   const size_t number_wands)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub ClonePixelWands(
    PixelWandPointer* $wands,
    int32 $number_wands
@@ -61,10 +61,10 @@ ClonePixelWands() makes an exact copy of the specified wands.- wands: the magick
 
 ```C
 PixelWand *DestroyPixelWand(PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub DestroyPixelWand(
    PixelWandPointer $wand
 )
@@ -81,10 +81,10 @@ DestroyPixelWand() deallocates resources associated with a PixelWand.- wand: the
 ```C
 PixelWand **DestroyPixelWands(PixelWand **wand,
   const size_t number_wands)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub DestroyPixelWands(
    PixelWandPointer* $wand,
    int32 $number_wands
@@ -102,10 +102,10 @@ DestroyPixelWands() deallocates resources associated with an array of pixel wand
 ```C
 MagickBooleanType IsPixelWandSimilar(PixelWand *p,PixelWand *q,
   const double fuzz)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub IsPixelWandSimilar(
    PixelWandPointer $p,
    PixelWandPointer $q,
@@ -123,10 +123,10 @@ IsPixelWandSimilar() returns MagickTrue if the distance between two colors is le
 
 ```C
 MagickBooleanType IsPixelWand(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub IsPixelWand(
    PixelWandPointer $wand
 )
@@ -142,10 +142,10 @@ IsPixelWand() returns MagickTrue if the wand is verified as a pixel wand.- wand:
 
 ```C
 PixelWand *NewPixelWand(void)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub NewPixelWand(
    v $oid
 )
@@ -161,10 +161,10 @@ NewPixelWand() returns a new pixel wand.<h2><a href="http://www.imagemagick.org/
 
 ```C
 MagickBooleanType PixelClearException(PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelClearException(
    PixelWandPointer $wand
 )
@@ -180,10 +180,10 @@ PixelClearException() clear any exceptions associated with the iterator.- wand: 
 
 ```C
 double PixelGetAlpha(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetAlpha(
    PixelWandPointer $wand
 )
@@ -199,10 +199,10 @@ PixelGetAlpha() returns the normalized alpha value of the pixel wand.- wand: the
 
 ```C
 Quantum PixelGetAlphaQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetAlphaQuantum(
    PixelWandPointer $wand
 )
@@ -218,10 +218,10 @@ PixelGetAlphaQuantum() returns the alpha value of the pixel wand.- wand: the pix
 
 ```C
 double PixelGetBlack(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetBlack(
    PixelWandPointer $wand
 )
@@ -237,10 +237,10 @@ PixelGetBlack() returns the normalized black color of the pixel wand.- wand: the
 
 ```C
 Quantum PixelGetBlackQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetBlackQuantum(
    PixelWandPointer $wand
 )
@@ -256,10 +256,10 @@ PixelGetBlackQuantum() returns the black color of the pixel wand.- wand: the pix
 
 ```C
 double PixelGetBlue(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetBlue(
    PixelWandPointer $wand
 )
@@ -275,10 +275,10 @@ PixelGetBlue() returns the normalized blue color of the pixel wand.- wand: the p
 
 ```C
 Quantum PixelGetBlueQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetBlueQuantum(
    PixelWandPointer $wand
 )
@@ -294,10 +294,10 @@ PixelGetBlueQuantum() returns the blue color of the pixel wand.- wand: the pixel
 
 ```C
 char *PixelGetColorAsString(PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetColorAsString(
    PixelWandPointer $wand
 )
@@ -313,10 +313,10 @@ PixelGetColorAsString() returnsd the color of the pixel wand as a string.- wand:
 
 ```C
 char *PixelGetColorAsNormalizedString(PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetColorAsNormalizedString(
    PixelWandPointer $wand
 )
@@ -332,10 +332,10 @@ PixelGetColorAsNormalizedString() returns the normalized color of the pixel wand
 
 ```C
 size_t PixelGetColorCount(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetColorCount(
    PixelWandPointer $wand
 )
@@ -351,10 +351,10 @@ PixelGetColorCount() returns the color count associated with this color.- wand: 
 
 ```C
 double PixelGetCyan(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetCyan(
    PixelWandPointer $wand
 )
@@ -370,10 +370,10 @@ PixelGetCyan() returns the normalized cyan color of the pixel wand.- wand: the p
 
 ```C
 Quantum PixelGetCyanQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetCyanQuantum(
    PixelWandPointer $wand
 )
@@ -389,10 +389,10 @@ PixelGetCyanQuantum() returns the cyan color of the pixel wand.- wand: the pixel
 
 ```C
 char *PixelGetException(const PixelWand *wand,ExceptionType *severity)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetException(
    PixelWandPointer $wand,
    ExceptionType * $severity
@@ -409,10 +409,10 @@ PixelGetException() returns the severity, reason, and description of any error t
 
 ```C
 ExceptionType PixelGetExceptionType(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetExceptionType(
    PixelWandPointer $wand
 )
@@ -428,10 +428,10 @@ PixelGetExceptionType() the exception type associated with the wand.  If no exce
 
 ```C
 double PixelGetFuzz(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetFuzz(
    PixelWandPointer $wand
 )
@@ -447,10 +447,10 @@ PixelGetFuzz() returns the normalized fuzz value of the pixel wand.- wand: the p
 
 ```C
 double PixelGetGreen(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetGreen(
    PixelWandPointer $wand
 )
@@ -466,10 +466,10 @@ PixelGetGreen() returns the normalized green color of the pixel wand.- wand: the
 
 ```C
 Quantum PixelGetGreenQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetGreenQuantum(
    PixelWandPointer $wand
 )
@@ -486,10 +486,10 @@ PixelGetGreenQuantum() returns the green color of the pixel wand.- wand: the pix
 ```C
 void PixelGetHSL(const PixelWand *wand,double *hue,double *saturation,
   double *lightness)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetHSL(
    PixelWandPointer $wand,
    num64* $hue,
@@ -507,10 +507,10 @@ PixelGetHSL() returns the normalized HSL color of the pixel wand.- wand: the pix
 
 ```C
 IndexPacket PixelGetIndex(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetIndex(
    PixelWandPointer $wand
 )
@@ -526,10 +526,10 @@ PixelGetIndex() returns the colormap index from the pixel wand.- wand: the pixel
 
 ```C
 double PixelGetMagenta(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetMagenta(
    PixelWandPointer $wand
 )
@@ -545,10 +545,10 @@ PixelGetMagenta() returns the normalized magenta color of the pixel wand.- wand:
 
 ```C
 Quantum PixelGetMagentaQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetMagentaQuantum(
    PixelWandPointer $wand
 )
@@ -564,10 +564,10 @@ PixelGetMagentaQuantum() returns the magenta color of the pixel wand.- wand: the
 
 ```C
 void PixelGetMagickColor(PixelWand *wand,MagickPixelPacket *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetMagickColor(
    PixelWandPointer $wand,
    MagickPixelPacket * $color
@@ -583,10 +583,10 @@ PixelGetMagickColor() gets the magick color of the pixel wand.- wand: the pixel 
 
 ```C
 double PixelGetOpacity(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetOpacity(
    PixelWandPointer $wand
 )
@@ -602,10 +602,10 @@ PixelGetOpacity() returns the normalized opacity value of the pixel wand.- wand:
 
 ```C
 Quantum PixelGetOpacityQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetOpacityQuantum(
    PixelWandPointer $wand
 )
@@ -621,10 +621,10 @@ PixelGetOpacityQuantum() returns the opacity value of the pixel wand.- wand: the
 
 ```C
 void PixelGetQuantumColor(PixelWand *wand,PixelPacket *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetQuantumColor(
    PixelWandPointer $wand,
    PixelPacket * $color
@@ -640,10 +640,10 @@ PixelGetQuantumColor() gets the color of the pixel wand as a PixelPacket.- wand:
 
 ```C
 double PixelGetRed(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetRed(
    PixelWandPointer $wand
 )
@@ -659,10 +659,10 @@ PixelGetRed() returns the normalized red color of the pixel wand.- wand: the pix
 
 ```C
 Quantum PixelGetRedQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetRedQuantum(
    PixelWandPointer $wand
 )
@@ -678,10 +678,10 @@ PixelGetRedQuantum() returns the red color of the pixel wand.- wand: the pixel w
 
 ```C
 double PixelGetYellow(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetYellow(
    PixelWandPointer $wand
 )
@@ -697,10 +697,10 @@ PixelGetYellow() returns the normalized yellow color of the pixel wand.- wand: t
 
 ```C
 Quantum PixelGetYellowQuantum(const PixelWand *wand)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelGetYellowQuantum(
    PixelWandPointer $wand
 )
@@ -716,10 +716,10 @@ PixelGetYellowQuantum() returns the yellow color of the pixel wand.- wand: the p
 
 ```C
 void PixelSetAlpha(PixelWand *wand,const double alpha)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetAlpha(
    PixelWandPointer $wand,
    double $alpha
@@ -736,10 +736,10 @@ PixelSetAlpha() sets the normalized alpha value of the pixel wand.- wand: the pi
 ```C
 void PixelSetAlphaQuantum(PixelWand *wand,
   const Quantum opacity)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetAlphaQuantum(
    PixelWandPointer $wand,
    Quantum $opacity
@@ -755,10 +755,10 @@ PixelSetAlphaQuantum() sets the alpha value of the pixel wand.- wand: the pixel 
 
 ```C
 void PixelSetBlack(PixelWand *wand,const double black)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetBlack(
    PixelWandPointer $wand,
    double $black
@@ -774,10 +774,10 @@ PixelSetBlack() sets the normalized black color of the pixel wand.- wand: the pi
 
 ```C
 void PixelSetBlackQuantum(PixelWand *wand,const Quantum black)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetBlackQuantum(
    PixelWandPointer $wand,
    Quantum $black
@@ -793,10 +793,10 @@ PixelSetBlackQuantum() sets the black color of the pixel wand.- wand: the pixel 
 
 ```C
 void PixelSetBlue(PixelWand *wand,const double blue)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetBlue(
    PixelWandPointer $wand,
    double $blue
@@ -812,10 +812,10 @@ PixelSetBlue() sets the normalized blue color of the pixel wand.- wand: the pixe
 
 ```C
 void PixelSetBlueQuantum(PixelWand *wand,const Quantum blue)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetBlueQuantum(
    PixelWandPointer $wand,
    Quantum $blue
@@ -831,10 +831,10 @@ PixelSetBlueQuantum() sets the blue color of the pixel wand.- wand: the pixel wa
 
 ```C
 MagickBooleanType PixelSetColor(PixelWand *wand,const char *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetColor(
    PixelWandPointer $wand,
    Str $color
@@ -851,10 +851,10 @@ PixelSetColor() sets the color of the pixel wand with a string (e.g. "blue", "#0
 
 ```C
 void PixelSetColorCount(PixelWand *wand,const size_t count)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetColorCount(
    PixelWandPointer $wand,
    int32 $count
@@ -870,10 +870,10 @@ PixelSetColorCount() sets the color count of the pixel wand.- wand: the pixel wa
 
 ```C
 void PixelSetColorFromWand(PixelWand *wand,const PixelWand *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetColorFromWand(
    PixelWandPointer $wand,
    PixelWandPointer $color
@@ -889,10 +889,10 @@ PixelSetColorFromWand() sets the color of the pixel wand.- wand: the pixel wand.
 
 ```C
 void PixelSetCyan(PixelWand *wand,const double cyan)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetCyan(
    PixelWandPointer $wand,
    double $cyan
@@ -908,10 +908,10 @@ PixelSetCyan() sets the normalized cyan color of the pixel wand.- wand: the pixe
 
 ```C
 void PixelSetCyanQuantum(PixelWand *wand,const Quantum cyan)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetCyanQuantum(
    PixelWandPointer $wand,
    Quantum $cyan
@@ -927,10 +927,10 @@ PixelSetCyanQuantum() sets the cyan color of the pixel wand.- wand: the pixel wa
 
 ```C
 void PixelSetFuzz(PixelWand *wand,const double fuzz)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetFuzz(
    PixelWandPointer $wand,
    double $fuzz
@@ -946,10 +946,10 @@ PixelSetFuzz() sets the fuzz value of the pixel wand.- wand: the pixel wand. - f
 
 ```C
 void PixelSetGreen(PixelWand *wand,const double green)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetGreen(
    PixelWandPointer $wand,
    double $green
@@ -965,10 +965,10 @@ PixelSetGreen() sets the normalized green color of the pixel wand.- wand: the pi
 
 ```C
 void PixelSetGreenQuantum(PixelWand *wand,const Quantum green)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetGreenQuantum(
    PixelWandPointer $wand,
    Quantum $green
@@ -985,10 +985,10 @@ PixelSetGreenQuantum() sets the green color of the pixel wand.- wand: the pixel 
 ```C
 void PixelSetHSL(PixelWand *wand,const double hue,
   const double saturation,const double lightness)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetHSL(
    PixelWandPointer $wand,
    double $hue,
@@ -1006,10 +1006,10 @@ PixelSetHSL() sets the normalized HSL color of the pixel wand.- wand: the pixel 
 
 ```C
 void PixelSetIndex(PixelWand *wand,const IndexPacket index)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetIndex(
    PixelWandPointer $wand,
    IndexPacket $index
@@ -1025,10 +1025,10 @@ PixelSetIndex() sets the colormap index of the pixel wand.- wand: the pixel wand
 
 ```C
 void PixelSetMagenta(PixelWand *wand,const double magenta)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetMagenta(
    PixelWandPointer $wand,
    double $magenta
@@ -1045,10 +1045,10 @@ PixelSetMagenta() sets the normalized magenta color of the pixel wand.- wand: th
 ```C
 void PixelSetMagentaQuantum(PixelWand *wand,
   const Quantum magenta)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetMagentaQuantum(
    PixelWandPointer $wand,
    Quantum $magenta
@@ -1064,10 +1064,10 @@ PixelSetMagentaQuantum() sets the magenta color of the pixel wand.- wand: the pi
 
 ```C
 void PixelSetMagickColor(PixelWand *wand,const MagickPixelPacket *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetMagickColor(
    PixelWandPointer $wand,
    MagickPixelPacket * $color
@@ -1083,10 +1083,10 @@ PixelSetMagickColor() sets the color of the pixel wand.- wand: the pixel wand. -
 
 ```C
 void PixelSetOpacity(PixelWand *wand,const double opacity)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetOpacity(
    PixelWandPointer $wand,
    double $opacity
@@ -1103,10 +1103,10 @@ PixelSetOpacity() sets the normalized opacity value of the pixel wand.- wand: th
 ```C
 void PixelSetOpacityQuantum(PixelWand *wand,
   const Quantum opacity)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetOpacityQuantum(
    PixelWandPointer $wand,
    Quantum $opacity
@@ -1122,10 +1122,10 @@ PixelSetOpacityQuantum() sets the opacity value of the pixel wand.- wand: the pi
 
 ```C
 void PixelSetQuantumColor(PixelWand *wand,const PixelPacket *color)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetQuantumColor(
    PixelWandPointer $wand,
    PixelPacket * $color
@@ -1141,10 +1141,10 @@ PixelSetQuantumColor() sets the color of the pixel wand.- wand: the pixel wand. 
 
 ```C
 void PixelSetRed(PixelWand *wand,const double red)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetRed(
    PixelWandPointer $wand,
    double $red
@@ -1160,10 +1160,10 @@ PixelSetRed() sets the normalized red color of the pixel wand.- wand: the pixel 
 
 ```C
 void PixelSetRedQuantum(PixelWand *wand,const Quantum red)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetRedQuantum(
    PixelWandPointer $wand,
    Quantum $red
@@ -1179,10 +1179,10 @@ PixelSetRedQuantum() sets the red color of the pixel wand.- wand: the pixel wand
 
 ```C
 void PixelSetYellow(PixelWand *wand,const double yellow)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetYellow(
    PixelWandPointer $wand,
    double $yellow
@@ -1198,10 +1198,10 @@ PixelSetYellow() sets the normalized yellow color of the pixel wand.- wand: the 
 
 ```C
 void PixelSetYellowQuantum(PixelWand *wand,const Quantum yellow)
-```Perl6
+```
 - Perl 6:
 
-```
+```Perl6
 sub PixelSetYellowQuantum(
    PixelWandPointer $wand,
    Quantum $yellow

@@ -1,12 +1,12 @@
 ### GetImageFromMagickWand
 - C:
 
-```
+```C
 Image *GetImageFromMagickWand(const MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub GetImageFromMagickWand(
    MagickWandPointer $wand
 )
@@ -20,7 +20,7 @@ GetImageFromMagickWand() returns the current image from the magick wand.- wand: 
 ### MagickAdaptiveBlurImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAdaptiveBlurImage(MagickWand *wand,
   const double radius,const double sigma)
 MagickBooleanType MagickAdaptiveBlurImageChannel(MagickWand *wand,
@@ -28,7 +28,7 @@ MagickBooleanType MagickAdaptiveBlurImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAdaptiveBlurImage(
    MagickWandPointer $wand,
    double $radius,
@@ -55,7 +55,7 @@ MagickAdaptiveBlurImage() adaptively blurs the image by blurring less intensely 
 ### MagickAdaptiveResizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAdaptiveSharpenImage(MagickWand *wand,
   const double radius,const double sigma)
 MagickBooleanType MagickAdaptiveSharpenImageChannel(MagickWand *wand,
@@ -63,7 +63,7 @@ MagickBooleanType MagickAdaptiveSharpenImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAdaptiveSharpenImage(
    MagickWandPointer $wand,
    double $radius,
@@ -90,13 +90,13 @@ MagickAdaptiveResizeImage() adaptively resize image with data dependent triangul
 ### MagickAdaptiveThresholdImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAdaptiveThresholdImage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t offset)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAdaptiveThresholdImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -113,13 +113,13 @@ MagickAdaptiveThresholdImage() selects an individual threshold for each pixel ba
 ### MagickAddImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAddImage(MagickWand *wand,
   const MagickWand *add_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAddImage(
    MagickWandPointer $wand,
    MagickWandPointer $add_wand
@@ -134,7 +134,7 @@ MagickAddImage() adds a clone of the images from the second wand and inserts the
 ### MagickAddNoiseImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAddNoiseImage(MagickWand *wand,
   const NoiseType noise_type)
 MagickBooleanType MagickAddNoiseImageChannel(MagickWand *wand,
@@ -142,7 +142,7 @@ MagickBooleanType MagickAddNoiseImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAddNoiseImage(
    MagickWandPointer $wand,
    NoiseType $noise_type
@@ -167,13 +167,13 @@ MagickAddNoiseImage() adds random noise to the image.- wand: the magick wand. - 
 ### MagickAffineTransformImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAffineTransformImage(MagickWand *wand,
   const DrawingWand *drawing_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAffineTransformImage(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand
@@ -188,14 +188,14 @@ MagickAffineTransformImage() transforms an image as dictated by the affine matri
 ### MagickAnnotateImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAnnotateImage(MagickWand *wand,
   const DrawingWand *drawing_wand,const double x,const double y,
   const double angle,const char *text)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAnnotateImage(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand,
@@ -214,13 +214,13 @@ MagickAnnotateImage() annotates an image with text.- wand: the magick wand. - dr
 ### MagickAnimateImages
 - C:
 
-```
+```C
 MagickBooleanType MagickAnimateImages(MagickWand *wand,
   const char *server_name)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAnimateImages(
    MagickWandPointer $wand,
    Str $server_name
@@ -235,13 +235,13 @@ MagickAnimateImages() animates an image or image sequence.- wand: the magick wan
 ### MagickAppendImages
 - C:
 
-```
+```C
 MagickWand *MagickAppendImages(MagickWand *wand,
   const MagickBooleanType stack)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAppendImages(
    MagickWandPointer $wand,
    uint32 $stack
@@ -256,14 +256,14 @@ MagickAppendImages() append the images in a wand from the current image onwards,
 ### MagickAutoGammaImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAutoGammaImage(MagickWand *wand)
 MagickBooleanType MagickAutoGammaImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAutoGammaImage(
    MagickWandPointer $wand
 )
@@ -286,14 +286,14 @@ MagickAutoGammaImage() extracts the 'mean' from the image and adjust the image t
 ### MagickAutoLevelImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAutoLevelImage(MagickWand *wand)
 MagickBooleanType MagickAutoLevelImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAutoLevelImage(
    MagickWandPointer $wand
 )
@@ -316,12 +316,12 @@ MagickAutoLevelImage() adjusts the levels of a particular image channel by scali
 ### MagickAutoOrientImage
 - C:
 
-```
+```C
 MagickBooleanType MagickAutoOrientImage(MagickWand *image)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickAutoOrientImage(
    MagickWandPointer $image
 )
@@ -335,13 +335,13 @@ MagickAutoOrientImage() adjusts an image so that its orientation is suitable $  
 ### MagickBlackThresholdImage
 - C:
 
-```
+```C
 MagickBooleanType MagickBlackThresholdImage(MagickWand *wand,
   const PixelWand *threshold)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickBlackThresholdImage(
    MagickWandPointer $wand,
    PixelWandPointer $threshold
@@ -356,13 +356,13 @@ MagickBlackThresholdImage() is like MagickThresholdImage() but  forces all pixel
 ### MagickBlueShiftImage
 - C:
 
-```
+```C
 MagickBooleanType MagickBlueShiftImage(MagickWand *wand,
   const double factor)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickBlueShiftImage(
    MagickWandPointer $wand,
    double $factor
@@ -377,7 +377,7 @@ MagickBlueShiftImage() mutes the colors of the image to simulate a scene at nigh
 ### MagickBlurImage
 - C:
 
-```
+```C
 MagickBooleanType MagickBlurImage(MagickWand *wand,const double radius,
   const double sigma)
 MagickBooleanType MagickBlurImageChannel(MagickWand *wand,
@@ -385,7 +385,7 @@ MagickBooleanType MagickBlurImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickBlurImage(
    MagickWandPointer $wand,
    double $radius,
@@ -412,14 +412,14 @@ MagickBlurImage() blurs an image.  We convolve the image with a gaussian operato
 ### MagickBorderImage
 - C:
 
-```
+```C
 MagickBooleanType MagickBorderImage(MagickWand *wand,
   const PixelWand *bordercolor,const size_t width,
   const size_t height)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickBorderImage(
    MagickWandPointer $wand,
    PixelWandPointer $bordercolor,
@@ -436,7 +436,7 @@ MagickBorderImage() surrounds the image with a border of the color defined by th
 ### Use_MagickBrightnessContrastImage
 - C:
 
-```
+```C
 MagickBooleanType MagickBrightnessContrastImage(MagickWand *wand,
   const double brightness,const double contrast)
 MagickBooleanType MagickBrightnessContrastImageChannel(MagickWand *wand,
@@ -445,7 +445,7 @@ MagickBooleanType MagickBrightnessContrastImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickBrightnessContrastImage(
    MagickWandPointer $wand,
    double $brightness,
@@ -472,13 +472,13 @@ Use MagickBrightnessContrastImage() to change the brightness and/or contrast of 
 ### MagickCharcoalImage
 - C:
 
-```
+```C
 MagickBooleanType MagickCharcoalImage(MagickWand *wand,
   const double radius,const double sigma)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCharcoalImage(
    MagickWandPointer $wand,
    double $radius,
@@ -494,13 +494,13 @@ MagickCharcoalImage() simulates a charcoal drawing.- wand: the magick wand. - ra
 ### MagickChopImage
 - C:
 
-```
+```C
 MagickBooleanType MagickChopImage(MagickWand *wand,const size_t width,
   const size_t height,const ssize_t x,const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickChopImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -518,14 +518,14 @@ MagickChopImage() removes a region of an image and collapses the image to occupy
 ### MagickClampImage
 - C:
 
-```
+```C
 MagickBooleanType MagickClampImage(MagickWand *wand)
 MagickBooleanType MagickClampImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickClampImage(
    MagickWandPointer $wand
 )
@@ -548,12 +548,12 @@ MagickClampImage() restricts the color range from 0 to the quantum depth.- wand:
 ### MagickClipImage
 - C:
 
-```
+```C
 MagickBooleanType MagickClipImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickClipImage(
    MagickWandPointer $wand
 )
@@ -567,13 +567,13 @@ MagickClipImage() clips along the first path from the 8BIM profile, if present.-
 ### MagickClipImagePath
 - C:
 
-```
+```C
 MagickBooleanType MagickClipImagePath(MagickWand *wand,
   const char *pathname,const MagickBooleanType inside)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickClipImagePath(
    MagickWandPointer $wand,
    Str $pathname,
@@ -589,7 +589,7 @@ MagickClipImagePath() clips along the named paths from the 8BIM profile, if pres
 ### MagickClutImage
 - C:
 
-```
+```C
 MagickBooleanType MagickClutImage(MagickWand *wand,
   const MagickWand *clut_wand)
 MagickBooleanType MagickClutImageChannel(MagickWand *wand,
@@ -597,7 +597,7 @@ MagickBooleanType MagickClutImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickClutImage(
    MagickWandPointer $wand,
    MagickWandPointer $clut_wand
@@ -622,12 +622,12 @@ MagickClutImage() replaces colors in the image from a color lookup table.- wand:
 ### MagickCoalesceImages
 - C:
 
-```
+```C
 MagickWand *MagickCoalesceImages(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCoalesceImages(
    MagickWandPointer $wand
 )
@@ -641,13 +641,13 @@ MagickCoalesceImages() composites a set of images while respecting any page offs
 ### MagickColorDecisionListImage
 - C:
 
-```
+```C
 MagickBooleanType MagickColorDecisionListImage(MagickWand *wand,
   const char *color_correction_collection)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickColorDecisionListImage(
    MagickWandPointer $wand,
    Str $color_correction_collection
@@ -662,13 +662,13 @@ MagickColorDecisionListImage() accepts a lightweight Color Correction Collection
 ### MagickColorizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickColorizeImage(MagickWand *wand,
   const PixelWand *colorize,const PixelWand *opacity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickColorizeImage(
    MagickWandPointer $wand,
    PixelWandPointer $colorize,
@@ -684,13 +684,13 @@ MagickColorizeImage() blends the fill color with each pixel in the image.- wand:
 ### MagickColorMatrixImage
 - C:
 
-```
+```C
 MagickBooleanType MagickColorMatrixImage(MagickWand *wand,
   const KernelInfo *color_matrix)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickColorMatrixImage(
    MagickWandPointer $wand,
    KernelInfo * $color_matrix
@@ -705,13 +705,13 @@ MagickColorMatrixImage() apply color transformation to an image. The method perm
 ### MagickCombineImages
 - C:
 
-```
+```C
 MagickWand *MagickCombineImages(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCombineImages(
    MagickWandPointer $wand,
    ChannelType $channel
@@ -726,13 +726,13 @@ MagickCombineImages() combines one or more images into a single image.  The gray
 ### MagickCommentImage
 - C:
 
-```
+```C
 MagickBooleanType MagickCommentImage(MagickWand *wand,
   const char *comment)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCommentImage(
    MagickWandPointer $wand,
    Str $comment
@@ -747,14 +747,14 @@ MagickCommentImage() adds a comment to your image.- wand: the magick wand. - com
 ### MagickCompareImageChannels
 - C:
 
-```
+```C
 MagickWand *MagickCompareImageChannels(MagickWand *wand,
   const MagickWand *reference,const ChannelType channel,
   const MetricType metric,double *distortion)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompareImageChannels(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -772,13 +772,13 @@ MagickCompareImageChannels() compares one or more image channels of an image to 
 ### MagickCompareImageLayers
 - C:
 
-```
+```C
 MagickWand *MagickCompareImageLayers(MagickWand *wand,
   const ImageLayerMethod method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompareImageLayers(
    MagickWandPointer $wand,
    ImageLayerMethod $method
@@ -793,13 +793,13 @@ MagickCompareImageLayers() compares each image with the next in a sequence and r
 ### MagickCompareImages
 - C:
 
-```
+```C
 MagickWand *MagickCompareImages(MagickWand *wand,
   const MagickWand *reference,const MetricType metric,double *distortion)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompareImages(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -816,7 +816,7 @@ MagickCompareImages() compares an image to a reconstructed image and returns the
 ### MagickCompositeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickCompositeImage(MagickWand *wand,
   const MagickWand *source_wand,const CompositeOperator compose,
   const ssize_t x,const ssize_t y)
@@ -826,7 +826,7 @@ MagickBooleanType MagickCompositeImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompositeImage(
    MagickWandPointer $wand,
    MagickWandPointer $source_wand,
@@ -857,14 +857,14 @@ MagickCompositeImage() composite one image onto another at the specified offset.
 ### MagickCompositeImageGravity
 - C:
 
-```
+```C
 MagickBooleanType MagickCompositeImageGravity(MagickWand *wand,
   const MagickWand *source_wand,const CompositeOperator compose,
   const GravityType gravity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompositeImageGravity(
    MagickWandPointer $wand,
    MagickWandPointer $source_wand,
@@ -881,14 +881,14 @@ MagickCompositeImageGravity() composite one image onto another using the specifi
 ### MagickCompositeLayers
 - C:
 
-```
+```C
 MagickBooleanType MagickCompositeLayers(MagickWand *wand,
   const MagickWand *source_wand, const CompositeOperator compose,
   const ssize_t x,const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCompositeLayers(
    MagickWandPointer $wand,
    MagickWandPointer $source_wand,
@@ -906,13 +906,13 @@ MagickCompositeLayers() composite the images in the source wand over the images 
 ### MagickContrastImage
 - C:
 
-```
+```C
 MagickBooleanType MagickContrastImage(MagickWand *wand,
   const MagickBooleanType sharpen)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickContrastImage(
    MagickWandPointer $wand,
    uint32 $sharpen
@@ -927,7 +927,7 @@ MagickContrastImage() enhances the intensity differences between the lighter and
 ### MagickContrastStretchImage
 - C:
 
-```
+```C
 MagickBooleanType MagickContrastStretchImage(MagickWand *wand,
   const double black_point,const double white_point)
 MagickBooleanType MagickContrastStretchImageChannel(MagickWand *wand,
@@ -936,7 +936,7 @@ MagickBooleanType MagickContrastStretchImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickContrastStretchImage(
    MagickWandPointer $wand,
    double $black_point,
@@ -963,7 +963,7 @@ MagickContrastStretchImage() enhances the contrast of a color image by adjusting
 ### MagickConvolveImage
 - C:
 
-```
+```C
 MagickBooleanType MagickConvolveImage(MagickWand *wand,
   const size_t order,const double *kernel)
 MagickBooleanType MagickConvolveImageChannel(MagickWand *wand,
@@ -972,7 +972,7 @@ MagickBooleanType MagickConvolveImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickConvolveImage(
    MagickWandPointer $wand,
    int32 $order,
@@ -999,13 +999,13 @@ MagickConvolveImage() applies a custom convolution kernel to the image.- wand: t
 ### MagickCropImage
 - C:
 
-```
+```C
 MagickBooleanType MagickCropImage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCropImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -1023,13 +1023,13 @@ MagickCropImage() extracts a region of the image.- wand: the magick wand. - widt
 ### MagickCycleColormapImage
 - C:
 
-```
+```C
 MagickBooleanType MagickCycleColormapImage(MagickWand *wand,
   const ssize_t displace)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickCycleColormapImage(
    MagickWandPointer $wand,
    sint32 $displace
@@ -1044,14 +1044,14 @@ MagickCycleColormapImage() displaces an image's colormap by a given number of po
 ### MagickConstituteImage
 - C:
 
-```
+```C
 MagickBooleanType MagickConstituteImage(MagickWand *wand,
   const size_t columns,const size_t rows,const char *map,
   const StorageType storage,void *pixels)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickConstituteImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -1070,13 +1070,13 @@ MagickConstituteImage() adds an image to the wand comprised of the pixel data yo
 ### MagickDecipherImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDecipherImage(MagickWand *wand,
   const char *passphrase)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDecipherImage(
    MagickWandPointer $wand,
    Str $passphrase
@@ -1091,12 +1091,12 @@ MagickDecipherImage() converts cipher pixels to plain pixels.- wand: the magick 
 ### MagickDeconstructImages
 - C:
 
-```
+```C
 MagickWand *MagickDeconstructImages(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDeconstructImages(
    MagickWandPointer $wand
 )
@@ -1110,13 +1110,13 @@ MagickDeconstructImages() compares each image with the next in a sequence and re
 ### MagickDeskewImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDeskewImage(MagickWand *wand,
   const double threshold)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDeskewImage(
    MagickWandPointer $wand,
    double $threshold
@@ -1131,12 +1131,12 @@ MagickDeskewImage() removes skew from the image.  Skew is an artifact that occur
 ### MagickDespeckleImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDespeckleImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDespeckleImage(
    MagickWandPointer $wand
 )
@@ -1150,12 +1150,12 @@ MagickDespeckleImage() reduces the speckle noise in an image while perserving th
 ### MagickDestroyImage
 - C:
 
-```
+```C
 Image *MagickDestroyImage(Image *image)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDestroyImage(
    Image * $image
 )
@@ -1169,13 +1169,13 @@ MagickDestroyImage() dereferences an image, deallocating memory associated with 
 ### MagickDisplayImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDisplayImage(MagickWand *wand,
   const char *server_name)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDisplayImage(
    MagickWandPointer $wand,
    Str $server_name
@@ -1190,13 +1190,13 @@ MagickDisplayImage() displays an image.- wand: the magick wand. - server_name: t
 ### MagickDisplayImages
 - C:
 
-```
+```C
 MagickBooleanType MagickDisplayImages(MagickWand *wand,
   const char *server_name)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDisplayImages(
    MagickWandPointer $wand,
    Str $server_name
@@ -1211,14 +1211,14 @@ MagickDisplayImages() displays an image or image sequence.- wand: the magick wan
 ### MagickDistortImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDistortImage(MagickWand *wand,
   const DistortImageMethod method,const size_t number_arguments,
   const double *arguments,const MagickBooleanType bestfit)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDistortImage(
    MagickWandPointer $wand,
    DistortImageMethod $method,
@@ -1236,13 +1236,13 @@ MagickDistortImage() distorts an image using various distortion methods, by mapp
 ### MagickDrawImage
 - C:
 
-```
+```C
 MagickBooleanType MagickDrawImage(MagickWand *wand,
   const DrawingWand *drawing_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickDrawImage(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand
@@ -1257,12 +1257,12 @@ MagickDrawImage() renders the drawing wand on the current image.- wand: the magi
 ### MagickEdgeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEdgeImage(MagickWand *wand,const double radius)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEdgeImage(
    MagickWandPointer $wand,
    double $radius
@@ -1277,13 +1277,13 @@ MagickEdgeImage() enhance edges within the image with a convolution filter of th
 ### MagickEmbossImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEmbossImage(MagickWand *wand,const double radius,
   const double sigma)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEmbossImage(
    MagickWandPointer $wand,
    double $radius,
@@ -1299,13 +1299,13 @@ MagickEmbossImage() returns a grayscale image with a three-dimensional effect.  
 ### MagickEncipherImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEncipherImage(MagickWand *wand,
   const char *passphrase)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEncipherImage(
    MagickWandPointer $wand,
    Str $passphrase
@@ -1320,12 +1320,12 @@ MagickEncipherImage() converts plaint pixels to cipher pixels.- wand: the magick
 ### MagickEnhanceImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEnhanceImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEnhanceImage(
    MagickWandPointer $wand
 )
@@ -1339,14 +1339,14 @@ MagickEnhanceImage() applies a digital filter that improves the quality of a noi
 ### MagickEqualizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEqualizeImage(MagickWand *wand)
 MagickBooleanType MagickEqualizeImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEqualizeImage(
    MagickWandPointer $wand
 )
@@ -1369,7 +1369,7 @@ MagickEqualizeImage() equalizes the image histogram.- wand: the magick wand. - c
 ### MagickEvaluateImage
 - C:
 
-```
+```C
 MagickBooleanType MagickEvaluateImage(MagickWand *wand,
   const MagickEvaluateOperator operator,const double value)
 MagickBooleanType MagickEvaluateImages(MagickWand *wand,
@@ -1380,7 +1380,7 @@ MagickBooleanType MagickEvaluateImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickEvaluateImage(
    MagickWandPointer $wand,
    MagickEvaluateOperator $operator,
@@ -1416,7 +1416,7 @@ MagickEvaluateImage() applys an arithmetic, relational, or logical expression to
 ### MagickExportImagePixels
 - C:
 
-```
+```C
 MagickBooleanType MagickExportImagePixels(MagickWand *wand,
   const ssize_t x,const ssize_t y,const size_t columns,
   const size_t rows,const char *map,const StorageType storage,
@@ -1424,7 +1424,7 @@ MagickBooleanType MagickExportImagePixels(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickExportImagePixels(
    MagickWandPointer $wand,
    sint32 $x,
@@ -1445,13 +1445,13 @@ MagickExportImagePixels() extracts pixel data from an image and returns it to yo
 ### MagickExtentImage
 - C:
 
-```
+```C
 MagickBooleanType MagickExtentImage(MagickWand *wand,const size_t width,
   const size_t height,const ssize_t x,const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickExtentImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -1469,7 +1469,7 @@ MagickExtentImage() extends the image as defined by the geometry, gravity, and w
 ### MagickFilterImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFilterImage(MagickWand *wand,
   const KernelInfo *kernel)
 MagickBooleanType MagickFilterImageChannel(MagickWand *wand,
@@ -1477,7 +1477,7 @@ MagickBooleanType MagickFilterImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFilterImage(
    MagickWandPointer $wand,
    KernelInfo * $kernel
@@ -1502,12 +1502,12 @@ MagickFilterImage() applies a custom convolution kernel to the image.- wand: the
 ### MagickFlipImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFlipImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFlipImage(
    MagickWandPointer $wand
 )
@@ -1521,7 +1521,7 @@ MagickFlipImage() creates a vertical mirror image by reflecting the pixels aroun
 ### MagickFloodfillPaintImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFloodfillPaintImage(MagickWand *wand,
   const ChannelType channel,const PixelWand *fill,const double fuzz,
   const PixelWand *bordercolor,const ssize_t x,const ssize_t y,
@@ -1529,7 +1529,7 @@ MagickBooleanType MagickFloodfillPaintImage(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFloodfillPaintImage(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -1550,12 +1550,12 @@ MagickFloodfillPaintImage() changes the color value of any pixel that matches ta
 ### MagickFlopImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFlopImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFlopImage(
    MagickWandPointer $wand
 )
@@ -1569,13 +1569,13 @@ MagickFlopImage() creates a horizontal mirror image by reflecting the pixels aro
 ### MagickForwardFourierTransformImage
 - C:
 
-```
+```C
 MagickBooleanType MagickForwardFourierTransformImage(MagickWand *wand,
   const MagickBooleanType magnitude)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickForwardFourierTransformImage(
    MagickWandPointer $wand,
    uint32 $magnitude
@@ -1590,7 +1590,7 @@ MagickForwardFourierTransformImage() implements the discrete Fourier transform (
 ### MagickFrameImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFrameImage(MagickWand *wand,
   const PixelWand *matte_color,const size_t width,
   const size_t height,const ssize_t inner_bevel,
@@ -1598,7 +1598,7 @@ MagickBooleanType MagickFrameImage(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFrameImage(
    MagickWandPointer $wand,
    PixelWandPointer $matte_color,
@@ -1617,7 +1617,7 @@ MagickFrameImage() adds a simulated three-dimensional border around the image.  
 ### MagickFunctionImage
 - C:
 
-```
+```C
 MagickBooleanType MagickFunctionImage(MagickWand *wand,
   const MagickFunction function,const size_t number_arguments,
   const double *arguments)
@@ -1627,7 +1627,7 @@ MagickBooleanType MagickFunctionImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFunctionImage(
    MagickWandPointer $wand,
    MagickFunction $function,
@@ -1656,14 +1656,14 @@ MagickFunctionImage() applys an arithmetic, relational, or logical expression to
 ### MagickFxImage
 - C:
 
-```
+```C
 MagickWand *MagickFxImage(MagickWand *wand,const char *expression)
 MagickWand *MagickFxImageChannel(MagickWand *wand,
   const ChannelType channel,const char *expression)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickFxImage(
    MagickWandPointer $wand,
    Str $expression
@@ -1688,14 +1688,14 @@ MagickFxImage() evaluate expression for each pixel in the image.- wand: the magi
 ### MagickGammaImage
 - C:
 
-```
+```C
 MagickBooleanType MagickGammaImage(MagickWand *wand,const double gamma)
 MagickBooleanType MagickGammaImageChannel(MagickWand *wand,
   const ChannelType channel,const double gamma)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGammaImage(
    MagickWandPointer $wand,
    double $gamma
@@ -1720,7 +1720,7 @@ MagickGammaImage() gamma-corrects an image.  The same image viewed on different 
 ### MagickGaussianBlurImage
 - C:
 
-```
+```C
 MagickBooleanType MagickGaussianBlurImage(MagickWand *wand,
   const double radius,const double sigma)
 MagickBooleanType MagickGaussianBlurImageChannel(MagickWand *wand,
@@ -1728,7 +1728,7 @@ MagickBooleanType MagickGaussianBlurImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGaussianBlurImage(
    MagickWandPointer $wand,
    double $radius,
@@ -1755,12 +1755,12 @@ MagickGaussianBlurImage() blurs an image.  We convolve the image with a Gaussian
 ### MagickGetImage
 - C:
 
-```
+```C
 MagickWand *MagickGetImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImage(
    MagickWandPointer $wand
 )
@@ -1774,12 +1774,12 @@ MagickGetImage() gets the image at the current image index.- wand: the magick wa
 ### MagickGetImageAlphaChannel
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageAlphaChannel(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageAlphaChannel(
    MagickWandPointer $wand
 )
@@ -1793,12 +1793,12 @@ MagickGetImageAlphaChannel() returns MagickFalse if the image alpha channel is n
 ### MagickGetImageClipMask
 - C:
 
-```
+```C
 MagickWand *MagickGetImageClipMask(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageClipMask(
    MagickWandPointer $wand
 )
@@ -1812,13 +1812,13 @@ MagickGetImageClipMask() gets the image clip mask at the current image index.- w
 ### MagickGetImageBackgroundColor
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageBackgroundColor(MagickWand *wand,
   PixelWand *background_color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageBackgroundColor(
    MagickWandPointer $wand,
    PixelWandPointer $background_color
@@ -1833,12 +1833,12 @@ MagickGetImageBackgroundColor() returns the image background color.- wand: the m
 ### MagickGetImageBlob
 - C:
 
-```
+```C
 unsigned char *MagickGetImageBlob(MagickWand *wand,size_t *length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageBlob(
    MagickWandPointer $wand,
    Pointer[int32] $length
@@ -1853,12 +1853,12 @@ MagickGetImageBlob() implements direct to memory image formats.  It returns the 
 ### MagickGetImageBlob
 - C:
 
-```
+```C
 unsigned char *MagickGetImagesBlob(MagickWand *wand,size_t *length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImagesBlob(
    MagickWandPointer $wand,
    Pointer[int32] $length
@@ -1873,13 +1873,13 @@ MagickGetImageBlob() implements direct to memory image formats.  It returns the 
 ### MagickGetImageBluePrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageBluePrimary(MagickWand *wand,double *x,
   double *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageBluePrimary(
    MagickWandPointer $wand,
    num64* $x,
@@ -1895,13 +1895,13 @@ MagickGetImageBluePrimary() returns the chromaticy blue primary point for the im
 ### MagickGetImageBorderColor
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageBorderColor(MagickWand *wand,
   PixelWand *border_color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageBorderColor(
    MagickWandPointer $wand,
    PixelWandPointer $border_color
@@ -1916,13 +1916,13 @@ MagickGetImageBorderColor() returns the image border color.- wand: the magick wa
 ### MagickGetImageChannelDepth
 - C:
 
-```
+```C
 size_t MagickGetImageChannelDepth(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelDepth(
    MagickWandPointer $wand,
    ChannelType $channel
@@ -1937,14 +1937,14 @@ MagickGetImageChannelDepth() gets the depth for one or more image channels.- wan
 ### MagickGetImageChannelDistortion
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageChannelDistortion(MagickWand *wand,
   const MagickWand *reference,const ChannelType channel,
   const MetricType metric,double *distortion)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelDistortion(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -1962,13 +1962,13 @@ MagickGetImageChannelDistortion() compares one or more image channels of an imag
 ### MagickGetImageChannelDistortions
 - C:
 
-```
+```C
 double *MagickGetImageChannelDistortion(MagickWand *wand,
   const MagickWand *reference,const MetricType metric)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelDistortion(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -1984,13 +1984,13 @@ MagickGetImageChannelDistortions() compares one or more image channels of an ima
 ### MagickGetImageChannelFeatures
 - C:
 
-```
+```C
 ChannelFeatures *MagickGetImageChannelFeatures(MagickWand *wand,
   const size_t distance)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelFeatures(
    MagickWandPointer $wand,
    int32 $distance
@@ -2005,13 +2005,13 @@ MagickGetImageChannelFeatures() returns features for each channel in the image i
 ### MagickGetImageChannelKurtosis
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageChannelKurtosis(MagickWand *wand,
   const ChannelType channel,double *kurtosis,double *skewness)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelKurtosis(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -2028,13 +2028,13 @@ MagickGetImageChannelKurtosis() gets the kurtosis and skewness of one or more im
 ### MagickGetImageChannelMean
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageChannelMean(MagickWand *wand,
   const ChannelType channel,double *mean,double *standard_deviation)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelMean(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -2051,13 +2051,13 @@ MagickGetImageChannelMean() gets the mean and standard deviation of one or more 
 ### MagickGetImageChannelRange
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageChannelRange(MagickWand *wand,
   const ChannelType channel,double *minima,double *maxima)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelRange(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -2074,12 +2074,12 @@ MagickGetImageChannelRange() gets the range for one or more image channels.- wan
 ### MagickGetImageChannelStatistics
 - C:
 
-```
+```C
 ChannelStatistics *MagickGetImageChannelStatistics(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageChannelStatistics(
    MagickWandPointer $wand
 )
@@ -2093,13 +2093,13 @@ MagickGetImageChannelStatistics() returns statistics for each channel in the ima
 ### MagickGetImageColormapColor
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageColormapColor(MagickWand *wand,
   const size_t index,PixelWand *color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageColormapColor(
    MagickWandPointer $wand,
    int32 $index,
@@ -2115,12 +2115,12 @@ MagickGetImageColormapColor() returns the color of the specified colormap index.
 ### MagickGetImageColors
 - C:
 
-```
+```C
 size_t MagickGetImageColors(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageColors(
    MagickWandPointer $wand
 )
@@ -2134,12 +2134,12 @@ MagickGetImageColors() gets the number of unique colors in the image.- wand: the
 ### MagickGetImageColorspace
 - C:
 
-```
+```C
 ColorspaceType MagickGetImageColorspace(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageColorspace(
    MagickWandPointer $wand
 )
@@ -2153,12 +2153,12 @@ MagickGetImageColorspace() gets the image colorspace.- wand: the magick wand.
 ### MagickGetImageCompose
 - C:
 
-```
+```C
 CompositeOperator MagickGetImageCompose(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageCompose(
    MagickWandPointer $wand
 )
@@ -2172,12 +2172,12 @@ MagickGetImageCompose() returns the composite operator associated with the image
 ### MagickGetImageCompression
 - C:
 
-```
+```C
 CompressionType MagickGetImageCompression(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageCompression(
    MagickWandPointer $wand
 )
@@ -2191,12 +2191,12 @@ MagickGetImageCompression() gets the image compression.- wand: the magick wand.
 ### MagickGetImageCompressionQuality
 - C:
 
-```
+```C
 size_t MagickGetImageCompressionQuality(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageCompressionQuality(
    MagickWandPointer $wand
 )
@@ -2210,12 +2210,12 @@ MagickGetImageCompressionQuality() gets the image compression quality.- wand: th
 ### MagickGetImageDelay
 - C:
 
-```
+```C
 size_t MagickGetImageDelay(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageDelay(
    MagickWandPointer $wand
 )
@@ -2229,12 +2229,12 @@ MagickGetImageDelay() gets the image delay.- wand: the magick wand.
 ### MagickGetImageDepth
 - C:
 
-```
+```C
 size_t MagickGetImageDepth(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageDepth(
    MagickWandPointer $wand
 )
@@ -2248,14 +2248,14 @@ MagickGetImageDepth() gets the image depth.- wand: the magick wand.
 ### MagickGetImageDistortion
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageDistortion(MagickWand *wand,
   const MagickWand *reference,const MetricType metric,
   double *distortion)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageDistortion(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -2272,12 +2272,12 @@ MagickGetImageDistortion() compares an image to a reconstructed image and return
 ### MagickGetImageDispose
 - C:
 
-```
+```C
 DisposeType MagickGetImageDispose(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageDispose(
    MagickWandPointer $wand
 )
@@ -2291,12 +2291,12 @@ MagickGetImageDispose() gets the image disposal method.- wand: the magick wand.
 ### MagickGetImageEndian
 - C:
 
-```
+```C
 EndianType MagickGetImageEndian(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageEndian(
    MagickWandPointer $wand
 )
@@ -2310,12 +2310,12 @@ MagickGetImageEndian() gets the image endian.- wand: the magick wand.
 ### MagickGetImageFilename
 - C:
 
-```
+```C
 char *MagickGetImageFilename(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageFilename(
    MagickWandPointer $wand
 )
@@ -2329,12 +2329,12 @@ MagickGetImageFilename() returns the filename of a particular image in a sequenc
 ### MagickGetImageFormat
 - C:
 
-```
+```C
 char *MagickGetImageFormat(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageFormat(
    MagickWandPointer $wand
 )
@@ -2348,12 +2348,12 @@ MagickGetImageFormat() returns the format of a particular image in a sequence.- 
 ### MagickGetImageFuzz
 - C:
 
-```
+```C
 double MagickGetImageFuzz(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageFuzz(
    MagickWandPointer $wand
 )
@@ -2367,12 +2367,12 @@ MagickGetImageFuzz() gets the image fuzz.- wand: the magick wand.
 ### MagickGetImageGamma
 - C:
 
-```
+```C
 double MagickGetImageGamma(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageGamma(
    MagickWandPointer $wand
 )
@@ -2386,12 +2386,12 @@ MagickGetImageGamma() gets the image gamma.- wand: the magick wand.
 ### MagickGetImageGravity
 - C:
 
-```
+```C
 GravityType MagickGetImageGravity(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageGravity(
    MagickWandPointer $wand
 )
@@ -2405,13 +2405,13 @@ MagickGetImageGravity() gets the image gravity.- wand: the magick wand.
 ### MagickGetImageGreenPrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageGreenPrimary(MagickWand *wand,double *x,
   double *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageGreenPrimary(
    MagickWandPointer $wand,
    num64* $x,
@@ -2427,12 +2427,12 @@ MagickGetImageGreenPrimary() returns the chromaticy green primary point.- wand: 
 ### MagickGetImageHeight
 - C:
 
-```
+```C
 size_t MagickGetImageHeight(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageHeight(
    MagickWandPointer $wand
 )
@@ -2446,13 +2446,13 @@ MagickGetImageHeight() returns the image height.- wand: the magick wand.
 ### MagickGetImageHistogram
 - C:
 
-```
+```C
 PixelWand **MagickGetImageHistogram(MagickWand *wand,
   size_t *number_colors)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageHistogram(
    MagickWandPointer $wand,
    Pointer[int32] $number_colors
@@ -2467,12 +2467,12 @@ MagickGetImageHistogram() returns the image histogram as an array of PixelWand w
 ### MagickGetImageInterlaceScheme
 - C:
 
-```
+```C
 InterlaceType MagickGetImageInterlaceScheme(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageInterlaceScheme(
    MagickWandPointer $wand
 )
@@ -2486,12 +2486,12 @@ MagickGetImageInterlaceScheme() gets the image interlace scheme.- wand: the magi
 ### MagickGetImageInterpolateMethod
 - C:
 
-```
+```C
 InterpolatePixelMethod MagickGetImageInterpolateMethod(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageInterpolateMethod(
    MagickWandPointer $wand
 )
@@ -2505,12 +2505,12 @@ MagickGetImageInterpolateMethod() returns the interpolation method for the sepci
 ### MagickGetImageIterations
 - C:
 
-```
+```C
 size_t MagickGetImageIterations(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageIterations(
    MagickWandPointer $wand
 )
@@ -2524,13 +2524,13 @@ MagickGetImageIterations() gets the image iterations.- wand: the magick wand.
 ### MagickGetImageLength
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageLength(MagickWand *wand,
   MagickSizeType *length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageLength(
    MagickWandPointer $wand,
    MagickSizeType * $length
@@ -2545,13 +2545,13 @@ MagickGetImageLength() returns the image length in bytes.- wand: the magick wand
 ### MagickGetImageMatteColor
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImagematteColor(MagickWand *wand,
   PixelWand *matte_color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImagematteColor(
    MagickWandPointer $wand,
    PixelWandPointer $matte_color
@@ -2566,12 +2566,12 @@ MagickGetImageMatteColor() returns the image matte color.- wand: the magick wand
 ### MagickGetImageOrientation
 - C:
 
-```
+```C
 OrientationType MagickGetImageOrientation(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageOrientation(
    MagickWandPointer $wand
 )
@@ -2585,13 +2585,13 @@ MagickGetImageOrientation() returns the image orientation.- wand: the magick wan
 ### MagickGetImagePage
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImagePage(MagickWand *wand,
   size_t *width,size_t *height,ssize_t *x,ssize_t *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImagePage(
    MagickWandPointer $wand,
    Pointer[int32] $width,
@@ -2609,13 +2609,13 @@ MagickGetImagePage() returns the page geometry associated with the image.- wand:
 ### MagickGetImagePixelColor
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImagePixelColor(MagickWand *wand,
   const ssize_t x,const ssize_t y,PixelWand *color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImagePixelColor(
    MagickWandPointer $wand,
    sint32 $x,
@@ -2632,13 +2632,13 @@ MagickGetImagePixelColor() returns the color of the specified pixel.- wand: the 
 ### MagickGetImageRedPrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageRedPrimary(MagickWand *wand,double *x,
   double *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageRedPrimary(
    MagickWandPointer $wand,
    num64* $x,
@@ -2654,14 +2654,14 @@ MagickGetImageRedPrimary() returns the chromaticy red primary point.- wand: the 
 ### MagickGetImageRegion
 - C:
 
-```
+```C
 MagickWand *MagickGetImageRegion(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,
   const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageRegion(
    MagickWandPointer $wand,
    int32 $width,
@@ -2679,12 +2679,12 @@ MagickGetImageRegion() extracts a region of the image and returns it as a a new 
 ### MagickGetImageRenderingIntent
 - C:
 
-```
+```C
 RenderingIntent MagickGetImageRenderingIntent(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageRenderingIntent(
    MagickWandPointer $wand
 )
@@ -2698,13 +2698,13 @@ MagickGetImageRenderingIntent() gets the image rendering intent.- wand: the magi
 ### MagickGetImageResolution
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageResolution(MagickWand *wand,double *x,
   double *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageResolution(
    MagickWandPointer $wand,
    num64* $x,
@@ -2720,12 +2720,12 @@ MagickGetImageResolution() gets the image X and Y resolution.- wand: the magick 
 ### MagickGetImageScene
 - C:
 
-```
+```C
 size_t MagickGetImageScene(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageScene(
    MagickWandPointer $wand
 )
@@ -2739,12 +2739,12 @@ MagickGetImageScene() gets the image scene.- wand: the magick wand.
 ### MagickGetImageSignature
 - C:
 
-```
+```C
 char *MagickGetImageSignature(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageSignature(
    MagickWandPointer $wand
 )
@@ -2758,12 +2758,12 @@ MagickGetImageSignature() generates an SHA-256 message digest for the image pixe
 ### MagickGetImageTicksPerSecond
 - C:
 
-```
+```C
 size_t MagickGetImageTicksPerSecond(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageTicksPerSecond(
    MagickWandPointer $wand
 )
@@ -2777,12 +2777,12 @@ MagickGetImageTicksPerSecond() gets the image ticks-per-second.- wand: the magic
 ### MagickGetImageType
 - C:
 
-```
+```C
 ImageType MagickGetImageType(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageType(
    MagickWandPointer $wand
 )
@@ -2796,12 +2796,12 @@ MagickGetImageType() gets the potential image type:Bilevel        Grayscale     
 ### MagickGetImageUnits
 - C:
 
-```
+```C
 ResolutionType MagickGetImageUnits(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageUnits(
    MagickWandPointer $wand
 )
@@ -2815,12 +2815,12 @@ MagickGetImageUnits() gets the image units of resolution.- wand: the magick wand
 ### MagickGetImageVirtualPixelMethod
 - C:
 
-```
+```C
 VirtualPixelMethod MagickGetImageVirtualPixelMethod(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageVirtualPixelMethod(
    MagickWandPointer $wand
 )
@@ -2834,13 +2834,13 @@ MagickGetImageVirtualPixelMethod() returns the virtual pixel method for the sepc
 ### MagickGetImageWhitePoint
 - C:
 
-```
+```C
 MagickBooleanType MagickGetImageWhitePoint(MagickWand *wand,double *x,
   double *y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageWhitePoint(
    MagickWandPointer $wand,
    num64* $x,
@@ -2856,12 +2856,12 @@ MagickGetImageWhitePoint() returns the chromaticy white point.- wand: the magick
 ### MagickGetImageWidth
 - C:
 
-```
+```C
 size_t MagickGetImageWidth(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageWidth(
    MagickWandPointer $wand
 )
@@ -2875,12 +2875,12 @@ MagickGetImageWidth() returns the image width.- wand: the magick wand.
 ### MagickGetNumberImages
 - C:
 
-```
+```C
 size_t MagickGetNumberImages(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetNumberImages(
    MagickWandPointer $wand
 )
@@ -2894,12 +2894,12 @@ MagickGetNumberImages() returns the number of images associated with a magick wa
 ### MagickGetImageTotalInkDensity
 - C:
 
-```
+```C
 double MagickGetImageTotalInkDensity(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickGetImageTotalInkDensity(
    MagickWandPointer $wand
 )
@@ -2913,7 +2913,7 @@ MagickGetImageTotalInkDensity() gets the image total ink density.- wand: the mag
 ### MagickHaldClutImage
 - C:
 
-```
+```C
 MagickBooleanType MagickHaldClutImage(MagickWand *wand,
   const MagickWand *hald_wand)
 MagickBooleanType MagickHaldClutImageChannel(MagickWand *wand,
@@ -2921,7 +2921,7 @@ MagickBooleanType MagickHaldClutImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickHaldClutImage(
    MagickWandPointer $wand,
    MagickWandPointer $hald_wand
@@ -2946,12 +2946,12 @@ MagickHaldClutImage() replaces colors in the image from a Hald color lookup tabl
 ### MagickHasNextImage
 - C:
 
-```
+```C
 MagickBooleanType MagickHasNextImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickHasNextImage(
    MagickWandPointer $wand
 )
@@ -2965,12 +2965,12 @@ MagickHasNextImage() returns MagickTrue if the wand has more images when travers
 ### MagickHasPreviousImage
 - C:
 
-```
+```C
 MagickBooleanType MagickHasPreviousImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickHasPreviousImage(
    MagickWandPointer $wand
 )
@@ -2984,12 +2984,12 @@ MagickHasPreviousImage() returns MagickTrue if the wand has more images when tra
 ### MagickIdentifyImage
 - C:
 
-```
+```C
 const char *MagickIdentifyImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickIdentifyImage(
    MagickWandPointer $wand
 )
@@ -3003,13 +3003,13 @@ MagickIdentifyImage() identifies an image by printing its attributes to the file
 ### MagickImplodeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickImplodeImage(MagickWand *wand,
   const double radius)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickImplodeImage(
    MagickWandPointer $wand,
    double $radius
@@ -3024,7 +3024,7 @@ MagickImplodeImage() creates a new image that is a copy of an existing one with 
 ### MagickImportImagePixels
 - C:
 
-```
+```C
 MagickBooleanType MagickImportImagePixels(MagickWand *wand,
   const ssize_t x,const ssize_t y,const size_t columns,
   const size_t rows,const char *map,const StorageType storage,
@@ -3032,7 +3032,7 @@ MagickBooleanType MagickImportImagePixels(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickImportImagePixels(
    MagickWandPointer $wand,
    sint32 $x,
@@ -3053,14 +3053,14 @@ MagickImportImagePixels() accepts pixel datand stores it in the image at the loc
 ### MagickInverseFourierTransformImage
 - C:
 
-```
+```C
 MagickBooleanType MagickInverseFourierTransformImage(
   MagickWand *magnitude_wand,MagickWand *phase_wand,
   const MagickBooleanType magnitude)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickInverseFourierTransformImage(
    MagickWandPointer $magnitude_wand,
    MagickWandPointer $phase_wand,
@@ -3076,12 +3076,12 @@ MagickInverseFourierTransformImage() implements the inverse discrete Fourier tra
 ### MagickLabelImage
 - C:
 
-```
+```C
 MagickBooleanType MagickLabelImage(MagickWand *wand,const char *label)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickLabelImage(
    MagickWandPointer $wand,
    Str $label
@@ -3096,7 +3096,7 @@ MagickLabelImage() adds a label to your image.- wand: the magick wand. - label: 
 ### MagickLevelImage
 - C:
 
-```
+```C
 MagickBooleanType MagickLevelImage(MagickWand *wand,
   const double black_point,const double gamma,const double white_point)
 MagickBooleanType MagickLevelImageChannel(MagickWand *wand,
@@ -3105,7 +3105,7 @@ MagickBooleanType MagickLevelImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickLevelImage(
    MagickWandPointer $wand,
    double $black_point,
@@ -3134,13 +3134,13 @@ MagickLevelImage() adjusts the levels of an image by scaling the colors falling 
 ### MagickLinearStretchImage
 - C:
 
-```
+```C
 MagickBooleanType MagickLinearStretchImage(MagickWand *wand,
   const double black_point,const double white_point)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickLinearStretchImage(
    MagickWandPointer $wand,
    double $black_point,
@@ -3156,12 +3156,12 @@ MagickLinearStretchImage() stretches with saturation the image intensity.You can
 ### MagickLiquidRescaleImage
 - C:
 
-```
+```C
 MagickBooleanType MagickMagnifyImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMagnifyImage(
    MagickWandPointer $wand
 )
@@ -3175,13 +3175,13 @@ MagickLiquidRescaleImage() rescales image with seam carving.MagickBooleanType Ma
 ### MagickMergeImageLayers
 - C:
 
-```
+```C
 MagickWand *MagickMergeImageLayers(MagickWand *wand,
   const ImageLayerMethod method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMergeImageLayers(
    MagickWandPointer $wand,
    ImageLayerMethod $method
@@ -3196,12 +3196,12 @@ MagickMergeImageLayers() composes all the image layers from the current given im
 ### MagickMinifyImage
 - C:
 
-```
+```C
 MagickBooleanType MagickMinifyImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMinifyImage(
    MagickWandPointer $wand
 )
@@ -3215,13 +3215,13 @@ MagickMinifyImage() is a convenience method that scales an image proportionally 
 ### MagickModulateImage
 - C:
 
-```
+```C
 MagickBooleanType MagickModulateImage(MagickWand *wand,
   const double brightness,const double saturation,const double hue)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickModulateImage(
    MagickWandPointer $wand,
    double $brightness,
@@ -3238,7 +3238,7 @@ MagickModulateImage() lets you control the brightness, saturation, and hue of an
 ### MagickMontageImage
 - C:
 
-```
+```C
 MagickWand *MagickMontageImage(MagickWand *wand,
   const DrawingWand drawing_wand,const char *tile_geometry,
   const char *thumbnail_geometry,const MontageMode mode,
@@ -3246,7 +3246,7 @@ MagickWand *MagickMontageImage(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMontageImage(
    MagickWandPointer $wand,
    DrawingWand $drawing_wand,
@@ -3265,13 +3265,13 @@ MagickMontageImage() creates a composite image by combining several separate ima
 ### MagickMorphImages
 - C:
 
-```
+```C
 MagickWand *MagickMorphImages(MagickWand *wand,
   const size_t number_frames)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMorphImages(
    MagickWandPointer $wand,
    int32 $number_frames
@@ -3286,7 +3286,7 @@ MagickMorphImages() method morphs a set of images.  Both the image pixels and si
 ### MagickMorphologyImage
 - C:
 
-```
+```C
 MagickBooleanType MagickMorphologyImage(MagickWand *wand,
   MorphologyMethod method,const ssize_t iterations,KernelInfo *kernel)
 MagickBooleanType MagickMorphologyImageChannel(MagickWand *wand,
@@ -3295,7 +3295,7 @@ MagickBooleanType MagickMorphologyImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMorphologyImage(
    MagickWandPointer $wand,
    MorphologyMethod $method,
@@ -3324,7 +3324,7 @@ MagickMorphologyImage() applies a user supplied kernel to the image according to
 ### MagickMotionBlurImage
 - C:
 
-```
+```C
 MagickBooleanType MagickMotionBlurImage(MagickWand *wand,
   const double radius,const double sigma,const double angle)
 MagickBooleanType MagickMotionBlurImageChannel(MagickWand *wand,
@@ -3333,7 +3333,7 @@ MagickBooleanType MagickMotionBlurImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickMotionBlurImage(
    MagickWandPointer $wand,
    double $radius,
@@ -3362,7 +3362,7 @@ MagickMotionBlurImage() simulates motion blur.  We convolve the image with a Gau
 ### MagickNegateImage
 - C:
 
-```
+```C
 MagickBooleanType MagickNegateImage(MagickWand *wand,
   const MagickBooleanType gray)
 MagickBooleanType MagickNegateImageChannel(MagickWand *wand,
@@ -3370,7 +3370,7 @@ MagickBooleanType MagickNegateImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickNegateImage(
    MagickWandPointer $wand,
    uint32 $gray
@@ -3395,14 +3395,14 @@ MagickNegateImage() negates the colors in the reference image.  The Grayscale op
 ### MagickNewImage
 - C:
 
-```
+```C
 MagickBooleanType MagickNewImage(MagickWand *wand,
   const size_t columns,const size_t rows,
   const PixelWand *background)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickNewImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -3419,12 +3419,12 @@ MagickNewImage() adds a blank image canvas of the specified size and background 
 ### MagickNextImage
 - C:
 
-```
+```C
 MagickBooleanType MagickNextImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickNextImage(
    MagickWandPointer $wand
 )
@@ -3438,14 +3438,14 @@ MagickNextImage() sets the next image in the wand as the current image.It is typ
 ### MagickNormalizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickNormalizeImage(MagickWand *wand)
 MagickBooleanType MagickNormalizeImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickNormalizeImage(
    MagickWandPointer $wand
 )
@@ -3468,13 +3468,13 @@ MagickNormalizeImage() enhances the contrast of a color image by adjusting the p
 ### MagickOilPaintImage
 - C:
 
-```
+```C
 MagickBooleanType MagickOilPaintImage(MagickWand *wand,
   const double radius)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickOilPaintImage(
    MagickWandPointer $wand,
    double $radius
@@ -3489,7 +3489,7 @@ MagickOilPaintImage() applies a special effect filter that simulates an oil pain
 ### MagickOpaquePaintImage
 - C:
 
-```
+```C
 MagickBooleanType MagickOpaquePaintImage(MagickWand *wand,
   const PixelWand *target,const PixelWand *fill,const double fuzz,
   const MagickBooleanType invert)
@@ -3499,7 +3499,7 @@ MagickBooleanType MagickOpaquePaintImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickOpaquePaintImage(
    MagickWandPointer $wand,
    PixelWandPointer $target,
@@ -3530,12 +3530,12 @@ MagickOpaquePaintImage() changes any pixel that matches color with the color def
 ### MagickOptimizeImageLayers
 - C:
 
-```
+```C
 MagickWand *MagickOptimizeImageLayers(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickOptimizeImageLayers(
    MagickWandPointer $wand
 )
@@ -3549,7 +3549,7 @@ MagickOptimizeImageLayers() compares each image the GIF disposed forms of the pr
 ### MagickOptimizeImageTransparency
 - C:
 
-```
+```C
 MagickBooleanType MagickOrderedPosterizeImage(MagickWand *wand,
   const char *threshold_map)
 MagickBooleanType MagickOrderedPosterizeImageChannel(MagickWand *wand,
@@ -3557,7 +3557,7 @@ MagickBooleanType MagickOrderedPosterizeImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickOrderedPosterizeImage(
    MagickWandPointer $wand,
    Str $threshold_map
@@ -3582,12 +3582,12 @@ MagickOptimizeImageTransparency() takes a frame optimized GIF animation, and com
 ### MagickPingImage
 - C:
 
-```
+```C
 MagickBooleanType MagickPingImage(MagickWand *wand,const char *filename)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPingImage(
    MagickWandPointer $wand,
    Str $filename
@@ -3602,13 +3602,13 @@ MagickPingImage() is like MagickReadImage() except the only valid information re
 ### MagickPingImageBlob
 - C:
 
-```
+```C
 MagickBooleanType MagickPingImageBlob(MagickWand *wand,
   const void *blob,const size_t length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPingImageBlob(
    MagickWandPointer $wand,
    Pointer[void] $blob,
@@ -3624,12 +3624,12 @@ MagickPingImageBlob() pings an image or image sequence from a blob.- wand: the m
 ### MagickPingImageFile
 - C:
 
-```
+```C
 MagickBooleanType MagickPingImageFile(MagickWand *wand,FILE *file)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPingImageFile(
    MagickWandPointer $wand,
    FILE * $file
@@ -3644,13 +3644,13 @@ MagickPingImageFile() pings an image or image sequence from an open file descrip
 ### MagickPolaroidImage
 - C:
 
-```
+```C
 MagickBooleanType MagickPolaroidImage(MagickWand *wand,
   const DrawingWand *drawing_wand,const double angle)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPolaroidImage(
    MagickWandPointer $wand,
    DrawingWandPointer $drawing_wand,
@@ -3666,13 +3666,13 @@ MagickPolaroidImage() simulates a Polaroid picture.- wand: the magick wand. - dr
 ### MagickPosterizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickPosterizeImage(MagickWand *wand,
   const size_t levels,const MagickBooleanType dither)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPosterizeImage(
    MagickWandPointer $wand,
    int32 $levels,
@@ -3688,13 +3688,13 @@ MagickPosterizeImage() reduces the image to a limited number of color level.- wa
 ### MagickPreviewImages
 - C:
 
-```
+```C
 MagickWand *MagickPreviewImages(MagickWand *wand,
   const PreviewType preview)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPreviewImages(
    MagickWandPointer $wand,
    PreviewType $preview
@@ -3709,12 +3709,12 @@ MagickPreviewImages() tiles 9 thumbnails of the specified image with an image pr
 ### MagickPreviousImage
 - C:
 
-```
+```C
 MagickBooleanType MagickPreviousImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickPreviousImage(
    MagickWandPointer $wand
 )
@@ -3728,7 +3728,7 @@ MagickPreviousImage() sets the previous image in the wand as the current image.I
 ### MagickQuantizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickQuantizeImage(MagickWand *wand,
   const size_t number_colors,const ColorspaceType colorspace,
   const size_t treedepth,const MagickBooleanType dither,
@@ -3736,7 +3736,7 @@ MagickBooleanType MagickQuantizeImage(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQuantizeImage(
    MagickWandPointer $wand,
    int32 $number_colors,
@@ -3755,7 +3755,7 @@ MagickQuantizeImage() analyzes the colors within a reference image and chooses a
 ### MagickQuantizeImages
 - C:
 
-```
+```C
 MagickBooleanType MagickQuantizeImages(MagickWand *wand,
   const size_t number_colors,const ColorspaceType colorspace,
   const size_t treedepth,const MagickBooleanType dither,
@@ -3763,7 +3763,7 @@ MagickBooleanType MagickQuantizeImages(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickQuantizeImages(
    MagickWandPointer $wand,
    int32 $number_colors,
@@ -3782,14 +3782,14 @@ MagickQuantizeImages() analyzes the colors within a sequence of images and choos
 ### MagickRaiseImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRaiseImage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,
   const ssize_t y,const MagickBooleanType raise)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRaiseImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -3808,7 +3808,7 @@ MagickRaiseImage() creates a simulated three-dimensional button-like effect by l
 ### MagickRandomThresholdImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRandomThresholdImage(MagickWand *wand,
   const double low,const double high)
 MagickBooleanType MagickRandomThresholdImageChannel(MagickWand *wand,
@@ -3816,7 +3816,7 @@ MagickBooleanType MagickRandomThresholdImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRandomThresholdImage(
    MagickWandPointer $wand,
    double $low,
@@ -3843,12 +3843,12 @@ MagickRandomThresholdImage() changes the value of individual pixels based on the
 ### MagickReadImage
 - C:
 
-```
+```C
 MagickBooleanType MagickReadImage(MagickWand *wand,const char *filename)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickReadImage(
    MagickWandPointer $wand,
    Str $filename
@@ -3863,13 +3863,13 @@ MagickReadImage() reads an image or image sequence.  The images are inserted at 
 ### MagickReadImageBlob
 - C:
 
-```
+```C
 MagickBooleanType MagickReadImageBlob(MagickWand *wand,
   const void *blob,const size_t length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickReadImageBlob(
    MagickWandPointer $wand,
    Pointer[void] $blob,
@@ -3885,12 +3885,12 @@ MagickReadImageBlob() reads an image or image sequence from a blob.- wand: the m
 ### MagickReadImageFile
 - C:
 
-```
+```C
 MagickBooleanType MagickReadImageFile(MagickWand *wand,FILE *file)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickReadImageFile(
    MagickWandPointer $wand,
    FILE * $file
@@ -3905,13 +3905,13 @@ MagickReadImageFile() reads an image or image sequence from an open file descrip
 ### MagickRemapImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRemapImage(MagickWand *wand,
   const MagickWand *remap_wand,const DitherMethod method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRemapImage(
    MagickWandPointer $wand,
    MagickWandPointer $remap_wand,
@@ -3927,12 +3927,12 @@ MagickRemapImage() replaces the colors of an image with the closest color from a
 ### MagickRemoveImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRemoveImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRemoveImage(
    MagickWandPointer $wand
 )
@@ -3946,14 +3946,14 @@ MagickRemoveImage() removes an image from the image list.- wand: the magick wand
 ### MagickResampleImage
 - C:
 
-```
+```C
 MagickBooleanType MagickResampleImage(MagickWand *wand,
   const double x_resolution,const double y_resolution,
   const FilterTypes filter,const double blur)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickResampleImage(
    MagickWandPointer $wand,
    double $x_resolution,
@@ -3971,13 +3971,13 @@ MagickResampleImage() resample image to desired resolution.Bessel   Blackman   B
 ### MagickResetImagePage
 - C:
 
-```
+```C
 MagickBooleanType MagickResetImagePage(MagickWand *wand,
   const char *page)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickResetImagePage(
    MagickWandPointer $wand,
    Str $page
@@ -3992,14 +3992,14 @@ MagickResetImagePage() resets the Wand page canvas and position.- wand: the magi
 ### MagickResizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickResizeImage(MagickWand *wand,
   const size_t columns,const size_t rows,
   const FilterTypes filter,const double blur)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickResizeImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -4017,13 +4017,13 @@ MagickResizeImage() scales an image to the desired dimensions with one of these 
 ### MagickRollImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRollImage(MagickWand *wand,const ssize_t x,
   const size_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRollImage(
    MagickWandPointer $wand,
    sint32 $x,
@@ -4039,13 +4039,13 @@ MagickRollImage() offsets an image as defined by x and y.- wand: the magick wand
 ### MagickRotateImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRotateImage(MagickWand *wand,
   const PixelWand *background,const double degrees)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRotateImage(
    MagickWandPointer $wand,
    PixelWandPointer $background,
@@ -4061,7 +4061,7 @@ MagickRotateImage() rotates an image the specified number of degrees. Empty tria
 ### MagickRotationalBlurImage
 - C:
 
-```
+```C
 MagickBooleanType MagickRotationalBlurImage(MagickWand *wand,
   const double angle)
 MagickBooleanType MagickRotationalBlurImageChannel(MagickWand *wand,
@@ -4069,7 +4069,7 @@ MagickBooleanType MagickRotationalBlurImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickRotationalBlurImage(
    MagickWandPointer $wand,
    double $angle
@@ -4094,13 +4094,13 @@ MagickRotationalBlurImage() rotational blurs an image.- wand: the magick wand. -
 ### MagickSampleImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSampleImage(MagickWand *wand,
   const size_t columns,const size_t rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSampleImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -4116,13 +4116,13 @@ MagickSampleImage() scales an image to the desired dimensions with pixel samplin
 ### MagickScaleImage
 - C:
 
-```
+```C
 MagickBooleanType MagickScaleImage(MagickWand *wand,
   const size_t columns,const size_t rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickScaleImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -4138,14 +4138,14 @@ MagickScaleImage() scales the size of an image to the given dimensions.- wand: t
 ### MagickSegmentImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSegmentImage(MagickWand *wand,
   const ColorspaceType colorspace,const MagickBooleanType verbose,
   const double cluster_threshold,const double smooth_threshold)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSegmentImage(
    MagickWandPointer $wand,
    ColorspaceType $colorspace,
@@ -4163,13 +4163,13 @@ MagickSegmentImage() segments an image by analyzing the histograms of the color 
 ### MagickSeparateImageChannel
 - C:
 
-```
+```C
 MagickBooleanType MagickSeparateImageChannel(MagickWand *wand,
   const ChannelType channel)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSeparateImageChannel(
    MagickWandPointer $wand,
    ChannelType $channel
@@ -4184,13 +4184,13 @@ MagickSeparateImageChannel() separates a channel from the image and returns a gr
 ### MagickSepiaToneImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSepiaToneImage(MagickWand *wand,
   const double threshold)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSepiaToneImage(
    MagickWandPointer $wand,
    double $threshold
@@ -4205,13 +4205,13 @@ MagickSepiaToneImage() applies a special effect to the image, similar to the eff
 ### MagickSetImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImage(MagickWand *wand,
   const MagickWand *set_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImage(
    MagickWandPointer $wand,
    MagickWandPointer $set_wand
@@ -4226,13 +4226,13 @@ MagickSetImage() replaces the last image returned by MagickSetIteratorIndex(), M
 ### MagickSetImageAlphaChannel
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageAlphaChannel(MagickWand *wand,
   const AlphaChannelType alpha_type)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageAlphaChannel(
    MagickWandPointer $wand,
    AlphaChannelType $alpha_type
@@ -4247,13 +4247,13 @@ MagickSetImageAlphaChannel() activates, deactivates, resets, or sets the alpha c
 ### MagickSetImageBackgroundColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageBackgroundColor(MagickWand *wand,
   const PixelWand *background)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageBackgroundColor(
    MagickWandPointer $wand,
    PixelWandPointer $background
@@ -4268,13 +4268,13 @@ MagickSetImageBackgroundColor() sets the image background color.- wand: the magi
 ### MagickSetImageBias
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageBias(MagickWand *wand,
   const double bias)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageBias(
    MagickWandPointer $wand,
    double $bias
@@ -4289,13 +4289,13 @@ MagickSetImageBias() sets the image bias for any method that convolves an image 
 ### MagickSetImageBluePrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageBluePrimary(MagickWand *wand,
   const double x,const double y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageBluePrimary(
    MagickWandPointer $wand,
    double $x,
@@ -4311,13 +4311,13 @@ MagickSetImageBluePrimary() sets the image chromaticity blue primary point.- wan
 ### MagickSetImageBorderColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageBorderColor(MagickWand *wand,
   const PixelWand *border)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageBorderColor(
    MagickWandPointer $wand,
    PixelWandPointer $border
@@ -4332,13 +4332,13 @@ MagickSetImageBorderColor() sets the image border color.- wand: the magick wand.
 ### MagickSetImageChannelDepth
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageChannelDepth(MagickWand *wand,
   const ChannelType channel,const size_t depth)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageChannelDepth(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -4354,13 +4354,13 @@ MagickSetImageChannelDepth() sets the depth of a particular image channel.- wand
 ### MagickSetImageClipMask
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageClipMask(MagickWand *wand,
   const MagickWand *clip_mask)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageClipMask(
    MagickWandPointer $wand,
    MagickWandPointer $clip_mask
@@ -4375,13 +4375,13 @@ MagickSetImageClipMask() sets image clip mask.- wand: the magick wand. - clip_ma
 ### MagickSetImageColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageColor(MagickWand *wand,
   const PixelWand *color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageColor(
    MagickWandPointer $wand,
    PixelWandPointer $color
@@ -4396,13 +4396,13 @@ MagickSetImageColor() set the entire wand canvas to the specified color.- wand: 
 ### MagickSetImageColormapColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageColormapColor(MagickWand *wand,
   const size_t index,const PixelWand *color)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageColormapColor(
    MagickWandPointer $wand,
    int32 $index,
@@ -4418,13 +4418,13 @@ MagickSetImageColormapColor() sets the color of the specified colormap index.- w
 ### MagickSetImageColorspace
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageColorspace(MagickWand *wand,
   const ColorspaceType colorspace)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageColorspace(
    MagickWandPointer $wand,
    ColorspaceType $colorspace
@@ -4439,13 +4439,13 @@ MagickSetImageColorspace() sets the image colorspace.- wand: the magick wand. - 
 ### MagickSetImageCompose
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageCompose(MagickWand *wand,
   const CompositeOperator compose)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageCompose(
    MagickWandPointer $wand,
    CompositeOperator $compose
@@ -4460,13 +4460,13 @@ MagickSetImageCompose() sets the image composite operator, useful for specifying
 ### MagickSetImageCompression
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageCompression(MagickWand *wand,
   const CompressionType compression)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageCompression(
    MagickWandPointer $wand,
    CompressionType $compression
@@ -4481,13 +4481,13 @@ MagickSetImageCompression() sets the image compression.- wand: the magick wand. 
 ### MagickSetImageCompressionQuality
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageCompressionQuality(MagickWand *wand,
   const size_t quality)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageCompressionQuality(
    MagickWandPointer $wand,
    int32 $quality
@@ -4502,13 +4502,13 @@ MagickSetImageCompressionQuality() sets the image compression quality.- wand: th
 ### MagickSetImageDelay
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageDelay(MagickWand *wand,
   const size_t delay)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageDelay(
    MagickWandPointer $wand,
    int32 $delay
@@ -4523,13 +4523,13 @@ MagickSetImageDelay() sets the image delay.- wand: the magick wand. - delay: the
 ### MagickSetImageDepth
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageDepth(MagickWand *wand,
   const size_t depth)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageDepth(
    MagickWandPointer $wand,
    int32 $depth
@@ -4544,13 +4544,13 @@ MagickSetImageDepth() sets the image depth.- wand: the magick wand. - depth: the
 ### MagickSetImageDispose
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageDispose(MagickWand *wand,
   const DisposeType dispose)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageDispose(
    MagickWandPointer $wand,
    DisposeType $dispose
@@ -4565,13 +4565,13 @@ MagickSetImageDispose() sets the image disposal method.- wand: the magick wand. 
 ### MagickSetImageEndian
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageEndian(MagickWand *wand,
   const EndianType endian)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageEndian(
    MagickWandPointer $wand,
    EndianType $endian
@@ -4586,13 +4586,13 @@ MagickSetImageEndian() sets the image endian method.- wand: the magick wand. - e
 ### MagickSetImageExtent
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageExtent(MagickWand *wand,
   const size_t columns,const unsigned rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageExtent(
    MagickWandPointer $wand,
    int32 $columns,
@@ -4608,13 +4608,13 @@ MagickSetImageExtent() sets the image size (i.e. columns &amp; rows).- wand: the
 ### MagickSetImageFilename
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageFilename(MagickWand *wand,
   const char *filename)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageFilename(
    MagickWandPointer $wand,
    Str $filename
@@ -4629,13 +4629,13 @@ MagickSetImageFilename() sets the filename of a particular image in a sequence.-
 ### MagickSetImageFormat
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageFormat(MagickWand *wand,
   const char *format)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageFormat(
    MagickWandPointer $wand,
    Str $format
@@ -4650,13 +4650,13 @@ MagickSetImageFormat() sets the format of a particular image in a sequence.- wan
 ### MagickSetImageFuzz
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageFuzz(MagickWand *wand,
   const double fuzz)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageFuzz(
    MagickWandPointer $wand,
    double $fuzz
@@ -4671,13 +4671,13 @@ MagickSetImageFuzz() sets the image fuzz.- wand: the magick wand. - fuzz: the im
 ### MagickSetImageGamma
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageGamma(MagickWand *wand,
   const double gamma)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageGamma(
    MagickWandPointer $wand,
    double $gamma
@@ -4692,13 +4692,13 @@ MagickSetImageGamma() sets the image gamma.- wand: the magick wand. - gamma: the
 ### MagickSetImageGravity
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageGravity(MagickWand *wand,
   const GravityType gravity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageGravity(
    MagickWandPointer $wand,
    GravityType $gravity
@@ -4713,13 +4713,13 @@ MagickSetImageGravity() sets the image gravity type.- wand: the magick wand. - g
 ### MagickSetImageGreenPrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageGreenPrimary(MagickWand *wand,
   const double x,const double y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageGreenPrimary(
    MagickWandPointer $wand,
    double $x,
@@ -4735,13 +4735,13 @@ MagickSetImageGreenPrimary() sets the image chromaticity green primary point.- w
 ### MagickSetImageInterlaceScheme
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageInterlaceScheme(MagickWand *wand,
   const InterlaceType interlace)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageInterlaceScheme(
    MagickWandPointer $wand,
    InterlaceType $interlace
@@ -4756,13 +4756,13 @@ MagickSetImageInterlaceScheme() sets the image interlace scheme.- wand: the magi
 ### MagickSetImageInterpolateMethod
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageInterpolateMethod(MagickWand *wand,
   const InterpolatePixelMethod method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageInterpolateMethod(
    MagickWandPointer $wand,
    InterpolatePixelMethod $method
@@ -4777,13 +4777,13 @@ MagickSetImageInterpolateMethod() sets the image interpolate pixel method.- wand
 ### MagickSetImageIterations
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageIterations(MagickWand *wand,
   const size_t iterations)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageIterations(
    MagickWandPointer $wand,
    int32 $iterations
@@ -4798,13 +4798,13 @@ MagickSetImageIterations() sets the image iterations.- wand: the magick wand. - 
 ### MagickSetImageMatte
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageMatteColor(MagickWand *wand,
   const MagickBooleanType *matte)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageMatteColor(
    MagickWandPointer $wand,
    uint32 * $matte
@@ -4819,13 +4819,13 @@ MagickSetImageMatte() sets the image matte channel.- wand: the magick wand. - ma
 ### MagickSetImageMatteColor
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageMatteColor(MagickWand *wand,
   const PixelWand *matte)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageMatteColor(
    MagickWandPointer $wand,
    PixelWandPointer $matte
@@ -4840,13 +4840,13 @@ MagickSetImageMatteColor() sets the image matte color.- wand: the magick wand. -
 ### MagickSetImageOpacity
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageOpacity(MagickWand *wand,
   const double alpha)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageOpacity(
    MagickWandPointer $wand,
    double $alpha
@@ -4861,13 +4861,13 @@ MagickSetImageOpacity() sets the image to the specified opacity level.- wand: th
 ### MagickSetImageOrientation
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageOrientation(MagickWand *wand,
   const OrientationType orientation)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageOrientation(
    MagickWandPointer $wand,
    OrientationType $orientation
@@ -4882,14 +4882,14 @@ MagickSetImageOrientation() sets the image orientation.- wand: the magick wand. 
 ### MagickSetImagePage
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImagePage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,
   const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImagePage(
    MagickWandPointer $wand,
    int32 $width,
@@ -4907,13 +4907,13 @@ MagickSetImagePage() sets the page geometry of the image.- wand: the magick wand
 ### MagickSetImageProgressMonitor
 - C:
 
-```
+```C
 MagickProgressMonitor MagickSetImageProgressMonitor(MagickWand *wand
   const MagickProgressMonitor progress_monitor,void *client_data)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageProgressMonitor(
    MagickWandPointerwand
   MagickProgressMonitor $progress_monitor,
@@ -4929,13 +4929,13 @@ MagickSetImageProgressMonitor() sets the wand image progress monitor to the spec
 ### MagickSetImageRedPrimary
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageRedPrimary(MagickWand *wand,
   const double x,const double y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageRedPrimary(
    MagickWandPointer $wand,
    double $x,
@@ -4951,13 +4951,13 @@ MagickSetImageRedPrimary() sets the image chromaticity red primary point.- wand:
 ### MagickSetImageRenderingIntent
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageRenderingIntent(MagickWand *wand,
   const RenderingIntent rendering_intent)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageRenderingIntent(
    MagickWandPointer $wand,
    RenderingIntent $rendering_intent
@@ -4972,13 +4972,13 @@ MagickSetImageRenderingIntent() sets the image rendering intent.- wand: the magi
 ### MagickSetImageResolution
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageResolution(MagickWand *wand,
   const double x_resolution,const double y_resolution)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageResolution(
    MagickWandPointer $wand,
    double $x_resolution,
@@ -4994,13 +4994,13 @@ MagickSetImageResolution() sets the image resolution.- wand: the magick wand. - 
 ### MagickSetImageScene
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageScene(MagickWand *wand,
   const size_t scene)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageScene(
    MagickWandPointer $wand,
    int32 $scene
@@ -5015,13 +5015,13 @@ MagickSetImageScene() sets the image scene.- wand: the magick wand. - delay: the
 ### MagickSetImageTicksPerSecond
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageTicksPerSecond(MagickWand *wand,
   const ssize_t ticks_per-second)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageTicksPerSecond(
    MagickWandPointer $wand,
    sint32 ticks_per- $second
@@ -5036,13 +5036,13 @@ MagickSetImageTicksPerSecond() sets the image ticks-per-second.- wand: the magic
 ### MagickSetImageType
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageType(MagickWand *wand,
   const ImageType image_type)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageType(
    MagickWandPointer $wand,
    ImageType $image_type
@@ -5057,13 +5057,13 @@ MagickSetImageType() sets the image type.- wand: the magick wand. - image_type: 
 ### MagickSetImageUnits
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageUnits(MagickWand *wand,
   const ResolutionType units)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageUnits(
    MagickWandPointer $wand,
    ResolutionType $units
@@ -5078,13 +5078,13 @@ MagickSetImageUnits() sets the image units of resolution.- wand: the magick wand
 ### MagickSetImageVirtualPixelMethod
 - C:
 
-```
+```C
 VirtualPixelMethod MagickSetImageVirtualPixelMethod(MagickWand *wand,
   const VirtualPixelMethod method)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageVirtualPixelMethod(
    MagickWandPointer $wand,
    VirtualPixelMethod $method
@@ -5099,13 +5099,13 @@ MagickSetImageVirtualPixelMethod() sets the image virtual pixel method.- wand: t
 ### MagickSetImageWhitePoint
 - C:
 
-```
+```C
 MagickBooleanType MagickSetImageWhitePoint(MagickWand *wand,
   const double x,const double y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSetImageWhitePoint(
    MagickWandPointer $wand,
    double $x,
@@ -5121,14 +5121,14 @@ MagickSetImageWhitePoint() sets the image chromaticity white point.- wand: the m
 ### MagickShadeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickShadeImage(MagickWand *wand,
   const MagickBooleanType gray,const double azimuth,
   const double elevation)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickShadeImage(
    MagickWandPointer $wand,
    uint32 $gray,
@@ -5145,13 +5145,13 @@ MagickShadeImage() shines a distant light on an image to create a three-dimensio
 ### MagickShadowImage
 - C:
 
-```
+```C
 MagickBooleanType MagickShadowImage(MagickWand *wand,
   const double opacity,const double sigma,const ssize_t x,const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickShadowImage(
    MagickWandPointer $wand,
    double $opacity,
@@ -5169,7 +5169,7 @@ MagickShadowImage() simulates an image shadow.- wand: the magick wand. - opacity
 ### MagickSharpenImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSharpenImage(MagickWand *wand,
   const double radius,const double sigma)
 MagickBooleanType MagickSharpenImageChannel(MagickWand *wand,
@@ -5177,7 +5177,7 @@ MagickBooleanType MagickSharpenImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSharpenImage(
    MagickWandPointer $wand,
    double $radius,
@@ -5204,13 +5204,13 @@ MagickSharpenImage() sharpens an image.  We convolve the image with a Gaussian o
 ### MagickShaveImage
 - C:
 
-```
+```C
 MagickBooleanType MagickShaveImage(MagickWand *wand,
   const size_t columns,const size_t rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickShaveImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -5226,13 +5226,13 @@ MagickShaveImage() shaves pixels from the image edges.  It allocates the memory 
 ### MagickShearImage
 - C:
 
-```
+```C
 MagickBooleanType MagickShearImage(MagickWand *wand,
   const PixelWand *background,const double x_shear,const double y_shear)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickShearImage(
    MagickWandPointer $wand,
    PixelWandPointer $background,
@@ -5249,7 +5249,7 @@ MagickShearImage() slides one edge of an image along the X or Y axis, creating a
 ### MagickSigmoidalContrastImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSigmoidalContrastImage(MagickWand *wand,
   const MagickBooleanType sharpen,const double alpha,const double beta)
 MagickBooleanType MagickSigmoidalContrastImageChannel(MagickWand *wand,
@@ -5258,7 +5258,7 @@ MagickBooleanType MagickSigmoidalContrastImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSigmoidalContrastImage(
    MagickWandPointer $wand,
    uint32 $sharpen,
@@ -5287,13 +5287,13 @@ MagickSigmoidalContrastImage() adjusts the contrast of an image with a non-linea
 ### MagickSimilarityImage
 - C:
 
-```
+```C
 MagickWand *MagickSimilarityImage(MagickWand *wand,
   const MagickWand *reference,RectangeInfo *offset,double *similarity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSimilarityImage(
    MagickWandPointer $wand,
    MagickWandPointer $reference,
@@ -5310,13 +5310,13 @@ MagickSimilarityImage() compares the reference image of the image and returns th
 ### MagickSketchImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSketchImage(MagickWand *wand,
   const double radius,const double sigma,const double angle)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSketchImage(
    MagickWandPointer $wand,
    double $radius,
@@ -5333,13 +5333,13 @@ MagickSketchImage() simulates a pencil sketch.  We convolve the image with a Gau
 ### MagickSmushImages
 - C:
 
-```
+```C
 MagickWand *MagickSmushImages(MagickWand *wand,
   const MagickBooleanType stack,const ssize_t offset)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSmushImages(
    MagickWandPointer $wand,
    uint32 $stack,
@@ -5355,7 +5355,7 @@ MagickSmushImages() takes all images from the current image pointer to the end o
 ### MagickSolarizeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSolarizeImage(MagickWand *wand,
   const double threshold)
 MagickBooleanType MagickSolarizeImageChannel(MagickWand *wand,
@@ -5363,7 +5363,7 @@ MagickBooleanType MagickSolarizeImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSolarizeImage(
    MagickWandPointer $wand,
    double $threshold
@@ -5388,14 +5388,14 @@ MagickSolarizeImage() applies a special effect to the image, similar to the effe
 ### MagickSparseColorImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSparseColorImage(MagickWand *wand,
   const ChannelType channel,const SparseColorMethod method,
   const size_t number_arguments,const double *arguments)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSparseColorImage(
    MagickWandPointer $wand,
    ChannelType $channel,
@@ -5413,14 +5413,14 @@ MagickSparseColorImage(), given a set of coordinates, interpolates the colors fo
 ### MagickSpliceImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSpliceImage(MagickWand *wand,
   const size_t width,const size_t height,const ssize_t x,
   const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSpliceImage(
    MagickWandPointer $wand,
    int32 $width,
@@ -5438,12 +5438,12 @@ MagickSpliceImage() splices a solid color into the image.- wand: the magick wand
 ### MagickSpreadImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSpreadImage(MagickWand *wand,const double radius)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSpreadImage(
    MagickWandPointer $wand,
    double $radius
@@ -5458,7 +5458,7 @@ MagickSpreadImage() is a special effects method that randomly displaces each pix
 ### MagickStatisticImage
 - C:
 
-```
+```C
 MagickBooleanType MagickStatisticImage(MagickWand *wand,
   const StatisticType type,const double width,const size_t height)
 MagickBooleanType MagickStatisticImageChannel(MagickWand *wand,
@@ -5467,7 +5467,7 @@ MagickBooleanType MagickStatisticImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickStatisticImage(
    MagickWandPointer $wand,
    StatisticType $type,
@@ -5496,13 +5496,13 @@ MagickStatisticImage() replace each pixel with corresponding statistic from the 
 ### MagickSteganoImage
 - C:
 
-```
+```C
 MagickWand *MagickSteganoImage(MagickWand *wand,
   const MagickWand *watermark_wand,const ssize_t offset)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSteganoImage(
    MagickWandPointer $wand,
    MagickWandPointer $watermark_wand,
@@ -5518,13 +5518,13 @@ MagickSteganoImage() hides a digital watermark within the image. Recover the hid
 ### MagickStereoImage
 - C:
 
-```
+```C
 MagickWand *MagickStereoImage(MagickWand *wand,
   const MagickWand *offset_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickStereoImage(
    MagickWandPointer $wand,
    MagickWandPointer $offset_wand
@@ -5539,12 +5539,12 @@ MagickStereoImage() composites two images and produces a single image that is th
 ### MagickStripImage
 - C:
 
-```
+```C
 MagickBooleanType MagickStripImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickStripImage(
    MagickWandPointer $wand
 )
@@ -5558,12 +5558,12 @@ MagickStripImage() strips an image of all profiles and comments.- wand: the magi
 ### MagickSwirlImage
 - C:
 
-```
+```C
 MagickBooleanType MagickSwirlImage(MagickWand *wand,const double degrees)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickSwirlImage(
    MagickWandPointer $wand,
    double $degrees
@@ -5578,13 +5578,13 @@ MagickSwirlImage() swirls the pixels about the center of the image, where degree
 ### MagickTextureImage
 - C:
 
-```
+```C
 MagickWand *MagickTextureImage(MagickWand *wand,
   const MagickWand *texture_wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTextureImage(
    MagickWandPointer $wand,
    MagickWandPointer $texture_wand
@@ -5599,7 +5599,7 @@ MagickTextureImage() repeatedly tiles the texture image across and down the imag
 ### MagickThresholdImage
 - C:
 
-```
+```C
 MagickBooleanType MagickThresholdImage(MagickWand *wand,
   const double threshold)
 MagickBooleanType MagickThresholdImageChannel(MagickWand *wand,
@@ -5607,7 +5607,7 @@ MagickBooleanType MagickThresholdImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickThresholdImage(
    MagickWandPointer $wand,
    double $threshold
@@ -5632,13 +5632,13 @@ MagickThresholdImage() changes the value of individual pixels based on the inten
 ### MagickThumbnailImage
 - C:
 
-```
+```C
 MagickBooleanType MagickThumbnailImage(MagickWand *wand,
   const size_t columns,const size_t rows)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickThumbnailImage(
    MagickWandPointer $wand,
    int32 $columns,
@@ -5654,13 +5654,13 @@ MagickThumbnailImage()  changes the size of an image to the given dimensions and
 ### MagickTintImage
 - C:
 
-```
+```C
 MagickBooleanType MagickTintImage(MagickWand *wand,
   const PixelWand *tint,const PixelWand *opacity)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTintImage(
    MagickWandPointer $wand,
    PixelWandPointer $tint,
@@ -5676,13 +5676,13 @@ MagickTintImage() applies a color vector to each pixel in the image.  The length
 ### MagickTransformImage
 - C:
 
-```
+```C
 MagickWand *MagickTransformImage(MagickWand *wand,const char *crop,
   const char *geometry)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTransformImage(
    MagickWandPointer $wand,
    Str $crop,
@@ -5698,13 +5698,13 @@ MagickTransformImage() is a convenience method that behaves like MagickResizeIma
 ### MagickTransformImageColorspace
 - C:
 
-```
+```C
 MagickBooleanType MagickTransformImageColorspace(MagickWand *wand,
   const ColorspaceType colorspace)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTransformImageColorspace(
    MagickWandPointer $wand,
    ColorspaceType $colorspace
@@ -5719,14 +5719,14 @@ MagickTransformImageColorspace() transform the image colorspace, setting the ima
 ### MagickTransparentPaintImage
 - C:
 
-```
+```C
 MagickBooleanType MagickTransparentPaintImage(MagickWand *wand,
   const PixelWand *target,const double alpha,const double fuzz,
   const MagickBooleanType invert)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTransparentPaintImage(
    MagickWandPointer $wand,
    PixelWandPointer $target,
@@ -5744,12 +5744,12 @@ MagickTransparentPaintImage() changes any pixel that matches color with the colo
 ### MagickTransposeImage
 - C:
 
-```
+```C
 MagickBooleanType MagickTransposeImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTransposeImage(
    MagickWandPointer $wand
 )
@@ -5763,12 +5763,12 @@ MagickTransposeImage() creates a vertical mirror image by reflecting the pixels 
 ### MagickTransverseImage
 - C:
 
-```
+```C
 MagickBooleanType MagickTransverseImage(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTransverseImage(
    MagickWandPointer $wand
 )
@@ -5782,12 +5782,12 @@ MagickTransverseImage() creates a horizontal mirror image by reflecting the pixe
 ### MagickTrimImage
 - C:
 
-```
+```C
 MagickBooleanType MagickTrimImage(MagickWand *wand,const double fuzz)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickTrimImage(
    MagickWandPointer $wand,
    double $fuzz
@@ -5802,12 +5802,12 @@ MagickTrimImage() remove edges that are the background color from the image.- wa
 ### MagickUniqueImageColors
 - C:
 
-```
+```C
 MagickBooleanType MagickUniqueImageColors(MagickWand *wand)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickUniqueImageColors(
    MagickWandPointer $wand
 )
@@ -5821,7 +5821,7 @@ MagickUniqueImageColors() discards all but one of any pixel color.- wand: the ma
 ### MagickUnsharpMaskImage
 - C:
 
-```
+```C
 MagickBooleanType MagickUnsharpMaskImage(MagickWand *wand,
   const double radius,const double sigma,const double amount,
   const double threshold)
@@ -5831,7 +5831,7 @@ MagickBooleanType MagickUnsharpMaskImageChannel(MagickWand *wand,
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickUnsharpMaskImage(
    MagickWandPointer $wand,
    double $radius,
@@ -5862,14 +5862,14 @@ MagickUnsharpMaskImage() sharpens an image.  We convolve the image with a Gaussi
 ### MagickVignetteImage
 - C:
 
-```
+```C
 MagickBooleanType MagickVignetteImage(MagickWand *wand,
   const double black_point,const double white_point,const ssize_t x,
   const ssize_t y)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickVignetteImage(
    MagickWandPointer $wand,
    double $black_point,
@@ -5887,13 +5887,13 @@ MagickVignetteImage() softens the edges of the image in vignette style.- wand: t
 ### MagickWaveImage
 - C:
 
-```
+```C
 MagickBooleanType MagickWaveImage(MagickWand *wand,const double amplitude,
   const double wave_length)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWaveImage(
    MagickWandPointer $wand,
    double $amplitude,
@@ -5909,13 +5909,13 @@ MagickWaveImage()  creates a "ripple" effect in the image by shifting the pixels
 ### MagickWhiteThresholdImage
 - C:
 
-```
+```C
 MagickBooleanType MagickWhiteThresholdImage(MagickWand *wand,
   const PixelWand *threshold)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWhiteThresholdImage(
    MagickWandPointer $wand,
    PixelWandPointer $threshold
@@ -5930,13 +5930,13 @@ MagickWhiteThresholdImage() is like ThresholdImage() but  force all pixels above
 ### MagickWriteImage
 - C:
 
-```
+```C
 MagickBooleanType MagickWriteImage(MagickWand *wand,
   const char *filename)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWriteImage(
    MagickWandPointer $wand,
    Str $filename
@@ -5951,12 +5951,12 @@ MagickWriteImage() writes an image to the specified filename.  If the filename p
 ### MagickWriteImageFile
 - C:
 
-```
+```C
 MagickBooleanType MagickWriteImageFile(MagickWand *wand,FILE *file)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWriteImageFile(
    MagickWandPointer $wand,
    FILE * $file
@@ -5971,13 +5971,13 @@ MagickWriteImageFile() writes an image to an open file descriptor.- wand: the ma
 ### MagickWriteImages
 - C:
 
-```
+```C
 MagickBooleanType MagickWriteImages(MagickWand *wand,
   const char *filename,const MagickBooleanType adjoin)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWriteImages(
    MagickWandPointer $wand,
    Str $filename,
@@ -5993,12 +5993,12 @@ MagickWriteImages() writes an image or image sequence.- wand: the magick wand. -
 ### MagickWriteImagesFile
 - C:
 
-```
+```C
 MagickBooleanType MagickWriteImagesFile(MagickWand *wand,FILE *file)
 ```
 - Perl 6:
 
-```
+```Perl6
 sub MagickWriteImagesFile(
    MagickWandPointer $wand,
    FILE * $file
