@@ -52,7 +52,7 @@ sub generate-doc(Str $html, Str $doc-name) {
 
     my Str @p6-protos;
     for $proto.comb( / (.+?) (\w+) \( (.*?) \) /, :match ) -> $proto-match {
-      my Str $return-type = convert-c-to-perl6-type(~$proto-match[0]);
+      my Str $return-type = to-perl6-type(~$proto-match[0]);
       my Str $sub-name    = ~$proto-match[1];
       my Str $params      = ~$proto-match[2];
 
@@ -63,8 +63,8 @@ sub generate-doc(Str $html, Str $doc-name) {
             my Str $type = ~$0.trim;
             my Str $name = ~$1.trim;
 
-            warn "Failed at converting '$type' at '$id'" if $type eq convert-c-to-perl6-type($type);
-            $type = convert-c-to-perl6-type($type);
+            warn "Failed at converting '$type' at '$id'" if $type eq to-perl6-type($type);
+            $type = to-perl6-type($type);
 
             $p = sprintf(q{%s $%s}, $type, $name);
           } else {
@@ -84,15 +84,29 @@ sub generate-doc(Str $html, Str $doc-name) {
 
     # Write POD to file
     my $p6-proto = @p6-protos.join("\n\n");
-    $markdown-fh.say( sprintf("### %s\n- C:\n\n```\n%s\n```\n- Perl 6:\n\n```\n%s\n```\n\n%s\n", $id, $proto, $p6-proto, $doc) );
-    $pod-fh.say( sprintf("=begin pod\n=head1 %s\n=head2 C:\n\n```\n%s\n```\n=head2 Perl 6:\n\n```\n%s\n```\n\n%s\n=end pod\n", $id, $proto, $p6-proto, $doc) );
+    $markdown-fh.say(
+      sprintf(
+        "### %s\n- C:\n\n```\n%s\n```\n- Perl 6:\n\n```\n%s\n```\n\n%s\n",
+        $id, $proto, $p6-proto, $doc
+      )
+    );
+    $pod-fh.say(
+      sprintf(
+        "=begin pod\n=head1 %s\n=head2 C:\n\n%s\n\n=head2 Perl 6:\n\n%s\n\n%s\n=end pod\n",
+        $id, to-pod-codeblock($proto), to-pod-codeblock($p6-proto), $doc
+      )
+    );
   }
 
   $markdown-fh.close;
   $pod-fh.close;
 }
 
-sub convert-c-to-perl6-type(Str $type is copy) {
+sub to-pod-codeblock(Str $code) {
+  return $code.lines.map( { " " x 4 ~ $_ } ).join("\n");
+}
+
+sub to-perl6-type(Str $type is copy) {
   $type    ~~ s| 'const '            ||;
   $type    ~~ s| 'void *'            |Pointer[void]|;
   $type    ~~ s| 'MagickWand *'      |MagickWandPointer|;
