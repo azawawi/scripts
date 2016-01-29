@@ -1,0 +1,1151 @@
+=begin pod
+=head1 ClearPixelWand
+=head2 C:
+
+    void ClearPixelWand(PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub ClearPixelWand(
+       PixelWandPointer $wand
+    )
+    is native(&library)
+    is export { * };
+
+ClearPixelWand() clears resources associated with the wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 ClonePixelWand
+=head2 C:
+
+    PixelWand *ClonePixelWand(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub ClonePixelWand(
+       PixelWandPointer $wand
+    )
+    returns PixelWandPointer
+    is native(&library)
+    is export { * };
+
+ClonePixelWand() makes an exact copy of the specified wand.- wand: the magick wand. 
+=end pod
+
+=begin pod
+=head1 ClonePixelWands
+=head2 C:
+
+    PixelWand **ClonePixelWands(const PixelWand **wands,
+      const size_t number_wands)
+
+=head2 Perl 6:
+
+    sub ClonePixelWands(
+       PixelWandPointer* $wands,
+       int32 $number_wands
+    )
+    returns PixelWandPointer*
+    is native(&library)
+    is export { * };
+
+ClonePixelWands() makes an exact copy of the specified wands.- wands: the magick wands. - number_wands: the number of wands. 
+=end pod
+
+=begin pod
+=head1 DestroyPixelWand
+=head2 C:
+
+    PixelWand *DestroyPixelWand(PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub DestroyPixelWand(
+       PixelWandPointer $wand
+    )
+    returns PixelWandPointer
+    is native(&library)
+    is export { * };
+
+DestroyPixelWand() deallocates resources associated with a PixelWand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 DestroyPixelWands
+=head2 C:
+
+    PixelWand **DestroyPixelWands(PixelWand **wand,
+      const size_t number_wands)
+
+=head2 Perl 6:
+
+    sub DestroyPixelWands(
+       PixelWandPointer* $wand,
+       int32 $number_wands
+    )
+    returns PixelWandPointer*
+    is native(&library)
+    is export { * };
+
+DestroyPixelWands() deallocates resources associated with an array of pixel wands.- wand: the pixel wand. - number_wands: the number of wands. 
+=end pod
+
+=begin pod
+=head1 IsPixelWandSimilar
+=head2 C:
+
+    MagickBooleanType IsPixelWandSimilar(PixelWand *p,PixelWand *q,
+      const double fuzz)
+
+=head2 Perl 6:
+
+    sub IsPixelWandSimilar(
+       PixelWandPointer $p,
+       PixelWandPointer $q,
+       double $fuzz
+    )
+    returns uint32 
+    is native(&library)
+    is export { * };
+
+IsPixelWandSimilar() returns MagickTrue if the distance between two colors is less than the specified distance.- p: the pixel wand. - q: the pixel wand. - fuzz: any two colors that are less than or equal to this distance squared are consider similar. 
+=end pod
+
+=begin pod
+=head1 IsPixelWand
+=head2 C:
+
+    MagickBooleanType IsPixelWand(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub IsPixelWand(
+       PixelWandPointer $wand
+    )
+    returns uint32 
+    is native(&library)
+    is export { * };
+
+IsPixelWand() returns MagickTrue if the wand is verified as a pixel wand.- wand: the magick wand. 
+=end pod
+
+=begin pod
+=head1 NewPixelWand
+=head2 C:
+
+    PixelWand *NewPixelWand(void)
+
+=head2 Perl 6:
+
+    sub NewPixelWand(
+       v $oid
+    )
+    returns PixelWandPointer
+    is native(&library)
+    is export { * };
+
+NewPixelWand() returns a new pixel wand.<h2><a href="http://www.imagemagick.org/api/MagickWand/pixel-wand_8c.html" id="NewPixelWands">NewPixelWands</a></h2>NewPixelWands() returns an array of pixel wands.The format of the NewPixelWands method is:<pre class="text">PixelWand \*\*NewPixelWands(const size_t number_wands)</pre>- number_wands: the number of wands. 
+=end pod
+
+=begin pod
+=head1 PixelClearException
+=head2 C:
+
+    MagickBooleanType PixelClearException(PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelClearException(
+       PixelWandPointer $wand
+    )
+    returns uint32 
+    is native(&library)
+    is export { * };
+
+PixelClearException() clear any exceptions associated with the iterator.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetAlpha
+=head2 C:
+
+    double PixelGetAlpha(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetAlpha(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetAlpha() returns the normalized alpha value of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetAlphaQuantum
+=head2 C:
+
+    Quantum PixelGetAlphaQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetAlphaQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetAlphaQuantum() returns the alpha value of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetBlack
+=head2 C:
+
+    double PixelGetBlack(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetBlack(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetBlack() returns the normalized black color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetBlackQuantum
+=head2 C:
+
+    Quantum PixelGetBlackQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetBlackQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetBlackQuantum() returns the black color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetBlue
+=head2 C:
+
+    double PixelGetBlue(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetBlue(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetBlue() returns the normalized blue color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetBlueQuantum
+=head2 C:
+
+    Quantum PixelGetBlueQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetBlueQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetBlueQuantum() returns the blue color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetColorAsString
+=head2 C:
+
+    char *PixelGetColorAsString(PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetColorAsString(
+       PixelWandPointer $wand
+    )
+    returns Str
+    is native(&library)
+    is export { * };
+
+PixelGetColorAsString() returnsd the color of the pixel wand as a string.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetColorAsNormalizedString
+=head2 C:
+
+    char *PixelGetColorAsNormalizedString(PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetColorAsNormalizedString(
+       PixelWandPointer $wand
+    )
+    returns Str
+    is native(&library)
+    is export { * };
+
+PixelGetColorAsNormalizedString() returns the normalized color of the pixel wand as a string.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetColorCount
+=head2 C:
+
+    size_t PixelGetColorCount(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetColorCount(
+       PixelWandPointer $wand
+    )
+    returns int32 
+    is native(&library)
+    is export { * };
+
+PixelGetColorCount() returns the color count associated with this color.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetCyan
+=head2 C:
+
+    double PixelGetCyan(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetCyan(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetCyan() returns the normalized cyan color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetCyanQuantum
+=head2 C:
+
+    Quantum PixelGetCyanQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetCyanQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetCyanQuantum() returns the cyan color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetException
+=head2 C:
+
+    char *PixelGetException(const PixelWand *wand,ExceptionType *severity)
+
+=head2 Perl 6:
+
+    sub PixelGetException(
+       PixelWandPointer $wand,
+       ExceptionType * $severity
+    )
+    returns Str
+    is native(&library)
+    is export { * };
+
+PixelGetException() returns the severity, reason, and description of any error that occurs when using other methods in this API.- wand: the pixel wand. - severity: the severity of the error is returned here. 
+=end pod
+
+=begin pod
+=head1 PixelGetExceptionType
+=head2 C:
+
+    ExceptionType PixelGetExceptionType(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetExceptionType(
+       PixelWandPointer $wand
+    )
+    returns ExceptionType 
+    is native(&library)
+    is export { * };
+
+PixelGetExceptionType() the exception type associated with the wand.  If no exception has occurred, UndefinedExceptionType is returned.- wand: the magick wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetFuzz
+=head2 C:
+
+    double PixelGetFuzz(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetFuzz(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetFuzz() returns the normalized fuzz value of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetGreen
+=head2 C:
+
+    double PixelGetGreen(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetGreen(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetGreen() returns the normalized green color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetGreenQuantum
+=head2 C:
+
+    Quantum PixelGetGreenQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetGreenQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetGreenQuantum() returns the green color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetHSL
+=head2 C:
+
+    void PixelGetHSL(const PixelWand *wand,double *hue,double *saturation,
+      double *lightness)
+
+=head2 Perl 6:
+
+    sub PixelGetHSL(
+       PixelWandPointer $wand,
+       num64* $hue,
+       num64* $saturation,
+       num64* $lightness
+    )
+    is native(&library)
+    is export { * };
+
+PixelGetHSL() returns the normalized HSL color of the pixel wand.- wand: the pixel wand. - hue,saturation,lightness: Return the pixel hue, saturation, and brightness. 
+=end pod
+
+=begin pod
+=head1 PixelGetIndex
+=head2 C:
+
+    IndexPacket PixelGetIndex(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetIndex(
+       PixelWandPointer $wand
+    )
+    returns IndexPacket 
+    is native(&library)
+    is export { * };
+
+PixelGetIndex() returns the colormap index from the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetMagenta
+=head2 C:
+
+    double PixelGetMagenta(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetMagenta(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetMagenta() returns the normalized magenta color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetMagentaQuantum
+=head2 C:
+
+    Quantum PixelGetMagentaQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetMagentaQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetMagentaQuantum() returns the magenta color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetMagickColor
+=head2 C:
+
+    void PixelGetMagickColor(PixelWand *wand,MagickPixelPacket *color)
+
+=head2 Perl 6:
+
+    sub PixelGetMagickColor(
+       PixelWandPointer $wand,
+       MagickPixelPacket * $color
+    )
+    is native(&library)
+    is export { * };
+
+PixelGetMagickColor() gets the magick color of the pixel wand.- wand: the pixel wand. - color:  The pixel wand color is returned here. 
+=end pod
+
+=begin pod
+=head1 PixelGetOpacity
+=head2 C:
+
+    double PixelGetOpacity(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetOpacity(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetOpacity() returns the normalized opacity value of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetOpacityQuantum
+=head2 C:
+
+    Quantum PixelGetOpacityQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetOpacityQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetOpacityQuantum() returns the opacity value of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetQuantumColor
+=head2 C:
+
+    void PixelGetQuantumColor(PixelWand *wand,PixelPacket *color)
+
+=head2 Perl 6:
+
+    sub PixelGetQuantumColor(
+       PixelWandPointer $wand,
+       PixelPacket * $color
+    )
+    is native(&library)
+    is export { * };
+
+PixelGetQuantumColor() gets the color of the pixel wand as a PixelPacket.- wand: the pixel wand. - color:  The pixel wand color is returned here. 
+=end pod
+
+=begin pod
+=head1 PixelGetRed
+=head2 C:
+
+    double PixelGetRed(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetRed(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetRed() returns the normalized red color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetRedQuantum
+=head2 C:
+
+    Quantum PixelGetRedQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetRedQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetRedQuantum() returns the red color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetYellow
+=head2 C:
+
+    double PixelGetYellow(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetYellow(
+       PixelWandPointer $wand
+    )
+    returns num64
+    is native(&library)
+    is export { * };
+
+PixelGetYellow() returns the normalized yellow color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelGetYellowQuantum
+=head2 C:
+
+    Quantum PixelGetYellowQuantum(const PixelWand *wand)
+
+=head2 Perl 6:
+
+    sub PixelGetYellowQuantum(
+       PixelWandPointer $wand
+    )
+    returns Quantum 
+    is native(&library)
+    is export { * };
+
+PixelGetYellowQuantum() returns the yellow color of the pixel wand.- wand: the pixel wand. 
+=end pod
+
+=begin pod
+=head1 PixelSetAlpha
+=head2 C:
+
+    void PixelSetAlpha(PixelWand *wand,const double alpha)
+
+=head2 Perl 6:
+
+    sub PixelSetAlpha(
+       PixelWandPointer $wand,
+       double $alpha
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetAlpha() sets the normalized alpha value of the pixel wand.- wand: the pixel wand. - alpha: the level of transparency: 1.0 is fully opaque and 0.0 is fully transparent. 
+=end pod
+
+=begin pod
+=head1 PixelSetAlphaQuantum
+=head2 C:
+
+    void PixelSetAlphaQuantum(PixelWand *wand,
+      const Quantum opacity)
+
+=head2 Perl 6:
+
+    sub PixelSetAlphaQuantum(
+       PixelWandPointer $wand,
+       Quantum $opacity
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetAlphaQuantum() sets the alpha value of the pixel wand.- wand: the pixel wand. - opacity: the opacity value. 
+=end pod
+
+=begin pod
+=head1 PixelSetBlack
+=head2 C:
+
+    void PixelSetBlack(PixelWand *wand,const double black)
+
+=head2 Perl 6:
+
+    sub PixelSetBlack(
+       PixelWandPointer $wand,
+       double $black
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetBlack() sets the normalized black color of the pixel wand.- wand: the pixel wand. - black: the black color. 
+=end pod
+
+=begin pod
+=head1 PixelSetBlackQuantum
+=head2 C:
+
+    void PixelSetBlackQuantum(PixelWand *wand,const Quantum black)
+
+=head2 Perl 6:
+
+    sub PixelSetBlackQuantum(
+       PixelWandPointer $wand,
+       Quantum $black
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetBlackQuantum() sets the black color of the pixel wand.- wand: the pixel wand. - black: the black color. 
+=end pod
+
+=begin pod
+=head1 PixelSetBlue
+=head2 C:
+
+    void PixelSetBlue(PixelWand *wand,const double blue)
+
+=head2 Perl 6:
+
+    sub PixelSetBlue(
+       PixelWandPointer $wand,
+       double $blue
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetBlue() sets the normalized blue color of the pixel wand.- wand: the pixel wand. - blue: the blue color. 
+=end pod
+
+=begin pod
+=head1 PixelSetBlueQuantum
+=head2 C:
+
+    void PixelSetBlueQuantum(PixelWand *wand,const Quantum blue)
+
+=head2 Perl 6:
+
+    sub PixelSetBlueQuantum(
+       PixelWandPointer $wand,
+       Quantum $blue
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetBlueQuantum() sets the blue color of the pixel wand.- wand: the pixel wand. - blue: the blue color. 
+=end pod
+
+=begin pod
+=head1 PixelSetColor
+=head2 C:
+
+    MagickBooleanType PixelSetColor(PixelWand *wand,const char *color)
+
+=head2 Perl 6:
+
+    sub PixelSetColor(
+       PixelWandPointer $wand,
+       Str $color
+    )
+    returns uint32 
+    is native(&library)
+    is export { * };
+
+PixelSetColor() sets the color of the pixel wand with a string (e.g. "blue", "#0000ff", "rgb(0,0,255)", "cmyk(100,100,100,10)", etc.).- wand: the pixel wand. - color: the pixel wand color. 
+=end pod
+
+=begin pod
+=head1 PixelSetColorCount
+=head2 C:
+
+    void PixelSetColorCount(PixelWand *wand,const size_t count)
+
+=head2 Perl 6:
+
+    sub PixelSetColorCount(
+       PixelWandPointer $wand,
+       int32 $count
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetColorCount() sets the color count of the pixel wand.- wand: the pixel wand. - count: the number of this particular color. 
+=end pod
+
+=begin pod
+=head1 PixelSetColorFromWand
+=head2 C:
+
+    void PixelSetColorFromWand(PixelWand *wand,const PixelWand *color)
+
+=head2 Perl 6:
+
+    sub PixelSetColorFromWand(
+       PixelWandPointer $wand,
+       PixelWandPointer $color
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetColorFromWand() sets the color of the pixel wand.- wand: the pixel wand. - color: set the pixel wand color here. 
+=end pod
+
+=begin pod
+=head1 PixelSetCyan
+=head2 C:
+
+    void PixelSetCyan(PixelWand *wand,const double cyan)
+
+=head2 Perl 6:
+
+    sub PixelSetCyan(
+       PixelWandPointer $wand,
+       double $cyan
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetCyan() sets the normalized cyan color of the pixel wand.- wand: the pixel wand. - cyan: the cyan color. 
+=end pod
+
+=begin pod
+=head1 PixelSetCyanQuantum
+=head2 C:
+
+    void PixelSetCyanQuantum(PixelWand *wand,const Quantum cyan)
+
+=head2 Perl 6:
+
+    sub PixelSetCyanQuantum(
+       PixelWandPointer $wand,
+       Quantum $cyan
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetCyanQuantum() sets the cyan color of the pixel wand.- wand: the pixel wand. - cyan: the cyan color. 
+=end pod
+
+=begin pod
+=head1 PixelSetFuzz
+=head2 C:
+
+    void PixelSetFuzz(PixelWand *wand,const double fuzz)
+
+=head2 Perl 6:
+
+    sub PixelSetFuzz(
+       PixelWandPointer $wand,
+       double $fuzz
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetFuzz() sets the fuzz value of the pixel wand.- wand: the pixel wand. - fuzz: the fuzz value. 
+=end pod
+
+=begin pod
+=head1 PixelSetGreen
+=head2 C:
+
+    void PixelSetGreen(PixelWand *wand,const double green)
+
+=head2 Perl 6:
+
+    sub PixelSetGreen(
+       PixelWandPointer $wand,
+       double $green
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetGreen() sets the normalized green color of the pixel wand.- wand: the pixel wand. - green: the green color. 
+=end pod
+
+=begin pod
+=head1 PixelSetGreenQuantum
+=head2 C:
+
+    void PixelSetGreenQuantum(PixelWand *wand,const Quantum green)
+
+=head2 Perl 6:
+
+    sub PixelSetGreenQuantum(
+       PixelWandPointer $wand,
+       Quantum $green
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetGreenQuantum() sets the green color of the pixel wand.- wand: the pixel wand. - green: the green color. 
+=end pod
+
+=begin pod
+=head1 PixelSetHSL
+=head2 C:
+
+    void PixelSetHSL(PixelWand *wand,const double hue,
+      const double saturation,const double lightness)
+
+=head2 Perl 6:
+
+    sub PixelSetHSL(
+       PixelWandPointer $wand,
+       double $hue,
+       double $saturation,
+       double $lightness
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetHSL() sets the normalized HSL color of the pixel wand.- wand: the pixel wand. - hue,saturation,lightness: Return the pixel hue, saturation, and brightness. 
+=end pod
+
+=begin pod
+=head1 PixelSetIndex
+=head2 C:
+
+    void PixelSetIndex(PixelWand *wand,const IndexPacket index)
+
+=head2 Perl 6:
+
+    sub PixelSetIndex(
+       PixelWandPointer $wand,
+       IndexPacket $index
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetIndex() sets the colormap index of the pixel wand.- wand: the pixel wand. - index: the colormap index. 
+=end pod
+
+=begin pod
+=head1 PixelSetMagenta
+=head2 C:
+
+    void PixelSetMagenta(PixelWand *wand,const double magenta)
+
+=head2 Perl 6:
+
+    sub PixelSetMagenta(
+       PixelWandPointer $wand,
+       double $magenta
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetMagenta() sets the normalized magenta color of the pixel wand.- wand: the pixel wand. - magenta: the magenta color. 
+=end pod
+
+=begin pod
+=head1 PixelSetMagentaQuantum
+=head2 C:
+
+    void PixelSetMagentaQuantum(PixelWand *wand,
+      const Quantum magenta)
+
+=head2 Perl 6:
+
+    sub PixelSetMagentaQuantum(
+       PixelWandPointer $wand,
+       Quantum $magenta
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetMagentaQuantum() sets the magenta color of the pixel wand.- wand: the pixel wand. - magenta: the green magenta. 
+=end pod
+
+=begin pod
+=head1 PixelSetMagickColor
+=head2 C:
+
+    void PixelSetMagickColor(PixelWand *wand,const MagickPixelPacket *color)
+
+=head2 Perl 6:
+
+    sub PixelSetMagickColor(
+       PixelWandPointer $wand,
+       MagickPixelPacket * $color
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetMagickColor() sets the color of the pixel wand.- wand: the pixel wand. - color: the pixel wand color. 
+=end pod
+
+=begin pod
+=head1 PixelSetOpacity
+=head2 C:
+
+    void PixelSetOpacity(PixelWand *wand,const double opacity)
+
+=head2 Perl 6:
+
+    sub PixelSetOpacity(
+       PixelWandPointer $wand,
+       double $opacity
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetOpacity() sets the normalized opacity value of the pixel wand.- wand: the pixel wand. - opacity: the opacity value. 
+=end pod
+
+=begin pod
+=head1 PixelSetOpacityQuantum
+=head2 C:
+
+    void PixelSetOpacityQuantum(PixelWand *wand,
+      const Quantum opacity)
+
+=head2 Perl 6:
+
+    sub PixelSetOpacityQuantum(
+       PixelWandPointer $wand,
+       Quantum $opacity
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetOpacityQuantum() sets the opacity value of the pixel wand.- wand: the pixel wand. - opacity: the opacity value. 
+=end pod
+
+=begin pod
+=head1 PixelSetQuantumColor
+=head2 C:
+
+    void PixelSetQuantumColor(PixelWand *wand,const PixelPacket *color)
+
+=head2 Perl 6:
+
+    sub PixelSetQuantumColor(
+       PixelWandPointer $wand,
+       PixelPacket * $color
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetQuantumColor() sets the color of the pixel wand.- wand: the pixel wand. - color: the pixel wand color. 
+=end pod
+
+=begin pod
+=head1 PixelSetRed
+=head2 C:
+
+    void PixelSetRed(PixelWand *wand,const double red)
+
+=head2 Perl 6:
+
+    sub PixelSetRed(
+       PixelWandPointer $wand,
+       double $red
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetRed() sets the normalized red color of the pixel wand.- wand: the pixel wand. - red: the red color. 
+=end pod
+
+=begin pod
+=head1 PixelSetRedQuantum
+=head2 C:
+
+    void PixelSetRedQuantum(PixelWand *wand,const Quantum red)
+
+=head2 Perl 6:
+
+    sub PixelSetRedQuantum(
+       PixelWandPointer $wand,
+       Quantum $red
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetRedQuantum() sets the red color of the pixel wand.- wand: the pixel wand. - red: the red color. 
+=end pod
+
+=begin pod
+=head1 PixelSetYellow
+=head2 C:
+
+    void PixelSetYellow(PixelWand *wand,const double yellow)
+
+=head2 Perl 6:
+
+    sub PixelSetYellow(
+       PixelWandPointer $wand,
+       double $yellow
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetYellow() sets the normalized yellow color of the pixel wand.- wand: the pixel wand. - yellow: the yellow color. 
+=end pod
+
+=begin pod
+=head1 PixelSetYellowQuantum
+=head2 C:
+
+    void PixelSetYellowQuantum(PixelWand *wand,const Quantum yellow)
+
+=head2 Perl 6:
+
+    sub PixelSetYellowQuantum(
+       PixelWandPointer $wand,
+       Quantum $yellow
+    )
+    is native(&library)
+    is export { * };
+
+PixelSetYellowQuantum() sets the yellow color of the pixel wand.- wand: the pixel wand. - yellow: the yellow color. 
+=end pod
+
