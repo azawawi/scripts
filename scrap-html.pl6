@@ -24,7 +24,7 @@ for %urls.kv -> $doc-name, $url {
 
 sub generate-doc(Str $html, Str $doc-name) {
   my IO::Handle $markdown-fh = "output/$doc-name.md".IO.open(:w);
-  my IO::Handle $pod-fh = "output/$doc-name.pod".IO.open(:w);
+  my IO::Handle $pod-fh = "output/$doc-name.pm6".IO.open(:w);
 
   # Find all API documentation
   my @matches = $html.comb(
@@ -92,8 +92,8 @@ sub generate-doc(Str $html, Str $doc-name) {
     );
     $pod-fh.say(
       sprintf(
-        "=begin pod\n=head1 %s\n=head2 C\n\n%s\n\n=head2 Perl 6\n\n%s\n\n%s\n=end pod\n",
-        $id, to-pod-codeblock($proto), to-pod-codeblock($p6-proto), $doc
+        "=begin pod\n=head1 %s\n=head2 C\n\n%s\n\n%s\n=end pod\n%s\n\n",
+        $id, to-pod-codeblock($proto), $doc, $p6-proto
       )
     );
   }
