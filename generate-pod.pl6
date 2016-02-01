@@ -19,6 +19,8 @@ use v6;
 
 use File::Find;
 
+die "./lib folder is not found" unless "lib".IO ~~ :e;
+
 my Str $out-folder = "output";
 $out-folder.IO.mkdir;
 
