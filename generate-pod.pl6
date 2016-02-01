@@ -1,4 +1,19 @@
+#!/usr/bin/env perl6
 
+=begin pod
+
+=head1 NAME
+
+generate-pod.pl6 - A script to generate Perl 6 POD for a lib folder
+
+=head1 SYNPOSIS
+
+=begin code
+$ ./generate-pod.pl6
+=end code
+
+
+=end pod
 
 use v6;
 
