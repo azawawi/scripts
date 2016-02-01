@@ -14,6 +14,7 @@ my %urls = (
   'drawing-wand'    => 'http://www.imagemagick.org/api/drawing-wand.php',
   'mogrify'         => 'http://www.imagemagick.org/api/mogrify.php',
   'wand-view'       => 'http://www.imagemagick.org/api/wand-view.php',
+  'deprecate'       => 'http://www.imagemagick.org/api/deprecate.php',
 );
 
 for %urls.kv -> $doc-name, $url {
