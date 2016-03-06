@@ -25,9 +25,7 @@ sub zip_open(Str $path, uint32 $flags, Pointer $errorp) returns Pointer is nativ
 
 sub zip_close(Pointer $archive) returns uint32 is native(LIB) { }
 
-
 sub MAIN() {
-  say "Hello world!";
   my $errorp;
   my $handle = zip_open("test.zip", ZIP_CREATE, $errorp);
   my $ret = zip_close($handle);
