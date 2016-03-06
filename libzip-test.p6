@@ -40,6 +40,8 @@ sub MAIN() {
 
 =head1 HACKING
 
+    panda install App::GPTrixie
+    gptrixie --all /usr/include/zip.h > zip-generated.pl6
     atom /usr/include/zip.h
 
 =head2 zip_open
