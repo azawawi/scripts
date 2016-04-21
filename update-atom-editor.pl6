@@ -1,5 +1,7 @@
 #!/usr/bin/env perl6
 
+# See http://askubuntu.com/questions/589469/how-to-automatically-update-atom-editor
+
 use v6;
 
 use Net::Curl::Easy;
