@@ -16,12 +16,6 @@ sub library {
 	}
 }
 
-# msgpack/version.h
-sub msgpack_version          is native(&library) returns Str   { * }
-sub msgpack_version_major    is native(&library) returns int32 { * }
-sub msgpack_version_minor    is native(&library) returns int32 { * }
-sub msgpack_version_revision is native(&library) returns int32 { * }
-
 =begin TODO
 msgpack_object_print
 msgpack_pack_object
@@ -49,6 +43,12 @@ msgpack_zone_malloc_expand
 msgpack_zone_new
 msgpack_zone_push_finalizer_expand
 =end TODO
+
+# msgpack/version.h
+sub msgpack_version          is native(&library) returns Str   { * }
+sub msgpack_version_major    is native(&library) returns int32 { * }
+sub msgpack_version_minor    is native(&library) returns int32 { * }
+sub msgpack_version_revision is native(&library) returns int32 { * }
 
 class msgpack_zone is repr('CStruct') {
 	has int $something; #TODO implement msgpack_zone
