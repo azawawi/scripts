@@ -20,14 +20,6 @@ sub library {
 msgpack_object_print
 msgpack_pack_object
 msgpack_unpack
-msgpack_unpacker_execute
-msgpack_unpacker_expand_buffer
-msgpack_unpacker_flush_zone
-msgpack_unpacker_next
-msgpack_unpacker_release_zone
-msgpack_unpacker_reset
-msgpack_unpacker_reset_zone
-msgpack_unpack_next
 msgpack_vrefbuffer_append_copy
 msgpack_vrefbuffer_append_ref
 msgpack_vrefbuffer_clear
@@ -51,7 +43,7 @@ sub msgpack_version_minor    is native(&library) returns int32 { * }
 sub msgpack_version_revision is native(&library) returns int32 { * }
 
 class msgpack_zone is repr('CStruct') {
-	has int $something; #TODO implement msgpack_zone
+	has int32 $something; #TODO implement msgpack_zone
 }
 
 class msgpack_unpacker is repr('CStruct') {
@@ -97,6 +89,56 @@ sub msgpack_unpacker_execute(Pointer[msgpack_unpacker] $mpac)
 sub msgpack_unpacker_data(Pointer[msgpack_unpacker] $mpac)
 	is native(&library)
 	returns msgpack_object
+	{ * }
+	
+sub msgpack_unpacker_expand_buffer(Pointer[msgpack_unpacker] $mpac, size_t $size)
+	is native(&library)
+	returns bool
+	{ * }
+
+sub msgpack_unpacker_release_zone(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	returns Pointer[msgpack_zone]
+	{ * }
+
+sub msgpack_unpacker_reset_zone(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	{ * }
+
+sub msgpack_unpacker_reset(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	{ * }
+
+enum msgpack_unpack_return <
+	MSGPACK_UNPACK_SUCCESS,
+	MSGPACK_UNPACK_EXTRA_BYTES,
+	MSGPACK_UNPACK_CONTINUE,
+	MSGPACK_UNPACK_PARSE_ERROR,
+	MSGPACK_UNPACK_NOMEM_ERROR
+>;
+
+class msgpack_unpacked is repr('CStruct') {
+	has int32 $something;
+	#TODO msgpack_zone * 	zone
+ 	#TODO msgpack_object 	data
+}
+
+sub msgpack_unpack_next(
+		Pointer[msgpack_unpacked] $result, Str $data, size_t $len,
+		Pointer[size_t] $off
+	)
+	is native(&library)
+	returns msgpack_unpack_return
+	{ * }
+
+sub msgpack_unpacker_next(Pointer[msgpack_unpacker] $mpac, Pointer[msgpack_unpacked] $pac)
+	is native(&library)
+	returns msgpack_unpack_return
+	{ * }
+
+sub msgpack_unpacker_flush_zone(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	returns bool
 	{ * }
 
 #msgpack_unpacker_init(Pointer[msgpack_unpacker].new, 0);
