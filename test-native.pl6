@@ -26,14 +26,9 @@ sub msgpack_version_revision is native(&library) returns int32 { * }
 msgpack_object_print
 msgpack_pack_object
 msgpack_unpack
-msgpack_unpacker_data
-msgpack_unpacker_destroy
 msgpack_unpacker_execute
 msgpack_unpacker_expand_buffer
 msgpack_unpacker_flush_zone
-msgpack_unpacker_free
-msgpack_unpacker_init
-msgpack_unpacker_new
 msgpack_unpacker_next
 msgpack_unpacker_release_zone
 msgpack_unpacker_reset
@@ -54,6 +49,61 @@ msgpack_zone_malloc_expand
 msgpack_zone_new
 msgpack_zone_push_finalizer_expand
 =end TODO
+
+class msgpack_zone is repr('CStruct') {
+	has int $something; #TODO implement msgpack_zone
+}
+
+class msgpack_unpacker is repr('CStruct') {
+	has CArray[int8]          $buffer;
+	has size_t       		  $used;
+	has size_t 		 		  $free;
+ 	has size_t                $off;
+	has size_t 		 		  $parsed;
+ 	has Pointer[msgpack_zone] $z;
+ 	has size_t 				  $initial_buffer_size;
+ 	has Pointer 		      $ctx;
+}
+
+class msgpack_object is repr('CStruct') {
+	has int32 $something;
+	#TODO msgpack_object_type 	type
+ 	#TODO msgpack_object_union 	via
+}
+
+sub msgpack_unpacker_init(Pointer[msgpack_unpacker] $mpac, size_t $initial_buffer_size)
+	is native(&library)
+	returns bool
+	{ * }
+
+sub msgpack_unpacker_new(size_t $initial_buffer_size)
+	is native(&library)
+	returns Pointer[msgpack_unpacker]
+	{ * }
+
+sub msgpack_unpacker_destroy(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	{ * }
+
+sub msgpack_unpacker_free(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	{ * }
+
+sub msgpack_unpacker_execute(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	returns int32
+	{ * }
+
+sub msgpack_unpacker_data(Pointer[msgpack_unpacker] $mpac)
+	is native(&library)
+	returns msgpack_object
+	{ * }
+
+#msgpack_unpacker_init(Pointer[msgpack_unpacker].new, 0);
+#my $o = msgpack_unpacker_new(10);
+#msgpack_unpacker_destroy($o);
+#msgpack_unpacker_free($o);
+
 
 say "Version:  " ~ msgpack_version;
 say "Minor:    " ~ msgpack_version_major;
