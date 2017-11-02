@@ -18,7 +18,6 @@ sub library {
 
 =begin TODO
 msgpack_object_print
-msgpack_pack_object
 msgpack_unpack
 msgpack_vrefbuffer_append_copy
 msgpack_vrefbuffer_append_ref
@@ -57,10 +56,21 @@ class msgpack_unpacker is repr('CStruct') {
  	has Pointer 		      $ctx;
 }
 
+#TODO implement it via proper CUnion once it can be set in the constructor
+# sizeof(msgpack_object_union) = 16
+#class msgpack_object_union is repr('CStruct') {
+	#has int8 $.c1 is rw;
+	#has int8 $.c2 is rw;
+#};
+
 class msgpack_object is repr('CStruct') {
-	has int32 $something;
-	#TODO msgpack_object_type 	type
- 	#TODO msgpack_object_union 	via
+	has int32 $.type is rw; # msgpack_object_type
+	#TODO HAS msgpack_object_union $.via  is rw;
+	has int32 $.c1 is rw;
+	has int32 $.c2 is rw;
+	has int32 $.c3 is rw;
+	has int32 $.c4 is rw;
+	has int32 $.c5 is rw;
 }
 
 sub msgpack_unpacker_init(Pointer[msgpack_unpacker] $mpac, size_t $initial_buffer_size)
@@ -90,7 +100,7 @@ sub msgpack_unpacker_data(Pointer[msgpack_unpacker] $mpac)
 	is native(&library)
 	returns msgpack_object
 	{ * }
-	
+
 sub msgpack_unpacker_expand_buffer(Pointer[msgpack_unpacker] $mpac, size_t $size)
 	is native(&library)
 	returns bool
@@ -141,11 +151,56 @@ sub msgpack_unpacker_flush_zone(Pointer[msgpack_unpacker] $mpac)
 	returns bool
 	{ * }
 
-#msgpack_unpacker_init(Pointer[msgpack_unpacker].new, 0);
-#my $o = msgpack_unpacker_new(10);
-#msgpack_unpacker_destroy($o);
-#msgpack_unpacker_free($o);
+enum msgpack_object_type <
+	MSGPACK_OBJECT_NIL
+	MSGPACK_OBJECT_BOOLEAN
+	MSGPACK_OBJECT_POSITIVE_INTEGER
+	MSGPACK_OBJECT_NEGATIVE_INTEGER
+	MSGPACK_OBJECT_FLOAT
+	MSGPACK_OBJECT_STR
+	MSGPACK_OBJECT_ARRAY
+	MSGPACK_OBJECT_MAP
+	MSGPACK_OBJECT_BIN
+	MSGPACK_OBJECT_EXT
+>;
 
+class msgpack_packer is repr('CStruct') {
+	has Pointer $.data is rw;
+	#TODO has &callback (Pointer[void] $data, CArray[uint8], size_t $len) $.msgpack_packer_write;
+}
+
+# int(* 	msgpack_packer_write) (void *data, const char *buf, size_t len)
+# void SetCallback(int (*callback)(const char *))
+my sub SetCallback(&callback (Str --> int32)) is native('mylib') { * }
+
+sub msgpack_pack_object(msgpack_packer $pk is rw, msgpack_object $d)
+	is native(&library)
+	returns int32
+	{ * }
+
+sub msgpack_object_print(Pointer $out, msgpack_object $o)
+	is native(&library)
+	{ * }
+
+sub msgpack_object_equal(msgpack_object $x, msgpack_object $y)
+	returns bool
+	is native(&library)
+	{ * }
+
+say "nativesizeof(msgpack_object) = " ~ nativesizeof(msgpack_object);
+
+#say "0";
+my $o = msgpack_object.new;
+$o.type = MSGPACK_OBJECT_BOOLEAN;
+$o.c1 = 1;
+my $pk = msgpack_packer.new;
+#my $ret = msgpack_pack_object($pk, $o);
+#say $ret;
+
+#my Pointer $stdout := cglobal('libc.so.6', 'stdout', Pointer);
+#msgpack_object_print($stdout, $o);
+
+#say msgpack_object_equal($o, $o);
 
 say "Version:  " ~ msgpack_version;
 say "Minor:    " ~ msgpack_version_major;
