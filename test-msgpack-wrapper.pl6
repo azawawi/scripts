@@ -57,25 +57,39 @@ sub msgpack_pack_false(msgpack_packer $pk is rw)
     is symbol('wrapped_msgpack_pack_false')
     { * }
 
+sub msgpack_pack_array(msgpack_packer $pk is rw, size_t $n)
+    is native(&library)
+    is symbol('wrapped_msgpack_pack_array')
+    { * }
+
+sub msgpack_pack_int(msgpack_packer $pk is rw, int32 $d)
+    is native(&library)
+    is symbol('wrapped_msgpack_pack_int')
+    { * }
+
+sub msgpack_pack_str(msgpack_packer $pk is rw, size_t $l)
+    is native(&library)
+    is symbol('wrapped_msgpack_pack_str')
+    { * }
+
+sub msgpack_pack_str_body(msgpack_packer $pk is rw, Str $b, size_t $l)
+    is native(&library)
+    is symbol('wrapped_msgpack_pack_str_body')
+    { * }
+
 my msgpack_sbuffer $sbuf = msgpack_sbuffer.new;
 msgpack_sbuffer_init($sbuf);
 my msgpack_packer $pk = msgpack_packer.new;
 msgpack_packer_init($pk, $sbuf);
 say $sbuf.size;
 
+msgpack_pack_array($pk, 3);
+msgpack_pack_int($pk, 1);
 msgpack_pack_true($pk);
-msgpack_pack_false($pk);
-msgpack_pack_true($pk);
-msgpack_pack_false($pk);
+msgpack_pack_str($pk, 7);
+msgpack_pack_str_body($pk, "example", 7);
 
 say $sbuf.size;
-
-# msgpack_pack_array(&pk, 3);
-# msgpack_pack_int(&pk, 1);
-# msgpack_pack_true(&pk);
-# msgpack_pack_str(&pk, 7);
-# msgpack_pack_str_body(&pk, "example", 7);
-
 
 my $values;
 for 0..$sbuf.size-1 -> $i {
