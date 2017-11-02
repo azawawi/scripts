@@ -53,6 +53,10 @@ extern void wrapped_msgpack_pack_true(msgpack_packer* pk) {
     msgpack_pack_true(pk);
 }
 
+extern void wrapped_msgpack_pack_false(msgpack_packer* pk) {
+    msgpack_pack_false(pk);
+}
+
 extern int wrapped_msgpack_pack_str(msgpack_packer* pk, size_t l) {
     return msgpack_pack_str(pk, l);
 }

@@ -52,6 +52,11 @@ sub msgpack_pack_true(msgpack_packer $pk is rw)
     is symbol('wrapped_msgpack_pack_true')
     { * }
 
+sub msgpack_pack_false(msgpack_packer $pk is rw)
+    is native(&library)
+    is symbol('wrapped_msgpack_pack_false')
+    { * }
+
 my msgpack_sbuffer $sbuf = msgpack_sbuffer.new;
 msgpack_sbuffer_init($sbuf);
 my msgpack_packer $pk = msgpack_packer.new;
@@ -59,9 +64,11 @@ msgpack_packer_init($pk, $sbuf);
 say $sbuf.size;
 
 msgpack_pack_true($pk);
+msgpack_pack_false($pk);
+msgpack_pack_true($pk);
+msgpack_pack_false($pk);
 
 say $sbuf.size;
-
 
 # msgpack_pack_array(&pk, 3);
 # msgpack_pack_int(&pk, 1);
@@ -70,12 +77,13 @@ say $sbuf.size;
 # msgpack_pack_str_body(&pk, "example", 7);
 
 
-msgpack_sbuffer_destroy($sbuf);
-
-my $o = '';
+my $values;
 for 0..$sbuf.size-1 -> $i {
-    $o ~= sprintf("%0X", 0xff +& $sbuf.data[$i]);
+    $values.push: sprintf("%02X", 0xff +& $sbuf.data[$i]);
 }
-say "o = '$o'";
+my $packed = $values.join(' ');
+say "packed = '$packed'";
+
+msgpack_sbuffer_destroy($sbuf);
 
 say "Done";
