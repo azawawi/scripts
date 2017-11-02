@@ -10,9 +10,6 @@ sub test() {
     my $unpacked = Data::MessagePack->unpack( $packed );
 }
 
-for my $i (1..10) {
-    test()
-}
+test() for 1..10;
 
 # vim: set ts=4 sw=4:
-

@@ -2,7 +2,6 @@
 
 import msgpack
 
-
 def test():
     SIZE     = 10000000;
     data     = [1] * SIZE
