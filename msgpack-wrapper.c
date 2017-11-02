@@ -38,7 +38,7 @@ extern void wrapped_msgpack_sbuffer_clear(msgpack_sbuffer* sbuf)
 }
 
 extern void wrapped_msgpack_packer_init(msgpack_packer* pk, void* data) {
-    msgpack_packer_init(pk, data, callback);
+    msgpack_packer_init(pk, data, msgpack_sbuffer_write);
 }
 
 extern void wrapped_msgpack_pack_array(msgpack_packer* pk, size_t n) {
