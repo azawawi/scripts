@@ -1,2 +1,4 @@
 output/
 .precomp
+*.so
+speed_test_uint32_array
