@@ -1,34 +1,17 @@
 use v6;
-
+use File::Temp;
 use NativeCall;
 
-sub library {
-    return './test.so'
-}
-
-sub Add_Int32(int32, int32)
-    returns int32
-    is native(&library)
-    { * }
-
-sub Add_Float64(num64, num64)
-    returns num64 
-    is native(&library)
-    { * }
-
-# say "Add_Int32(1, 2)   = " ~ Add_Int32(1, 2);
-# say "Add_Float64(1, 2) = " ~ Add_Float64(1.1.Num, 2.2.Num);
-
-
-use File::Temp;
-
+# Reference:
+# https://medium.com/learning-the-go-programming-language/calling-go-functions-from-other-languages-4c7d8bcc69bf
 class Inline::Go {
     my ($so-file-name, $so-file-handle) = tempfile( :suffix('.so') );
 
     method run( Str $go-code ) {
+        # Create a temporary go source file
         my ($go-file-name, $go-file-handle) = tempfile( :suffix('.go') );
 
-        # Write provided go code
+        # Write provided go code into temporay file
         $go-file-handle.spurt($go-code);
 
         # Build shared C library from go code
@@ -36,11 +19,23 @@ class Inline::Go {
         say "output: " ~ $output;
     }
 
-    method call(Str $func-name) {
+    multi method call( Str $func-name ) {
         use MONKEY-SEE-NO-EVAL;
         my $func = EVAL "sub foo is symbol('$func-name') is native('$so-file-name') \{ * \}";
-        $func()
+        try {
+            $func();
+        }
+        no MONKEY-SEE-NO-EVAL;
     }
+
+    # multi method call(Callable $go-function) {
+    #     use MONKEY-SEE-NO-EVAL;
+    #     my $func = EVAL "sub foo is symbol('$func-name') is native('$so-file-name') \{ * \}";
+    #     try {
+    #         $func();
+    #     }
+    #     no MONKEY-SEE-NO-EVAL;
+    # }
 }
 
 #use Inline::Go;
@@ -58,7 +53,9 @@ func Add_Int32(a, b int) int {
 
 //export Hello
 func Hello() {
-    fmt.Println("Hello from Go!")
+    for i := 0; i < 5; i++ {
+        fmt.Printf("%d: Hello from Go!\n", i)
+    }
 }
 
 func main() {
@@ -68,3 +65,10 @@ func main() {
 my $o = Inline::Go.new;
 $o.run($code);
 $o.call('Hello');
+#$o.call('Hello(1,2)')
+
+
+#grammar Grammar::Go {
+#    token TOP { [ <package> | <sub> ] }
+#    rule TOP { }
+#}
