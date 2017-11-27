@@ -29,10 +29,10 @@ class Inline::Go {
     # method run( Str $go-code ) {
     #     # Create a temporary go source file
     #     my ($go-file-name, $go-file-handle) = tempfile( :suffix('.go') );
-    # 
+    #
     #     # Write provided go code into temporay file
     #     $go-file-handle.spurt($go-code);
-    # 
+    #
     #     # Build shared C library from go code
     #     my $output = qq:x/go build -o $so-file-name -buildmode=c-shared $go-file-name/;
     #     #TODO why is the output not showing...
@@ -82,7 +82,7 @@ class Inline::Go {
             for @functions {
                 my $function-name = ~$_[0];
                 my $signature     = ~$_[1];
-                my $return-type   = $_[2].defined ?? ~$_[2] !! 'Nothing';
+                my $return-type   = $_[2].defined ?? ~$_[2] !! Nil;
                 my $parameters    = self.find-go-parameters($signature);
 
                 take {
@@ -96,12 +96,6 @@ class Inline::Go {
         @results;
     }
 
-    # our sub _Add_Int32( int32 $a, int32 $b )
-    #     returns int32
-    #     is symbol( 'Add_Int32' )
-    #     is native( './foo.so' )
-    #     { * }
-
     method parse-go-functions-and-import-them {
         my @exports   = self.find-exported-go-functions;
         my @functions = self.find-go-functions;
@@ -113,7 +107,9 @@ class Inline::Go {
         for @functions {
             my $func-name   = $_<name>.trim;
             my $parameters  = $_<parameters>;
-            my $return-type = $_<return-type>;
+            my $return-type = $_<return-type>.defined
+                ?? %go-to-p6-type-map{$_<return-type>}
+                !! $_<return-type>;
             #say "Processing $func-name";
             #say "Parameters: $( @$parameters.perl )";
             my $signature   = @$parameters.map({
@@ -130,20 +126,26 @@ class Inline::Go {
                 }
                 "$p6-type \$$name";
             }).join(", ");
+            my $params = @$parameters.map({
+                my $name = $_<name>;
+                "\$$name";
+            }).join(", ");
 
+            my $ret-decl = $return-type.defined ?? "returns $return-type" !! '';
+            #say $ret-decl;
             use MONKEY-SEE-NO-EVAL;
             my $func-decl = "
                 our sub _$func-name\( $signature )
-                    returns $return-type
+                    $ret-decl
                     is symbol( '$func-name' )
                     is native( '$so-file-name' )
                     \{ * \}
 
                 method $func-name ( $signature ) \{
-                    _$func-name\(\);
+                    _$func-name\( $params \);
                 \}
             ";
-            say $func-decl;
+            # say $func-decl;
             my $func = EVAL $func-decl;
             say "function definition: '$( $func.perl )'";
             #$subs{ $func-name } = $func;
@@ -182,18 +184,12 @@ func main() {
 ';
 
 my $o = Inline::Go.new( :code( $code ) );
-#$o.import-all;
-#say $subs;
-#%$subs['Hello']();
-#Inline::Go::Hello();
-#'Hello'();
+$o.import-all;
 #$o.run($code);
 #$o.call('Hello');
 #$o.call('Hello(1,2)')
-#$o.'Hello'();
-#say ('Inline::Go::_Add_Int32')(1,2);
-say $o.^methods;
-
+Inline::Go.Hello;
+say Inline::Go.Add_Int32(1, 2);
 #$o.call-sub('Hello');
 
 #grammar Grammar::Go {
