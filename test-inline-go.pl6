@@ -154,11 +154,6 @@ class Inline::Go {
 
     }
 
-    # multi method call-sub(Str $func-name) {
-    #     say "Calling '$func-name'";
-    #     $func-name();
-    # }
-
 }
 
 #use Inline::Go;
@@ -183,14 +178,10 @@ func main() {
 }
 ';
 
-my $o = Inline::Go.new( :code( $code ) );
-$o.import-all;
-#$o.run($code);
-#$o.call('Hello');
-#$o.call('Hello(1,2)')
-Inline::Go.Hello;
-say Inline::Go.Add_Int32(1, 2);
-#$o.call-sub('Hello');
+my $go = Inline::Go.new( :code( $code ) );
+$go.import-all;
+$go.Hello;
+say $go.Add_Int32(1, 2);
 
 #grammar Grammar::Go {
 #    token TOP { [ <package> | <sub> ] }
