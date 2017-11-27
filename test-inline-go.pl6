@@ -51,10 +51,13 @@ class Inline::Go {
 
     method find-exported-go-functions {
         my @exports = $!code.match( / '//export' \s+ (\w+) /, :global );
-        #for @exports {
+        my %results;
+        for @exports {
             #say "Found exported go function: " ~ $_[0];
-        #}
-        @exports.map( { ~$_[0] } );
+            my $func-name = ~$_[0];
+            %results{$func-name} = $func-name => 1;
+        }
+        %results;
     }
 
     method find-go-parameters(Str:D $signature) {
@@ -78,7 +81,7 @@ class Inline::Go {
 
     method find-go-functions {
         my @functions = $!code.match( /'func' \s+ (\w+) \s* '(' (.*?) ')' \s+ (\w+)? /, :global);
-        my @results = gather {
+        my $results = gather {
             for @functions {
                 my $function-name = ~$_[0];
                 my $signature     = ~$_[1];
@@ -93,63 +96,89 @@ class Inline::Go {
                 #say "Found go function: " ~ $function-name;
             }
         };
-        @results;
+        $results;
     }
 
-    method parse-go-functions-and-import-them {
-        my @exports   = self.find-exported-go-functions;
-        my @functions = self.find-go-functions;
+    # Import a specific function
+    method import(Str:D $func-name) {
+        # Check whether it is exportable
+        my %exports   = self.find-exported-go-functions;
+        die "Function'$func-name' is not exported. Please add cgo's '//export $func-name' comment before your go function declaration." unless %exports{$func-name}.defined;
+
+        # Import function
+        my $functions = self.find-go-functions;
+        my $imported = False;
+        for @$functions {
+            next if $func-name ne $_<name>.trim;
+            $imported = self._import_function($_).defined ?? True !! False;
+        }
+        die "Failed to import '$func-name'" unless $imported;
+    }
+
+    method _import_function($function) {
+        my %exports   = self.find-exported-go-functions;
         #TODO support more 'Go' to 'Perl 6' type mapping
         my %go-to-p6-type-map =
             "int"     => "int32",
             "float64" => "num64";
-        #say "functions: " ~ @functions.perl;
-        for @functions {
-            my $func-name   = $_<name>.trim;
-            my $parameters  = $_<parameters>;
-            my $return-type = $_<return-type>.defined
-                ?? %go-to-p6-type-map{$_<return-type>}
-                !! $_<return-type>;
-            #say "Processing $func-name";
-            #say "Parameters: $( @$parameters.perl )";
-            my $signature   = @$parameters.map({
-                my $name = $_<name>;
-                my $type = $_<type>;
-                # #TODO handle any type
-                # #TODO handle implicit type
-                my $p6-type = '';
-                if $type.defined {
-                    $p6-type = %go-to-p6-type-map{$type};
-                }
-                else {
-                    warn "No type defined for '$name'";
-                }
-                "$p6-type \$$name";
-            }).join(", ");
-            my $params = @$parameters.map({
-                my $name = $_<name>;
-                "\$$name";
-            }).join(", ");
 
-            my $ret-decl = $return-type.defined ?? "returns $return-type" !! '';
-            #say $ret-decl;
-            use MONKEY-SEE-NO-EVAL;
-            my $func-decl = "
-                our sub _$func-name\( $signature )
+        my $func-name = $function<name>.trim;
+        # Make sure function is exportable
+        return unless %exports{$func-name}.defined;
+
+        my $parameters  = $function<parameters>;
+        my $return-type = $function<return-type>.defined
+            ?? %go-to-p6-type-map{$function<return-type>}
+            !! $function<return-type>;
+        #say "Processing $func-name";
+        #say "Parameters: $( @$parameters.perl )";
+        my $signature   = @$parameters.map({
+            my $name = $_<name>;
+            my $type = $_<type>;
+            # #TODO handle any type
+            # #TODO handle implicit type
+            my $p6-type = '';
+            if $type.defined {
+                $p6-type = %go-to-p6-type-map{$type};
+            }
+            else {
+                warn "No type defined for '$name'";
+            }
+            "$p6-type \$$name";
+        }).join(", ");
+        my $params = @$parameters.map({
+            my $name = $_<name>;
+            "\$$name";
+        }).join(", ");
+
+        my $ret-decl = $return-type.defined ?? "returns $return-type" !! '';
+        #say $ret-decl;
+        use MONKEY-SEE-NO-EVAL;
+        my $func-decl = "
+            method $func-name ( $signature ) \{
+                my sub _$func-name\( $signature )
                     $ret-decl
                     is symbol( '$func-name' )
                     is native( '$so-file-name' )
-                    \{ * \}
+                    \{ * \};
 
-                method $func-name ( $signature ) \{
-                    _$func-name\( $params \);
-                \}
-            ";
-            # say $func-decl;
-            my $func = EVAL $func-decl;
-            say "function definition: '$( $func.perl )'";
-            #$subs{ $func-name } = $func;
-            no MONKEY-SEE-NO-EVAL;
+                _$func-name\( $params \);
+            \}
+        ";
+        # say $func-decl;
+        my $func = EVAL $func-decl;
+        say "function definition: '$( $func.perl )'";
+        no MONKEY-SEE-NO-EVAL;
+
+        return $func;
+    }
+
+    method parse-go-functions-and-import-them {
+        my %exports   = self.find-exported-go-functions;
+        my $functions = self.find-go-functions;
+        #say "functions: " ~ @functions.perl;
+        for @$functions {
+            self._import_function($_)
         }
 
     }
@@ -178,10 +207,15 @@ func main() {
 }
 ';
 
-my $go = Inline::Go.new( :code( $code ) );
-$go.import-all;
-$go.Hello;
-say $go.Add_Int32(1, 2);
+my $go1 = Inline::Go.new( :code( $code ) );
+$go1.import-all;
+$go1.Hello;
+say $go1.Add_Int32(1, 2);
+
+#TODO single import should work also
+# my $go2 = Inline::Go.new( :code( $code ) );
+# $go2.import('Hello');
+# $go2.Hello;
 
 #grammar Grammar::Go {
 #    token TOP { [ <package> | <sub> ] }
