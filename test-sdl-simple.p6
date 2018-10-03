@@ -5,13 +5,13 @@ use v6;
 use lib 'lib';
 
 use SDL2::Raw;
-use SDL2::Simple;
+use SDL2;
 
 die "couldn't initialize SDL2: { SDL_GetError }" if SDL_Init(VIDEO) != 0;
 LEAVE SDL_Quit;
 
-my $window = SDL2::Simple::Window.new(:title("Hello, world!"), :flags(OPENGL));
-my $render = SDL2::Simple::Renderer.new($window);
+my $window = SDL2::Window.new(:title("Hello, world!"), :flags(OPENGL));
+my $render = SDL2::Renderer.new($window);
 
 my $event = SDL_Event.new;
 

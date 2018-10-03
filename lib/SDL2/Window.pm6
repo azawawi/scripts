@@ -1,7 +1,7 @@
 
 use v6;
 
-unit class SDL2::Simple::Window;
+unit class SDL2::Window;
 
 use SDL2::Raw;
 

@@ -2,14 +2,14 @@
 use v6;
 use SDL2::Raw;
 
-unit class SDL2::Simple::Renderer;
+unit class SDL2::Renderer;
 
-use SDL2::Simple::Window;
+use SDL2::Window;
   
 has $.renderer;
 
 method new(
-  SDL2::Simple::Window $window,
+  SDL2::Window $window,
   int32 :$index = -1,
   int32 :$flags = ACCELERATED +| PRESENTVSYNC) {
 
