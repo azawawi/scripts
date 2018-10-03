@@ -2,45 +2,16 @@
 
 use v6;
 
-use SDL2::Raw;
-
-class SDL2::Window {
-  
-}
-
-class SDL2::Renderer {
-  has $.renderer;
-
-  method new($window, int32 $index, int32 $flags) {
-    my $renderer = SDL_CreateRenderer($window, $index, $flags);
-    return self.bless(:renderer($renderer));
-  }
-
-  method draw-color(int8 $r, int8 $g, int8 $b, int8 $a) {
-    SDL_SetRenderDrawColor($!renderer, $r, $g, $b, $a);
-  }
-  
-  method clear {
-    SDL_RenderClear($!renderer);
-  }
-  
-  method present {
-    SDL_RenderPresent($!renderer);
-  }
-  
-  method fill-rect(SDL_Rect $rect) {
-    SDL_RenderFillRect($!renderer,  $rect);
-  }
-}
+use lib 'lib';
 
 use SDL2::Raw;
+use SDL2::Window;
+use SDL2::Renderer;
 
 die "couldn't initialize SDL2: { SDL_GetError }" if SDL_Init(VIDEO) != 0;
 
-my $window = SDL_CreateWindow("Hello, world!",
-        SDL_WINDOWPOS_CENTERED_MASK, SDL_WINDOWPOS_CENTERED_MASK,
-        800, 600, OPENGL);
-my $render = SDL2::Renderer.new($window, -1, ACCELERATED +| PRESENTVSYNC);
+my $window = SDL2::Window.new(:title("Hello, world!"), :flags(OPENGL));
+my $render = SDL2::Renderer.new($window);
 
 my $event = SDL_Event.new;
 
@@ -64,6 +35,3 @@ main: loop {
     $render.present;
 }
 SDL_Quit();
-
-
-say "Hello world, SDL";
