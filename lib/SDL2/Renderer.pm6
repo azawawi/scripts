@@ -4,18 +4,10 @@ use v6;
 unit class SDL2::Renderer;
 
 use NativeCall;
-use SDL2::Raw;
+use SDL2::Raw:ver(0.2);
 use SDL2::Window;
   
 has $.renderer;
-
-constant $sdl-lib = 'SDL2';
-
-# TODO move to SDL2::Raw
-sub SDL_RenderDrawPoints(
-  SDL_Renderer $renderer,
-  CArray[int32] $points,
-  int32 $count ) returns int32 is native($sdl-lib) { * }
 
 method new(
   SDL2::Window $window,
@@ -49,7 +41,7 @@ method renderer-info returns SDL_RendererInfo {
 }
 
 method draw-points(@points) {
-  my CArray[int32] $points .= new;
+  my $points = CArray[int32].new;
   my $index = 0;
   for @points -> $point {
     $points[$index++] = $point<x>;
@@ -58,4 +50,3 @@ method draw-points(@points) {
   my $num-points = ($index - 1) div 2;
   SDL_RenderDrawPoints($!renderer, $points, $num-points);
 }
-# SDL_RenderDrawPoints($renderer, $points, $numpoints);
