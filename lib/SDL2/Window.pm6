@@ -19,6 +19,10 @@ method new(
   return self.bless(:window($window));
 }
 
+method title(Str $title) {
+  SDL_SetWindowTitle($!window, $title)
+}
+
 method destroy {
   SDL_DestroyWindow($!window) if $!window.defined;
 }
