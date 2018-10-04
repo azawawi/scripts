@@ -8,14 +8,18 @@ my int ($w, $h) = 800, 600;
 
 my int $particlenum = 1000;
 
-SDL_Init(VIDEO);
+die "couldn't initialize SDL2: { SDL_GetError }" if SDL_Init(VIDEO) != 0;
+LEAVE SDL_Quit;
+
 my $window = SDL2::Window.new(
   :title("Particle System!"),
   :width($w),
   :height($h),
   :flags(SHOWN)
 );
+LEAVE $window.destroy;
 my $renderer = SDL2::Renderer.new( $window, :flags(ACCELERATED) );
+LEAVE $renderer.destroy;
 
 SDL_ClearError;
 

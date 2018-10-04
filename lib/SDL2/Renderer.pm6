@@ -50,3 +50,7 @@ method draw-points(@points) {
   my $num-points = ($index - 1) div 2;
   SDL_RenderDrawPoints($!renderer, $points, $num-points);
 }
+
+method destroy {
+  SDL_DestroyRenderer($!renderer) if $!renderer.defined;
+}

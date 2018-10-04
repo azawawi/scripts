@@ -11,7 +11,10 @@ die "couldn't initialize SDL2: { SDL_GetError }" if SDL_Init(VIDEO) != 0;
 LEAVE SDL_Quit;
 
 my $window = SDL2::Window.new(:title("Hello, world!"), :flags(OPENGL));
+LEAVE $window.destroy;
+
 my $render = SDL2::Renderer.new($window);
+LEAVE $render.destroy;
 
 my $event = SDL_Event.new;
 

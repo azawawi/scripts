@@ -18,3 +18,7 @@ method new(
   my $window = SDL_CreateWindow($title, $x, $y, $width, $height, $flags);
   return self.bless(:window($window));
 }
+
+method destroy {
+  SDL_DestroyWindow($!window) if $!window.defined;
+}
