@@ -1,6 +1,3 @@
 output/
 .precomp
-foo.so
-msgpack-wrapper.so
-test.so
-speed_test_uint32_array
+raw_timings.txt
