@@ -10,9 +10,13 @@ use NativeCall;
 $*OUT.out-buffer = False;
 $*ERR.out-buffer = False;
 
-sub library {
+sub libclang {
   return '/usr/lib/llvm-3.8/lib/libclang-3.8.so';
   # return 'libclang.so';
+}
+
+sub libclang-perl6 {
+  return './libclang-perl6.so';
 }
 
 # See /usr/lib/llvm-3.8/include/clang-c/Index.h
@@ -23,28 +27,28 @@ class CXIndex is repr('CPointer') { }
 class CXTranslationUnit is repr('CPointer') { }
 class CXClientData is repr('CPointer') { }
 
-sub clang_getClangVersion is native(&library) returns Str { * }
+sub clang_getClangVersion is native(&libclang) returns Str { * }
 
 # CINDEX_LINKAGE CXIndex clang_createIndex(int excludeDeclarationsFromPCH,
 #                                          int displayDiagnostics);
 sub clang_createIndex(
   int32 $excludeDeclarationsFromPCH,
   int32 $displayDiagnostics
-) is native(&library)
+) is native(&libclang)
   returns CXIndex
   { * }
 
 # CINDEX_LINKAGE void clang_disposeIndex(CXIndex index);
 sub clang_disposeIndex(
   CXIndex $index
-) is native(&library)
+) is native(&libclang)
   { * }
   
 # CINDEX_LINKAGE void clang_disposeTranslationUnit(CXTranslationUnit);
 
 sub clang_disposeTranslationUnit(
   CXTranslationUnit $unit
-) is native(&library)
+) is native(&libclang)
   { * }
 
 enum CXTranslationUnit_Flags (
@@ -76,7 +80,7 @@ sub clang_parseTranslationUnit(
   Pointer $unsaved_files,
   uint32 $num_unsaved_files,
   uint32 $options
-) is native(&library)
+) is native(&libclang)
   returns CXTranslationUnit
   { * };
 
@@ -92,10 +96,23 @@ class CXCursor is repr('CStruct') {
 }
 
 # CINDEX_LINKAGE CXCursor clang_getTranslationUnitCursor(CXTranslationUnit);
+# sub clang_getTranslationUnitCursor(
+#   CXTranslationUnit $unit
+# ) is native(&libclang)
+#   returns CXCursor
+#   { * };
 sub clang_getTranslationUnitCursor(
   CXTranslationUnit $unit
-) is native(&library)
-  returns CXCursor
+) is native(&libclang-perl6)
+  is symbol('wrapped_clang_getTranslationUnitCursor')
+  returns Pointer[CXCursor]
+  { * };
+
+sub free_cursor(
+  Pointer[CXCursor] $cursor
+) is native(&libclang-perl6)
+  is symbol('wrapped_free_cursor')
+  returns Pointer[CXCursor]
   { * };
 
 enum CXChildVisitResult <
@@ -117,30 +134,31 @@ sub clang_visitChildren(
   #TODO CXChildVisitResult return result
   &visitor (CXCursor, CXCursor, Pointer --> uint32),
   CXClientData $client_data
-) is native(&library)
+) is native(&libclang)
   returns uint32
   { * };
   
 # CINDEX_LINKAGE CXString clang_getCursorSpelling(CXCursor);
 sub clang_getCursorSpelling(CXCursor $cursor)
-  is native(&library)
+  is native(&libclang)
   returns Str
   { * }
 
 # CINDEX_LINKAGE enum CXCursorKind clang_getCursorKind(CXCursor);
 sub clang_getCursorKind(CXCursor $cursor)
-  is native(&library)
+  is native(&libclang)
   # TODO CXCursorKind
   returns uint32
   { * }
 
 # CINDEX_LINKAGE CXString clang_getCursorKindSpelling(enum CXCursorKind Kind);
 sub clang_getCursorKindSpelling(uint32 $kind)
-  is native(&library)
+  is native(&libclang)
   returns Str
   { * }
 
 sub visitor(CXCursor $cursor, CXCursor $parent, Pointer $client_data) {
+  say "Visitor called!";
   my $spelling      = clang_getCursorSpelling($cursor);
   my $kind-spelling = clang_getCursorKindSpelling(clang_getCursorKind($cursor));
   printf("Cursor '%s' of kind '%s'\n", $spelling, $kind-spelling);
@@ -150,6 +168,7 @@ sub visitor(CXCursor $cursor, CXCursor $parent, Pointer $client_data) {
 printf("libclang version '%s'\n", clang_getClangVersion);
 
 my $index = clang_createIndex(0, 0);
+LEAVE clang_disposeIndex($index);
 
 my $null-ptr = Pointer.new;
 my $unit = clang_parseTranslationUnit(
@@ -161,16 +180,16 @@ my $unit = clang_parseTranslationUnit(
   0,
   CXTranslationUnit_None
 );
-
+LEAVE clang_disposeTranslationUnit($unit);
 
 die "Unable to parse translation unit. Quitting."
   unless $unit;
 
 say "1";
-my $cursor = clang_getTranslationUnitCursor($unit);
-
+my $cursor-ptr = clang_getTranslationUnitCursor($unit);
+LEAVE free_cursor($cursor-ptr);
+my $cursor     = $cursor-ptr.deref;
 say "cursor kind: " ~ $cursor.kind;
-say "cursor xdata: " ~ $cursor.xdata;
 
 #TODO CXClientData
 clang_visitChildren(
@@ -178,8 +197,3 @@ clang_visitChildren(
   &visitor,
   $null-ptr
 );
-# say "called clang_visitChildren";
-
-#TODO fix cleanup
-# clang_disposeTranslationUnit($unit);
-# clang_disposeIndex($index);
