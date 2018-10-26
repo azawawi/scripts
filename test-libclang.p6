@@ -8,6 +8,7 @@ use NativeCall;
 
 #TODO remove this debug call...
 $*OUT.out-buffer = False;
+$*ERR.out-buffer = False;
 
 sub library {
   return '/usr/lib/llvm-3.8/lib/libclang-3.8.so';
@@ -134,7 +135,7 @@ sub clang_getCursorKind(CXCursor $cursor)
   { * }
 
 # CINDEX_LINKAGE CXString clang_getCursorKindSpelling(enum CXCursorKind Kind);
-sub clang_getCursorKindSpelling(int32 $kind)
+sub clang_getCursorKindSpelling(uint32 $kind)
   is native(&library)
   returns Str
   { * }
