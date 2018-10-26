@@ -81,12 +81,15 @@ sub clang_parseTranslationUnit(
 
 class CXCursor is repr('CStruct') {
   # TODO enum CXCursorKind kind;
-  has int32 $.kind,
+  has uint32 $.kind,
   has int32 $.xdata;
   #   const void *data[3];
-  has Pointer $.data;
+  #TODO fix this...
+  has Pointer $.data1;
+  has Pointer $.data2;
+  has Pointer $.data3;
 }
-  
+
 # CINDEX_LINKAGE CXCursor clang_getTranslationUnitCursor(CXTranslationUnit);
 sub clang_getTranslationUnitCursor(
   CXTranslationUnit $unit
@@ -111,7 +114,7 @@ sub clang_visitChildren(
   CXCursor $parent,
   # CXCursorVisitor $visitor,
   #TODO CXChildVisitResult return result
-  &visitor:(CXCursor, CXCursor, Pointer --> uint32),
+  &visitor (CXCursor, CXCursor, Pointer --> uint32),
   CXClientData $client_data
 ) is native(&library)
   returns uint32
@@ -127,7 +130,7 @@ sub clang_getCursorSpelling(CXCursor $cursor)
 sub clang_getCursorKind(CXCursor $cursor)
   is native(&library)
   # TODO CXCursorKind
-  returns int32
+  returns uint32
   { * }
 
 # CINDEX_LINKAGE CXString clang_getCursorKindSpelling(enum CXCursorKind Kind);
@@ -136,10 +139,16 @@ sub clang_getCursorKindSpelling(int32 $kind)
   returns Str
   { * }
 
-say "libclang version '{clang_getClangVersion}'";
+sub visitor(CXCursor $cursor, CXCursor $parent, Pointer $client_data) {
+  my $spelling      = clang_getCursorSpelling($cursor);
+  my $kind-spelling = clang_getCursorKindSpelling(clang_getCursorKind($cursor));
+  printf("Cursor '%s' of kind '%s'\n", $spelling, $kind-spelling);
+  return CXChildVisit_Recurse;
+}
+
+printf("libclang version '%s'\n", clang_getClangVersion);
 
 my $index = clang_createIndex(0, 0);
-LEAVE clang_disposeIndex($index);
 
 my $null-ptr = Pointer.new;
 my $unit = clang_parseTranslationUnit(
@@ -151,25 +160,25 @@ my $unit = clang_parseTranslationUnit(
   0,
   CXTranslationUnit_None
 );
-LEAVE clang_disposeTranslationUnit($unit);
+
 
 die "Unable to parse translation unit. Quitting."
   unless $unit;
+
 say "1";
 my $cursor = clang_getTranslationUnitCursor($unit);
-# say "1";
-# say $cursor;
-# say "2";
+
+say "cursor kind: " ~ $cursor.kind;
+say "cursor xdata: " ~ $cursor.xdata;
+
 #TODO CXClientData
-sub visitor(CXCursor $c, CXCursor $parent, Pointer $client_data) {
-  my $cursor-spelling      = clang_getCursorSpelling($c);
-  my $cursor-kind          = clang_getCursorKind($c);
-  my $cursor-kind-spelling = clang_getCursorKindSpelling($cursor-kind);
-  say "Cursor '$cursor-spelling' of kind '$cursor-kind-spelling'";
-  return CXChildVisit_Recurse;
-}
-# clang_visitChildren(
-#   $cursor,
-#   &visitor,
-#   $null-ptr
-# );
+clang_visitChildren(
+  $cursor,
+  &visitor,
+  $null-ptr
+);
+# say "called clang_visitChildren";
+
+#TODO fix cleanup
+# clang_disposeTranslationUnit($unit);
+# clang_disposeIndex($index);
