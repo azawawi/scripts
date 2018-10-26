@@ -1,4 +1,5 @@
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <clang-c/Index.h>
@@ -26,8 +27,25 @@ EXTERN_C CXString wrapped_clang_getCursorSpelling(CXCursor *cursor) {
   return clang_getCursorSpelling(*cursor);
 }
 
-EXTERN_C unsigned wrapped_clang_visitChildren(CXCursor *parent,
-                                      CXCursorVisitor visitor,
-                                      CXClientData client_data) {
-  return clang_visitChildren(*parent, visitor, client_data);
+typedef unsigned int (*VisitorCallback)(CXCursor *cursor, CXCursor *parent);
+
+unsigned cursorVisitor(
+  CXCursor cursor,
+  CXCursor parent,
+  CXClientData client_data) {
+
+  VisitorCallback visitor = (VisitorCallback)client_data;
+  return visitor(&cursor, &parent);
+}
+
+EXTERN_C unsigned wrapped_clang_visitChildren(
+  CXCursor *parent,
+  VisitorCallback visitorCallback,
+  CXClientData client_data
+) {
+  return clang_visitChildren(*parent, &cursorVisitor, visitorCallback);
+}
+
+EXTERN_C enum CXCursorKind wrapped_clang_getCursorKind(CXCursor* cursor) {
+  return clang_getCursorKind(*cursor);
 }
