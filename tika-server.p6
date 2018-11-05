@@ -4,6 +4,8 @@ use v6;
 
 unit class TikaWrapper;
 
+use LWP::Simple;
+
 has $.tika-server-process;
 
 method start {
@@ -32,18 +34,25 @@ method stop {
 	say "Stopped!";
 }
 
-# wait for the external program to terminate 
-# await $promise;
+method version {
+	my $version = LWP::Simple.get("http://127.0.0.1:9998/version");
+}
+
 
 my $t = TikaWrapper.new;
 $t.start;
 
+# Handle Ctrl-C
 signal(SIGINT).tap: {
 	$t.stop if $t.defined;
 	exit;
 }
 
-sleep 5;
+#TODO find if server is up or not...
+sleep 2;
+say "Tika Version: " ~ $t.version;
+
+sleep 15;
 LEAVE {
 	$t.stop if $t.defined;
 }
