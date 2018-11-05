@@ -2,6 +2,12 @@
 
 use v6;
 
+#
+# A simple Tika server wrapper that provides the following methods:
+# - meta
+# - text
+# - version
+#
 unit class TikaWrapper;
 
 use HTTP::UserAgent;
