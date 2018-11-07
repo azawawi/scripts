@@ -11,6 +11,7 @@ use v6;
 unit class TikaWrapper;
 
 use HTTP::UserAgent;
+use HTTP::Request::Common;
 
 has Str $.hostname = 'localhost';
 has Int $.port     = 9998;
@@ -58,40 +59,66 @@ method unpack {
 }
 
 method parsers {
-  ...
+	my $response = $!ua.get(self._url("parsers"));
+	die $response.status-line unless $response.is-success;
+	$response.content;
 }
 
 method detectors {
-  ...
+	my $response = $!ua.get(self._url("detectors"));
+  die $response.status-line unless $response.is-success;
+	$response.content;
 }
 
 method version {
 	my $response = $!ua.get(self._url("version"));
-    die $response.status-line unless $response.is-success;
+  die $response.status-line unless $response.is-success;
 	my $version = $response.content;
 }
 
 method meta(Str $filename, $content-type = Nil) {
-#    content_type ||= MIME::Types.type_for(filename).first.content_type
-#    res = RestClient::Resource.new(_url('meta'))
-#    res.put File.read(filename), content_type: content_type
+#TODO content_type ||= MIME::Types.type_for(filename).first.content_type
+	my $request = PUT(
+		self._url('meta'),
+		:content($filename.IO.slurp(:bin)),
+		:Content-Type($content-type)
+	);
+	my $response = $!ua.request($request);
+	die $response.status-line unless $response.is-success;
+	return $response.content;
 }
 
 method text(Str $filename, $content-type = Nil) {
-#    content_type ||= MIME::Types.type_for(filename).first.content_type
-#    res = RestClient::Resource.new(_url('tika'))
-#    res.put File.read(filename), content_type: content_type
+# TODO content_type ||= MIME::Types.type_for(filename).first.content_type
+	my $request = PUT(
+		self._url('tika'),
+		:content($filename.IO.slurp(:bin)),
+		:Content-Type($content-type)
+	);
+	my $response = $!ua.request($request);
+	die $response.status-line unless $response.is-success;
+	return $response.content;
 }
 
 method mime-type(Str $filename) {
-#    res = RestClient::Resource.new(_url('detect/stream'))
-#    res.put File.read(filename),
-#           'Content-Disposition' => "attachment; filename=#{filename}"
+	my $request = PUT(
+		self._url('detect/stream'),
+		:content($filename.IO.slurp(:bin)),
+		:Content-Disposition("attachment; filename=$filename")
+	);
+	my $response = $!ua.request($request);
+	die $response.status-line unless $response.is-success;
+	return $response.content;
 }
 
 method language(Str $string) {
-#  res = RestClient::Resource.new(_url('language/string'))
-#  res.put string
+	my $request = PUT(
+		self._url('language/string'),
+		:content($string)
+	);
+	my $response = $!ua.request($request);
+	die $response.status-line unless $response.is-success;
+	return $response.content;
 }
 
 method _url(Str $endpoint) {
@@ -102,39 +129,44 @@ method _truncate(Str $string, Int $length) {
   if $string.chars <= $length {
     $string
   } else {
-    $string[0, $string.rindex(/\s/, $length - 3)].rtrim ~ '...'
+    $string.substr(0..$length - 3).trim ~ '...'
   }
 }
 
 my $t = TikaWrapper.new;
-$t.start;
+# $t.start;
 
 # Handle Ctrl-C
-signal(SIGINT).tap: {
-	$t.stop if $t.defined;
-	exit;
-}
+# signal(SIGINT).tap: {
+# 	$t.stop if $t.defined;
+# 	exit;
+# }
 
 #TODO find if server is up or not...
-sleep 2;
+# sleep 2;
+
+# Unbuffer standard output / error
+$*OUT.out-buffer = False;
+$*ERR.out-buffer = False;
 
 say "Found {$t.version} server";
-#my @files = 'demo.docx', 'a.docx';
-#for @files -> $filename {
-#  my $content-type = $t.mime-type($filename);
-#  say "Detected stream type $content-type";
-#
-#  my $metadata = $t.meta($filename, $content-type);
-#  say "Metadata for $filename:\n{$t._truncate($metadata, 40)}";
-#
-#  my $text = $t.text($filename);
-#  say "Found {$text.chars} plain text";
-#
-#  my $language = $t.language($text);
-#  say "Detected language #{$language}";
-#}
+#say $t.detectors;
+my @files = 'data/demo.docx', 'data/a.docx';
+for @files -> $filename {
+  my $content-type = $t.mime-type($filename);
+  say "Detected stream type $content-type";
 
-sleep 15;
+	my $metadata = $t.meta($filename, $content-type);
+	say "Metadata for $filename:\n{$t._truncate($metadata, 40)}";
+
+  my $text = $t.text($filename, $content-type);
+  say "Found {$text.chars} plain text";
+
+  my $language = $t.language($text);
+  say "Detected language #{$language}";
+}
+
+# sleep 15;
 LEAVE {
-	$t.stop if $t.defined;
+	# $t.stop if $t.defined;
 }
