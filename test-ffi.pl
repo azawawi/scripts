@@ -39,14 +39,14 @@ $ffi->type( '(CXCursor, CXCursor, CXClientData)->CXChildVisitResult',
 
 # FFI Functions
 $ffi->attach( clang_getClangVersion => [] => 'string' );
-$ffi->attach( clang_createIndex => [ 'int', 'int' ] => 'pointer' );
+$ffi->attach( clang_createIndex => [ 'int', 'int' ] => 'CXIndex' );
 $ffi->attach( clang_disposeIndex             => ['CXIndex'] );
 $ffi->attach( clang_CXIndex_setGlobalOptions => [ 'CXIndex', 'uint' ] );
 $ffi->attach( clang_CXIndex_getGlobalOptions => ['CXIndex'] => 'uint' );
 $ffi->attach( clang_disposeTranslationUnit   => ['CXTranslationUnit'] );
 $ffi->attach( 'clang_parseTranslationUnit' =>
       [ 'CXIndex', 'string', 'pointer', 'int', 'pointer', 'uint', 'uint' ] =>
-      'pointer' );
+      'CXTranslationUnit' );
 $ffi->attach(
     clang_getTranslationUnitCursor => ['CXTranslationUnit'] => 'CXCursor' );
 $ffi->attach( clang_visitChildren =>
