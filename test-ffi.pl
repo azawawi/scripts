@@ -27,11 +27,15 @@ my $ffi = FFI::Platypus->new;
 $ffi->lib($library);
 
 # Custom FFI type aliases
-$ffi->type( 'pointer',                   'CXIndex' );
-$ffi->type( 'pointer',                   'CXTranslationUnit' );
-$ffi->type( 'record(My::CXCursor)',      'CXCursor' );
-$ffi->type( 'pointer',                   'CXClientData' );
-$ffi->type( '(CXCursor, CXCursor)->int', 'CXCursorVisitorBlock' );
+$ffi->type( 'pointer',              'CXIndex' );
+$ffi->type( 'pointer',              'CXTranslationUnit' );
+$ffi->type( 'record(My::CXCursor)', 'CXCursor' );
+$ffi->type( 'pointer',              'CXClientData' );
+
+#TODO enum CXChildVisitResult
+$ffi->type( 'int', 'CXChildVisitResult' );
+$ffi->type( '(CXCursor, CXCursor, CXClientData)->CXChildVisitResult',
+    'CXCursorVisitor' );
 
 # FFI Functions
 $ffi->attach( clang_getClangVersion => [] => 'string' );
@@ -41,15 +45,16 @@ $ffi->attach( clang_CXIndex_setGlobalOptions => [ 'CXIndex', 'uint' ] );
 $ffi->attach( clang_CXIndex_getGlobalOptions => ['CXIndex'] => 'uint' );
 $ffi->attach( clang_disposeTranslationUnit   => ['CXTranslationUnit'] );
 $ffi->attach( 'clang_parseTranslationUnit' =>
-      [ 'CXIndex', 'string', 'pointer', 'int', 'pointer', 'int', 'uint' ] =>
+      [ 'CXIndex', 'string', 'pointer', 'int', 'pointer', 'uint', 'uint' ] =>
       'pointer' );
 $ffi->attach(
     clang_getTranslationUnitCursor => ['CXTranslationUnit'] => 'CXCursor' );
 $ffi->attach( clang_visitChildren =>
-      [ 'CXCursor', 'CXCursorVisitorBlock', 'CXClientData' ] );
+      [ 'CXCursor', 'CXCursorVisitor', 'CXClientData' ] => 'uint' );
 
 say clang_getClangVersion;
 my $index = clang_createIndex( 0, 0 );
+say "index = $index";
 die "Error in clang_createIndex" unless $index;
 
 my $translation_unit = clang_parseTranslationUnit(
@@ -60,14 +65,17 @@ my $translation_unit = clang_parseTranslationUnit(
     0    # CXTranslationUnit_None
 );
 die "Error in clang_parseTranslationUnit" unless $translation_unit;
-say $translation_unit;
+say "translation_unit = $translation_unit";
 
 my $cursor = clang_getTranslationUnitCursor($translation_unit);
+say "cursor = $cursor";
 
 my $visitChildren = $ffi->closure(
     sub {
-        say "Here!";
-        my ( $cursor, $parent ) = ( shift, shift );
+        say "Here inside \$visitChildren!";
+        my $cursor      = shift;
+        my $parent      = shift;
+        my $client_data = shift;
 
         say "Called!";
         say $cursor;
@@ -80,7 +88,6 @@ my $visitChildren = $ffi->closure(
         return 2;    # CXChildVisit_Recurse
     }
 );
-
 clang_visitChildren( $cursor, $visitChildren, 0 );
 
 END {
