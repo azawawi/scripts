@@ -50,17 +50,21 @@ $ffi->type( 'int', 'CXChildVisitResult' );
 $ffi->type( '(CXCursor, CXCursor, CXClientData)->CXChildVisitResult',
     'CXCursorVisitor' );
 
-# FFI Functions
-$ffi->attach( clang_getCString      => ['CXString'] => 'string' );
-$ffi->attach( clang_getClangVersion => []           => 'CXString' );
+# CINDEX_LINKAGE const char *clang_getCString(CXString string);
+$ffi->attach( clang_getCString => ['opaque'] => 'string' );
+
+# CINDEX_LINKAGE void clang_disposeString(CXString string);
+$ffi->attach( clang_disposeString => ['opaque'] => 'void' );
+
+# CINDEX_LINKAGE CXString clang_getClangVersion(void);
+$ffi->attach( clang_getClangVersion => [] => 'opaque' );
+
 $ffi->attach( clang_createIndex => [ 'int', 'int' ] => 'CXIndex' );
 $ffi->attach( clang_disposeIndex             => ['CXIndex'] );
-$ffi->attach( clang_CXIndex_setGlobalOptions => [ 'CXIndex', 'uint' ] );
-$ffi->attach( clang_CXIndex_getGlobalOptions => ['CXIndex'] => 'uint' );
-$ffi->attach( clang_disposeTranslationUnit   => ['CXTranslationUnit'] );
+$ffi->attach( clang_disposeTranslationUnit   => ['opaque'] );
 $ffi->attach( 'clang_parseTranslationUnit' =>
       [ 'CXIndex', 'string', 'pointer', 'int', 'pointer', 'uint', 'uint' ] =>
-      'CXTranslationUnit' );
+      'opaque' );
 $ffi->attach(
     clang_getTranslationUnitCursor => ['CXTranslationUnit'] => 'CXCursor' );
 $ffi->attach( clang_visitChildren =>
@@ -69,7 +73,8 @@ $ffi->attach( clang_visitChildren =>
 # Print out libclang version...
 my $version_cxstring = clang_getClangVersion();
 my $version          = clang_getCString($version_cxstring);
-say $version;
+say "version = '$version'";
+clang_disposeString($version_cxstring);
 
 my $index = clang_createIndex( 0, 0 );
 say "index = $index";

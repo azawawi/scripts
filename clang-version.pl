@@ -4,10 +4,10 @@ package My::CXString;
 
 use FFI::Platypus::Record;
 
-record_layout(
-    'pointer' => 'data',
-    'uint'    => 'private_flags',
-);
+record_layout(qw(
+    pointer data
+    uint    private_flags
+));
 
 1;
 
@@ -29,13 +29,13 @@ $ffi->lib($library);
 $ffi->type( 'record(My::CXString)', 'CXString' );
 
 # CINDEX_LINKAGE const char *clang_getCString(CXString string);
-$ffi->attach( clang_getCString => ['CXString'] => 'string' );
+$ffi->attach( clang_getCString => ['opaque'] => 'string' );
 
 # CINDEX_LINKAGE void clang_disposeString(CXString string);
-$ffi->attach( clang_disposeString => ['CXString'] => 'void' );
+$ffi->attach( clang_disposeString => ['opaque'] => 'void' );
 
 # CINDEX_LINKAGE CXString clang_getClangVersion(void);
-$ffi->attach( clang_getClangVersion => [] => 'CXString' );
+$ffi->attach( clang_getClangVersion => [] => 'opaque' );
 
 # Print out libclang version...
 my $version_cxstring = clang_getClangVersion();
