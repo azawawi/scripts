@@ -11,6 +11,19 @@ record_layout(
     'pointer[3]' => 'data',
 );
 
+1;
+
+package My::CXString;
+
+use FFI::Platypus::Record;
+
+record_layout(
+    'opaque' => 'data',
+    'uint'   => 'private_flags',
+);
+
+1;
+
 #--> main
 package main;
 
@@ -19,6 +32,7 @@ use FFI::Platypus;
 
 STDOUT->autoflush(1);
 
+# Debian el al => sudo apt install libclang-dev
 my $library = '/usr/lib/llvm-6.0/lib/libclang.so';
 
 my $ffi = FFI::Platypus->new;
@@ -28,6 +42,7 @@ $ffi->lib($library);
 $ffi->type( 'pointer',              'CXIndex' );
 $ffi->type( 'pointer',              'CXTranslationUnit' );
 $ffi->type( 'record(My::CXCursor)', 'CXCursor' );
+$ffi->type( 'record(My::CXString)', 'CXString' );
 $ffi->type( 'pointer',              'CXClientData' );
 
 #TODO enum CXChildVisitResult
@@ -36,7 +51,8 @@ $ffi->type( '(CXCursor, CXCursor, CXClientData)->CXChildVisitResult',
     'CXCursorVisitor' );
 
 # FFI Functions
-$ffi->attach( clang_getClangVersion => [] => 'string' );
+$ffi->attach( clang_getCString      => ['CXString'] => 'string' );
+$ffi->attach( clang_getClangVersion => []           => 'CXString' );
 $ffi->attach( clang_createIndex => [ 'int', 'int' ] => 'CXIndex' );
 $ffi->attach( clang_disposeIndex             => ['CXIndex'] );
 $ffi->attach( clang_CXIndex_setGlobalOptions => [ 'CXIndex', 'uint' ] );
@@ -50,7 +66,11 @@ $ffi->attach(
 $ffi->attach( clang_visitChildren =>
       [ 'CXCursor', 'CXCursorVisitor', 'CXClientData' ] => 'uint' );
 
-say clang_getClangVersion();
+# Print out libclang version...
+my $version_cxstring = clang_getClangVersion();
+my $version          = clang_getCString($version_cxstring);
+say $version;
+
 my $index = clang_createIndex( 0, 0 );
 say "index = $index";
 die "Error in clang_createIndex" unless $index;
