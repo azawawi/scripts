@@ -5,8 +5,8 @@ package My::CXString;
 use FFI::Platypus::Record;
 
 record_layout(
-    'opaque' => 'data',
-    'uint'   => 'private_flags',
+    'pointer' => 'data',
+    'uint'    => 'private_flags',
 );
 
 1;
@@ -40,5 +40,6 @@ $ffi->attach( clang_getClangVersion => [] => 'CXString' );
 # Print out libclang version...
 my $version_cxstring = clang_getClangVersion();
 my $version          = clang_getCString($version_cxstring);
-say $version;
+say "sizeof = " . $ffi->sizeof('CXString');
+say "version = '$version'";
 clang_disposeString($version_cxstring);
